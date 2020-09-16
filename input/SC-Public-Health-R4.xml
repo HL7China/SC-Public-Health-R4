@@ -62,7 +62,7 @@
 				<!-- 本地资源定义（participation-status） -->
 				<reference value="StructureDefinition/participation-status"/>
 			</reference>
-			<description value="预约参与状态，描述预约参与人的应约状态，包括同意、拒绝、未知、未响应等。"/>
+			<description value="预约参与状态，描述预约参与人的应约状态，包括同意、拒绝、未知、未响应等"/>
 		</resource>
 
 		<!--<resource>
