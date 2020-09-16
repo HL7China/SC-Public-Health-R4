@@ -62,7 +62,7 @@
 				<!-- 本地资源定义（participation-status） -->
 				<reference value="StructureDefinition/participation-status"/>
 			</reference>
-			<description value="预约参与状态，描述预约参与人的应约状态，包括同意、拒绝、未知、未响应等"/>
+			<description value="预约参与状态，描述预约参与人的应约状态，包括同意、拒绝、未知、未响应等。"/>
 		</resource>
 
 		<!--<resource>
@@ -291,7 +291,7 @@
 				<!-- MessageDefinition资源示例 -->
 				<reference value="MessageDefinition/md-patient-arrive-response"/>
 			</reference>
-			<name value="患者到诊应答消息定义MessageDefinition的示例"/>
+			<name value="患者到诊应答消息定义MessageDefinition的示例。"/>
 			<description value="演示如何定义和引用患者到诊应答消息定义MessageDefinition的示例"/>
 			<exampleCanonical value="http://hl7.org/fhir/StructureDefinition/MessageDefinition"/>
 		</resource>
@@ -301,7 +301,7 @@
 				<!-- MessageDefinition资源示例 -->
 				<reference value="MessageDefinition/md-medical-records-submitted"/>
 			</reference>
-			<name value="上传完整病历消息定义MessageDefinition的示例"/>
+			<name value="上传完整病历消息定义MessageDefinition的示例。"/>
 			<description value="演示如何定义和引用上传完整病历消息定义MessageDefinition的示例"/>
 			<exampleCanonical value="http://hl7.org/fhir/StructureDefinition/MessageDefinition"/>
 		</resource>
