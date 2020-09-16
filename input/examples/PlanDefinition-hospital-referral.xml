@@ -1,20 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <PlanDefinition xmlns="http://hl7.org/fhir">
-	<id value="hospital-referral"/>
+	<id value="pd-hospital-referral"/>
 	<!-- 0..1 Canonical identifier for this plan definition, represented as a URI (globally unique) -->
-	<url value="http://PlanDefinition.hl7fhir.cn/hospital-referral"/>
+	<url value="http://PlanDefinition.hl7fhir.cn/pd-hospital-referral"/>
 	<!-- 0..* 计划定义编号 -->
 	<!-- 0..* 活动标识符 -->
 	<identifier>
 		<!-- 0..1 活动标识符NamingSystem uri-->
 		<system value="http://NamingSystem.hl7fhir.cn/planDefinition-identifier"/>
 		<!-- 0..1 活动标识符 -->
-		<value value="hospital-referral"/>
+		<value value="pd-hospital-referral"/>
 	</identifier>
 	<!-- 0..1 版本号 -->
 	<version value="1.0.0"/>
 	<!-- ?? 0..1 计划名称（计算机友好）-->
-	<name value="hospital-referral"/>
+	<name value="pd-hospital-referral"/>
 	<!-- 0..1 计划名称（人友好） -->
 	<title value="双向转诊-住院转诊"/>
 	<!-- 0..1  计划定义类型  CodeableConcept order-set | clinical-protocol | eca-rule | workflow-definition -->
@@ -104,19 +104,19 @@
 		<!-- 0..* 动作的相关关系 -->
 		<relatedAction>
 				<!-- 1..1 相关步骤的ID -->
-			<actionId value="application-for-referral-appointment-response"/>
+			<actionId value="ad-hospital-referral-response"/>
 			<!-- 1..1 关系   before-start | before | before-end | concurrent-with-start | concurrent | concurrent-with-end | after-start | after | after-end -->
 			<relationship value="before-start"/>
 		</relatedAction>
 		<relatedAction>
 			<!-- 1..1 相关步骤的ID -->
-			<actionId value="patient-arrive-response"/>
+			<actionId value="ad-patient-arrive-response"/>
 			<!-- 1..1 关系   before-start | before | before-end | concurrent-with-start | concurrent | concurrent-with-end | after-start | after | after-end -->
 			<relationship value="before-start"/>
 		</relatedAction>
 		<relatedAction>
 			<!-- 1..1 相关步骤的ID -->
-			<actionId value="medical-records-submitted"/>
+			<actionId value="ad-medical-records-submitted"/>
 			<!-- 1..1 关系   before-start | before | before-end | concurrent-with-start | concurrent | concurrent-with-end | after-start | after | after-end -->
 			<relationship value="before-start"/>
 		</relatedAction>
@@ -164,7 +164,7 @@
 		<!-- 0..1 单次或者多次运行 single | multiple -->
 		<cardinalityBehavior value="single"/>
 		<!-- 0..1 该步骤的活动定义  -->
-		<definitionCanonical value="http://ActivityDefinition.hl7fhir.cn/application-for-referral-appointment"/>
+		<definitionCanonical value="http://ActivityDefinition.hl7fhir.cn/ad-hospital-referral"/>
 		
 	</action>
 
@@ -196,7 +196,7 @@
 		<!-- 0..* 动作的相关关系 -->
 		<relatedAction>
 			<!-- 1..1 相关步骤的ID -->
-			<actionId value="application-for-referral-appointment"/>
+			<actionId value="ad-hospital-referral"/>
 			<!-- 1..1 关系   before-start | before | before-end | concurrent-with-start | concurrent | concurrent-with-end | after-start | after | after-end -->
 			<relationship value="after-start"/>
 		</relatedAction>
@@ -237,7 +237,7 @@
 		<!-- 0..1 单次或者多次运行 single | multiple -->
 		<cardinalityBehavior value="single"/>
 		<!-- 0..1 该步骤的活动定义  -->
-		<definitionCanonical value="http://ActivityDefinition.hl7fhir.cn/application-for-referral-appointment-response"/>
+		<definitionCanonical value="http://ActivityDefinition.hl7fhir.cn/ad-hospital-referral-response"/>
 			
 	</action>
 
@@ -269,7 +269,7 @@
 		<!-- 0..* 动作的相关关系 -->
 		<relatedAction>
 			<!-- 1..1 相关步骤的ID -->
-			<actionId value="application-for-referral-appointment-response"/>
+			<actionId value="ad-hospital-referral-response"/>
 			<!-- 1..1 关系   before-start | before | before-end | concurrent-with-start | concurrent | concurrent-with-end | after-start | after | after-end -->
 			<relationship value="after-start"/>
 		</relatedAction>
@@ -300,7 +300,7 @@
 		<!-- 0..1 单次或者多次运行 single | multiple -->
 		<cardinalityBehavior value="single"/>
 		<!-- 0..1 该步骤的活动定义  -->
-		<definitionCanonical value="http://ActivityDefinition.hl7fhir.cn/patient-arrive-response"/>
+		<definitionCanonical value="http://ActivityDefinition.hl7fhir.cn/ad-patient-arrive-response"/>
 			
 	</action>
 
@@ -332,7 +332,7 @@
 		<!-- 0..* 动作的相关关系 -->
 		<relatedAction>
 			<!-- 1..1 相关步骤的ID -->
-			<actionId value="patient-arrive-response"/>
+			<actionId value="ad-patient-arrive-response"/>
 			<!-- 1..1 关系   before-start | before | before-end | concurrent-with-start | concurrent | concurrent-with-end | after-start | after | after-end -->
 			<relationship value="after-start"/>
 		</relatedAction>
@@ -363,7 +363,7 @@
 		<!-- 0..1 单次或者多次运行 single | multiple -->
 		<cardinalityBehavior value="single"/>
 		<!-- 0..1 该步骤的活动定义  -->
-		<definitionCanonical value="http://ActivityDefinition.hl7fhir.cn/medical-records-submitted"/>
+		<definitionCanonical value="http://ActivityDefinition.hl7fhir.cn/ad-medical-records-submitted"/>
 			
 	</action>
 </PlanDefinition>

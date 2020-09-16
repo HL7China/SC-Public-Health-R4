@@ -106,7 +106,7 @@
 		<resource>
 			<reference>
 				<!-- 资源示例 -->
-				<reference value="Task/Medical-records-submitted-example"/>
+				<reference value="Task/medicalrecordssubmitted-example"/>
 			</reference>
 			<name value="上传完整病历示例"/>
 			<description value="演示如何定义和引用上传完整病历的简单示例"/>
@@ -119,7 +119,7 @@
 		<resource>
 			<reference>
 				<!-- ActivityDefinition资源示例 -->
-				<reference value="ActivityDefinition/application-for-referral-appointment"/>
+				<reference value="ActivityDefinition/ad-hospital-referral"/>
 			</reference>
 			<name value="转诊预约申请ActivityDefinition示例"/>
 			<description value="演示如何定义和引用转诊预约申请ActivityDefinition的简单示例"/>
@@ -129,7 +129,7 @@
 		<resource>
 			<reference>
 				<!-- ActivityDefinition资源示例 -->
-				<reference value="ActivityDefinition/application-for-referral-appointment-response"/>
+				<reference value="ActivityDefinition/ad-hospital-referral-response"/>
 			</reference>
 			<name value="转诊预约应答ActivityDefinition示例"/>
 			<description value="演示如何定义和引用转诊预约应答ActivityDefinition的简单示例"/>
@@ -142,7 +142,7 @@
 		<resource>
 			<reference>
 				<!-- ActivityDefinition资源示例 -->
-				<reference value="ActivityDefinition/patient-arrive-response"/>
+				<reference value="ActivityDefinition/ad-patient-arrive-response"/>
 			</reference>
 			<name value="患者到诊应答ActivityDefinition示例"/>
 			<description value="演示如何定义和引用患者到诊应答ActivityDefinition的简单示例"/>
@@ -154,7 +154,7 @@
 		<resource>
 			<reference>
 				<!-- ActivityDefinition资源示例 -->
-				<reference value="ActivityDefinition/medical-records-submitted"/>
+				<reference value="ActivityDefinition/ad-medical-records-submitted"/>
 			</reference>
 			<name value="上传完整病历ActivityDefinition示例"/>
 			<description value="演示如何定义和引用上传完整病历ActivityDefinition的简单示例"/>
@@ -169,7 +169,7 @@
 		<resource>
 			<reference>
 				<!-- PlanDefinition资源示例 -->
-				<reference value="PlanDefinition/hospital-referral"/>
+				<reference value="PlanDefinition/pd-hospital-referral"/>
 			</reference>
 			<name value="住院双转的流程定义PlanDefinition示例"/>
 			<description value="演示如何定义和引用住院双转的流程定义PlanDefinition的简单示例"/>
@@ -220,11 +220,53 @@
 		</resource>
 
 
+		<resource>
+			<reference>
+				<!-- Bundle-RESTful资源示例 -->
+				<reference value="Bundle/hospital-referral-RESTful-example"/>
+			</reference>
+			<name value="转诊预约申请RESTful接口的Bundle示例"/>
+			<description value="演示如何定义和引用转诊申请实际交互场景的RESTful数据交换Bundle示例"/>
+			<exampleCanonical value="http://hl7.org/fhir/StructureDefinition/Bundle"/>
+		</resource>
+
+		
+
+		<resource>
+			<reference>
+				<!-- Bundle资源示例 -->
+				<reference value="Bundle/hospital-referral-response-RESTful-example"/>
+			</reference>
+			<name value="转诊预约应答RESTful接口的Bundle示例"/>
+			<description value="演示如何定义和引用转诊预约应答实际交互场景的RESTful数据交换Bundle示例"/>
+			<exampleCanonical value="http://hl7.org/fhir/StructureDefinition/Bundle"/>
+		</resource>
+
+
+		<resource>
+			<reference>
+				<!-- Bundle资源示例 -->
+				<reference value="Bundle/patient-arrive-response-RESTful-example"/>
+			</reference>
+			<name value="患者到诊应答RESTful接口的Bundle示例"/>
+			<description value="演示如何定义和引用患者到诊应答实际交互场景的RESTful数据交换Bundle示例"/>
+			<exampleCanonical value="http://hl7.org/fhir/StructureDefinition/Bundle"/>
+		</resource>
+		
+		<resource>
+			<reference>
+				<!-- Bundle资源示例 -->
+				<reference value="Bundle/medical-records-submitted-RESTful-example"/>
+			</reference>
+			<name value="上传完整病历RESTful接口的Bundle示例"/>
+			<description value="演示如何定义和引用上传完整病历实际交互场景的RESTful数据交换Bundle示例"/>
+			<exampleCanonical value="http://hl7.org/fhir/StructureDefinition/Bundle"/>
+		</resource>
 
 		<resource>
 			<reference>
 				<!-- MessageDefinition资源示例 -->
-				<reference value="MessageDefinition/hospital-referral"/>
+				<reference value="MessageDefinition/md-hospital-referral"/>
 			</reference>
 			<name value="转诊预约申请消息定义MessageDefinition的示例"/>
 			<description value="演示如何定义和引用转诊申请消息定义MessageDefinition的示例"/>
@@ -236,7 +278,7 @@
 		<resource>
 			<reference>
 				<!-- MessageDefinition资源示例 -->
-				<reference value="MessageDefinition/hospital-referral-response"/>
+				<reference value="MessageDefinition/md-hospital-referral-response"/>
 			</reference>
 			<name value="转诊预约应答消息定义MessageDefinition的示例"/>
 			<description value="演示如何定义和引用转诊预约应答消息定义MessageDefinition的示例"/>
@@ -247,7 +289,7 @@
 		<resource>
 			<reference>
 				<!-- MessageDefinition资源示例 -->
-				<reference value="MessageDefinition/patient-arrive-response"/>
+				<reference value="MessageDefinition/md-patient-arrive-response"/>
 			</reference>
 			<name value="患者到诊应答消息定义MessageDefinition的示例"/>
 			<description value="演示如何定义和引用患者到诊应答消息定义MessageDefinition的示例"/>
@@ -257,7 +299,7 @@
 		<resource>
 			<reference>
 				<!-- MessageDefinition资源示例 -->
-				<reference value="MessageDefinition/medical-records-submitted"/>
+				<reference value="MessageDefinition/md-medical-records-submitted"/>
 			</reference>
 			<name value="上传完整病历消息定义MessageDefinition的示例"/>
 			<description value="演示如何定义和引用上传完整病历消息定义MessageDefinition的示例"/>

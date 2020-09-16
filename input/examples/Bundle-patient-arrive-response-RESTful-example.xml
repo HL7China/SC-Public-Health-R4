@@ -1,5 +1,12 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<AppointmentResponse xmlns="http://hl7.org/fhir">
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Bundle xmlns="http://hl7.org/fhir">
+	<id value="patient-arrive-response-RESTful-example"/>
+	<type value="transaction-response"/>
+
+	<!--************************患者到诊******************************-->
+	<entry>
+		<resource>
+			<AppointmentResponse xmlns="http://hl7.org/fhir">
 				<!-- 0..1 患者到诊应答逻辑ID -->
 				<id value="PatientArriveResponse-example"/>
 				<meta>
@@ -20,7 +27,7 @@
 				<start value="2019-02-10T13:00:00Z"/>
 				<!-- 0..1 允许转诊的结束时间 -->
 				<end value="2019-02-11T13:00:00Z"/>
-				<!-- 0..* 参与者角色（该处为固定为患者） -->
+				<!-- 0..* 参与者角色（该处为固定为医护人员） -->
 				<participantType>
 					<coding>
 						<!-- 0..1 参与者角色 CodeSystem url  -->
@@ -40,6 +47,6 @@
 				<!-- 0..1 备注 -->
 				<comment value="患者已经到诊。"/>
 			</AppointmentResponse>
-
-
-
+		</resource>
+	</entry>
+</Bundle>

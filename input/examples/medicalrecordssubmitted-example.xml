@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Task xmlns="http://hl7.org/fhir">
-	<id value="Medical-records-submitted-example"/>
+	<id value="medicalrecordssubmitted-example"/>
 
 
 	<!-- 0..1 canonical(ActivityDefinition) 关联ActivityDefinition -->
-	<instantiatesCanonical value="http://ActivityDefinition.hl7fhir.cn/medical-records-submitted"/>
+	<instantiatesCanonical value="http://ActivityDefinition.hl7fhir.cn/ad-medical-records-submitted"/>
 	
 
 

@@ -1,20 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <MessageDefinition xmlns="http://hl7.org/fhir">
-  <id value="hospital-referral-response"/>
+  <id value="md-hospital-referral-response"/>
   <!-- 0..1 Business Identifier for a given MessageDefinition -->
-  <url value="http://MessageDefinition.hl7fhir.cn/hospital-referral-response"/>
+  <url value="http://MessageDefinition.hl7fhir.cn/md-hospital-referral-response"/>
 
   <!-- 0..* Identifier Primary key for the message definition on a given server -->
   <identifier>
     <!-- 0..1 活动标识符NamingSystem uri-->
     <system value="http://NamingSystem.hl7fhir.cn/messageDefinition-identifier"/>
     <!-- 0..1 活动标识符 -->
-    <value value="hospital-referral-response"/>
+    <value value="md-hospital-referral-response"/>
   </identifier>
   <!-- 0..1 版本 -->
   <version value="0.2.0"/>
   <!-- ?? 0..1 消息名称（计算机友好）-->
-  <name value="hospital-referral-response"/>
+  <name value="md-hospital-referral-response"/>
   <!-- 0..1 消息名称（人友好） -->
   <title value="转诊预约应答"/>
   <!-- 1..1 状态 draft | active | retired | unknown -->
@@ -47,7 +47,7 @@
   <purpose value="在数据交互过程中，为了规范整个消息体的格式和消息数据的应答关系，定义此消息体，满足 转诊预约应答步骤 需要传输的所有数据信息。"/>
 
   <!-- 0..* canonical(ActivityDefinition|PlanDefinition) Protocol/workflow this is part of -->
-  <parent value="http://ActivityDefinition.hl7fhir.cn/application-for-referral-appointment-response"/>
+  <parent value="http://ActivityDefinition.hl7fhir.cn/ad-hospital-referral-response"/>
   
   <!-- 1..1 Coding|uri 事件定义 -->
   <eventCoding>

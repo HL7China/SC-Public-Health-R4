@@ -1,20 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ActivityDefinition xmlns="http://hl7.org/fhir">
-	<id value="patient-arrive-response"/>
+	<id value="ad-patient-arrive-response"/>
 	<!-- 0..1 ActivityDefinition 的全局URL -->
-	<url value="http://ActivityDefinition.hl7fhir.cn/patient-arrive-response"/>
+	<url value="http://ActivityDefinition.hl7fhir.cn/ad-patient-arrive-response"/>
 
 	<!-- 0..* 活动标识符 -->
 	<identifier>
 		<!-- 0..1 活动标识符NamingSystem uri-->
 		<system value="http://NamingSystem.hl7fhir.cn/activityDefinition-identifier"/>
 		<!-- 0..1 活动标识符 -->
-		<value value="patient-arrive-response"/>
+		<value value="ad-patient-arrive-response"/>
 	</identifier>
 	<!-- 0..1 版本号 -->
 	<version value="1.0.0"/>
 	<!-- ?? 0..1 活动名称（计算机友好） -->
-	<name value="patient-arrive-response"/>
+	<name value="ad-patient-arrive-response"/>
 	<!-- 0..1 活动名称（人友好） -->
 	<title value="患者到诊应答"/>
 	<!-- 1..1 状态 draft | active | retired | unknown -->

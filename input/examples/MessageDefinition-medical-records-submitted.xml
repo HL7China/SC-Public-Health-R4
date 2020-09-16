@@ -1,20 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <MessageDefinition xmlns="http://hl7.org/fhir">
-  <id value="medical-records-submitted"/>
+  <id value="md-medical-records-submitted"/>
   <!-- 0..1 Business Identifier for a given MessageDefinition -->
-  <url value="http://MessageDefinition.hl7fhir.cn/medical-records-submitted"/>
+  <url value="http://MessageDefinition.hl7fhir.cn/md-medical-records-submitted"/>
 
   <!-- 0..* Identifier Primary key for the message definition on a given server -->
   <identifier>
     <!-- 0..1 活动标识符NamingSystem uri-->
     <system value="http://NamingSystem.hl7fhir.cn/messageDefinition-identifier"/>
     <!-- 0..1 活动标识符 -->
-    <value value="medical-records-submitted"/>
+    <value value="md-medical-records-submitted"/>
   </identifier>
   <!-- 0..1 版本 -->
   <version value="0.2.0"/>
   <!-- ?? 0..1 消息名称（计算机友好）-->
-  <name value="medical-records-submitted"/>
+  <name value="md-medical-records-submitted"/>
   <!-- 0..1 消息名称（人友好） -->
   <title value="上传完整病历"/>
   <!-- 1..1 状态 draft | active | retired | unknown -->
@@ -48,7 +48,7 @@
 
 
   <!-- 0..* canonical(ActivityDefinition|PlanDefinition) Protocol/workflow this is part of -->
-  <parent value="http://ActivityDefinition.hl7fhir.cn/medical-records-submitted"/>
+  <parent value="http://ActivityDefinition.hl7fhir.cn/ad-medical-records-submitted"/>
   
   <!-- 1..1 Coding|uri 事件定义 -->
   <eventCoding>

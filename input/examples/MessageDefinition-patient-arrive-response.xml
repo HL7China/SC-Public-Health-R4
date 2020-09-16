@@ -1,20 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <MessageDefinition xmlns="http://hl7.org/fhir">
-  <id value="patient-arrive-response"/>
+  <id value="md-patient-arrive-response"/>
   <!-- 0..1 Business Identifier for a given MessageDefinition -->
-  <url value="http://MessageDefinition.hl7fhir.cn/patient-arrive-response"/>
+  <url value="http://MessageDefinition.hl7fhir.cn/md-patient-arrive-response"/>
 
   <!-- 0..* Identifier Primary key for the message definition on a given server -->
   <identifier>
     <!-- 0..1 活动标识符NamingSystem uri-->
     <system value="http://NamingSystem.hl7fhir.cn/messageDefinition-identifier"/>
     <!-- 0..1 活动标识符 -->
-    <value value="patient-arrive-response"/>
+    <value value="md-patient-arrive-response"/>
   </identifier>
   <!-- 0..1 版本 -->
   <version value="0.2.0"/>
   <!-- ?? 0..1 消息名称（计算机友好）-->
-  <name value="patient-arrive-response"/>
+  <name value="md-patient-arrive-response"/>
   <!-- 0..1 消息名称（人友好） -->
   <title value="患者到诊应答"/>
   <!-- 1..1 状态 draft | active | retired | unknown -->
@@ -46,7 +46,7 @@
   <!-- 0..1 为什么定义此消息定义 -->
   <purpose value="在数据交互过程中，为了规范整个消息体的格式和消息数据的应答关系，定义此消息体，满足 患者到诊应答步骤 需要传输的所有数据信息。"/>
   <!-- 0..* canonical(ActivityDefinition|PlanDefinition) Protocol/workflow this is part of -->
-  <parent value="http://ActivityDefinition.hl7fhir.cn/patient-arrive-response"/>
+  <parent value="http://ActivityDefinition.hl7fhir.cn/ad-patient-arrive-response"/>
     
   <!-- 1..1 Coding|uri 事件定义 -->
   <eventCoding>
@@ -99,7 +99,7 @@
   <!-- 0..* 对此消息的响应 -->
   <allowedResponse>
     <!-- 1..1 canonical(MessageDefinition) 响应消息 -->
-    <message value="http://MessageDefinition.hl7fhir.cn/medical-records-submitted"/>
+    <message value="http://MessageDefinition.hl7fhir.cn/md-medical-records-submitted"/>
       
     <!-- 0..1 什么时候应该使用这个响应 -->
     <situation value="患者到达转入医院，办理手续后，收到该患者到诊应答的消息，通过该消息上传完整病历"/>  
