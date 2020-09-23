@@ -10,7 +10,7 @@
 
 #### 定义流程的资源
 
-&emsp;&emsp;场景所涉及的流程及流程中的活动是通过以下两个FHIR的资源来定义的：
+&emsp;&emsp;场景所涉及的流程及流程中的活动是通过以下两个FHIR的资源来定义的： 
 
 - 活动定义：[ActivityDefinition](http://www.hl7fhir.cn/R4/activitydefinition.html)：活动定义资源，定义在业务流程中每一个活动步骤，描述其在流程中的作用。
 - 流程定义：[PlanDefinition](http://www.hl7fhir.cn/R4/plandefinition.html)：通过计划义定资源可以对活动定义资源进行组装，并描述活动之间的先后关系，触发条件等信息，该资源可描述一个完整的业务流程。
