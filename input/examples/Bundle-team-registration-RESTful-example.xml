@@ -193,7 +193,7 @@
         <!-- 0..1 联系地址 -->
         <telecom>
           <!--  0..1 联系方式类型 phone | fax | email | pager | url | sms | other -->
-          <system value="Other"/>
+          <system value="other"/>
           <!-- 0..1 联系地址 -->
           <value value="XX市XX县XXXXX路XXX号"/>
         </telecom>
