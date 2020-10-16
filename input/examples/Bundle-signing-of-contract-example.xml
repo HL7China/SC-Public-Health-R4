@@ -1,0 +1,651 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Bundle xmlns="http://hl7.org/fhir">
+  <id value="signing-of-contract-example"/>
+  <type value="message"/>
+  <!--************************消息头****************************-->
+  <entry>
+    <resource>
+      <MessageHeader xmlns="http://hl7.org/fhir">
+        <!--1.1 消息ID（实例ID，重发不变）-->
+        <id value="MessageHeader-0006"/>
+        <!--消息事件 1..1-->
+        <eventCoding>
+          <!-- 0..1 事件类型 CodeSystem url  -->
+          <system value="http://CodeSystem.hl7fhir.cn/activity-code"/>
+          <!-- 0..1 事件类型代码-->
+          <code value="C02003"/>
+          <!-- 0..1 事件类型名称 -->
+          <display value="家庭医生签约"/>
+        </eventCoding>
+        <!-- 1..1 消息源应用程序 -->
+        <source>
+          <!-- 0..1 系统名称（发送消息的系统） -->
+          <name value="[string]"/>
+          <!-- 0..1 软件名称（子系统名称） -->
+          <software value="[string]"/>
+          <!-- 0..1 运行的软件版本（当前版本） -->
+          <version value="[string]"/>
+          <!-- 1..1 ID地址(当前操作客户端IP地址) -->
+          <endpoint value="[uri]"/>
+        </source>
+        <!--消息实际内容 0..*-->
+        <focus>
+          <!-- 0..1 Reference(Task) 关联工作流信息 -->
+          <reference value="CarePlan/FamilyDoctorContract-example"/>
+        </focus>
+        <!-- 0..1 canonical(MessageDefinition) Link to the definition for this message -->
+        <definition  value="MessageDefinition/md-signing-of-contract"/>
+      </MessageHeader>
+    </resource>
+  </entry>
+
+  <!--************************家庭医生签约******************************-->
+  <entry>
+    <resource>
+      <CarePlan xmlns="http://hl7.org/fhir">
+        <!-- 0..1 id -->
+        <id value="FamilyDoctorContract-example"/>
+
+        <meta>
+          <profile value="http://StructureDefinition.hl7fhir.cn/family-doctor-contract"/>
+        </meta>
+
+        <!-- 0..1 签约流水号 -->
+        <identifier>
+          <!--0..1 签约流水号NamingSystem uri-->
+          <system value="http://NamingSystem.hl7fhir.cn/careplan-serial-identifier"/>
+          <!-- 0..1 签约流水号 -->
+          <value value="2126373839202937"/>
+        </identifier>
+
+
+        <!-- 0..1 医保基金支付 -->
+        <extension url="http://StructureDefinition.hl7fhir.cn/medicare-payment">
+          <valueQuantity>
+            <!-- 0..1 数字 -->
+            <value value="100"/>
+            <!-- 0..1 单位 -->
+            <unit value="元"/>
+          </valueQuantity>
+        </extension>
+        <!-- 0..1 基本公卫经费支付 -->
+        <extension url="http://StructureDefinition.hl7fhir.cn/health-payment">
+          <valueQuantity>
+            <!-- 0..1 数字 -->
+            <value value="100"/>
+            <!-- 0..1 单位 -->
+            <unit value="元"/>
+          </valueQuantity>
+        </extension>
+        <!-- 0..1 居民自费费用 -->
+        <extension url="http://SichuanMedicalCommunity.FHIR.PRESS/StructureDefinition/self-paying">
+          <valueQuantity>
+            <!-- 0..1 数字 -->
+            <value value="100"/>
+            <!-- 0..1 单位 -->
+            <unit value="元"/>
+          </valueQuantity>
+        </extension>
+
+
+
+        <!-- 1..1 签约状态  draft | active | on-hold | revoked | completed | entered-in-error | unknown -->
+        <status value="active">
+          <extension url="http://StructureDefinition.hl7fhir.cn/resource-status">
+            <valueCoding>
+              <!-- 0..1 申请单状态 CodeSystem url  地址(draft | active | on-hold | revoked | completed | entered-in-error | unknown )-->
+              <system value="http://hl7.org/fhir/request-status"/>
+              <!-- 0..1 申请单状态代码-->
+              <code value="active"/>
+              <!-- 0..1申请单状态说明 -->
+              <display value="active"/>
+            </valueCoding>
+          </extension>
+        </status>
+        <!-- 1..1 签约意图 proposal | plan | order | option -->
+        <intent value="plan">
+          <extension url="http://StructureDefinition.hl7fhir.cn/resource-intent">
+            <valueCoding>
+              <!-- 0..1 申请意图 CodeSystem url  地址(proposal | plan | directive | order | original-order | reflex-order | filler-order | instance-order | option )-->
+              <system value="http://hl7.org/fhir/request-intent"/>
+              <!-- 0..1 申请意图代码-->
+              <code value="plan"/>
+              <!-- 0..1 申请意图说明 -->
+              <display value="plan"/>
+            </valueCoding>
+          </extension>
+        </intent>
+
+
+
+
+
+        <!-- 0..1 签约渠道 -->
+        <category>
+          <coding>
+            <!-- 0..1 签约渠道 CodeSystem url  地址-->
+            <system value="http://CodeSystem.hl7fhir.cn/Signed-channel"/>
+            <!-- 0..1 签约渠道-->
+            <code value="01"/>
+            <!-- 0..1 签约渠道名称 -->
+            <display value="家庭医生"/>
+          </coding>
+        </category>
+
+
+        <!-- 0..1 签约单描述 -->
+        <description value="描述该签约单的简要信息"/>
+
+        <!-- 1..1 Reference(Group) 患者 -->
+        <subject>
+          <!-- 0..1 Reference(Group) 关联家庭信息 -->
+          <reference value="Group/Family-example"/>
+        </subject>
+
+        <!-- 0..1 服务周期 -->
+        <period>
+          <!--  0..1 签约生效日期 -->
+          <start value="2019-02-10T13:00:00Z"/>
+          <!--  0..1 签约结束日期 -->
+          <end value="2021-02-10T13:00:00Z"/>
+        </period>
+        <!-- 0..1 签约日期 -->
+        <created value="2019-02-10T13:00:00Z"/>
+
+        <!-- 0..1 签约人 Reference(Patient） -->
+        <author>
+          <!-- 0..1 Reference(Patient) 关联签约患者信息 -->
+          <reference value="Patient/Patient001-example"/>
+        </author>
+
+        <!-- 0..* Reference(|Practitioner)签约医生 -->
+        <contributor>
+          <!-- 0..1 Reference(Practitioner) 关联医护人员信息 -->
+          <reference value="Practitioner/Practitioner001-example"/>
+        </contributor>
+
+        <!-- 0..* Reference(CareTeam) 签约团队 -->
+        <careTeam>
+          <!-- 0..1 Reference(CareTeam) 关联团队信息 -->
+          <reference value="CareTeam/CareTeam-example"/>
+        </careTeam>
+
+
+
+        <!-- 0..* 服务计划 -->
+        <activity>
+
+          <!--0..1 计划流水号-->
+          <id value="01"/>
+          <!--  0..1 计划明细 -->
+          <detail>
+
+            <!-- 1..1 计划状态 not-started | scheduled | in-progress | on-hold | completed | cancelled | stopped | unknown | entered-in-error -->
+            <status value="on-hold"/>
+
+            <!-- 0..1 服务包 -->
+            <code>
+              <!--0..1 服务包  -->
+              <coding>
+                <!--0..1  服务包 CodeSsystem地址-->
+                <system value="http://CodeSystem.hl7fhir.cn/service-package"/>
+                <!--0..1  服务包-->
+                <code value="01"/>
+                <!--0..1 服务包说明-->
+                <display value="服务包1"/>
+              </coding>
+              <!--0..1 服务项目明细编码  -->
+              <coding>
+                <!-- 0..1 服务项目明细编码 CodeSystem url  地址-->
+                <system value="http://CodeSystem.hl7fhir.cn/service-details"/>
+                <!-- 0..1 服务项目明细编码-->
+                <code value="01"/>
+                <!-- 0..1 服务项目明细编码名称 -->
+                <display value="服务明细1"/>
+              </coding>
+
+            </code>
+
+
+            <!-- 0..1 服务时间 -->
+            <scheduledTiming>
+              <!-- 0..* 服务时间 -->
+              <event value="2019-02-10T13:00:00Z"/>
+              <!-- 0..1 服务频次 -->
+              <code>
+                <coding>
+                  <!-- 0..1 服务频次 CodeSystem url  地址-->
+                  <system value="http://CodeSystem.hl7fhir.cn/Service-frequency"/>
+                  <!-- 0..1 服务频次-->
+                  <code value="01"/>
+                  <!-- 0..1 服务频次名称 -->
+                  <display value="一周1次"/>
+                </coding>
+                <!-- 0..1 服务频次描述 -->
+                <text value="[string]"/>
+              </code>
+            </scheduledTiming>
+
+            <!-- 0..* Reference(Practitioner） 计划服务医生 -->
+            <performer>
+              <!-- 0..1 Reference(Practitioner) 关联医护人员信息 -->
+              <reference value="Practitioner/Practitioner001-example"/>
+            </performer>
+            <!-- 0..1 服务内容 -->
+            <description value="服务内容详情"/>
+          </detail>
+        </activity>
+        <!-- 0..* 备注（合同） -->
+        <note>
+          <!-- 1..1 合同 -->
+          <text value="[markdown]"/>
+        </note>
+      </CarePlan>
+    </resource>
+  </entry>
+ 
+  <!--************************家庭信息******************************-->
+  <entry>
+    <resource>
+      <Group xmlns="http://hl7.org/fhir">
+        <!--0..1 ID-->
+        <id value="Family-example"/>
+
+        <meta>
+          <profile value="http://StructureDefinition.hl7fhir.cn/Family"/>
+        </meta>
+
+        <!--1..* 签约家庭档案号 -->
+        <identifier>
+          <!--0..1 签约家庭档案号NamingSystem uri-->
+          <system value="http://FHIR.PRESS/NamingSystem/family-archives-code "/>
+          <!-- 0..1 签约家庭档案号 -->
+          <value value="20192837371177172"/>
+        </identifier>
+
+        <!-- 1..1 分组类型 -->
+        <type value="person"/>
+        <!--  1..1 实际的或者描述性的 -->
+        <actual value="true"/>
+
+        <!-- 0..1 家庭名称 -->
+        <name value="黎明的家庭"/>
+
+        <!--  0..* 成员 -->
+        <member>
+          <!-- 1..1 Reference(Patient） 家庭成员-->
+          <entity>
+            <!-- 0..1 Reference(Patient) 关联家庭成员信息 -->
+            <reference value="Patient/Patient001-example"/>
+          </entity>
+        </member>
+        <member>
+          <!-- 1..1 Reference(Patient） 家庭成员-->
+          <entity>
+            <!-- 0..1 Reference(Patient) 关联家庭成员信息 -->
+            <reference value="Patient/Patient002-example"/>
+          </entity>
+        </member>
+      </Group>
+    </resource>
+  </entry>
+
+  <!--************************医护人员信息******************************-->
+  <entry>
+    <resource>
+      <Practitioner xmlns="http://hl7.org/fhir">
+        <id value="Practitioner001-example"/>
+        <meta>
+          <profile value="http://StructureDefinition.hl7fhir.cn/Practitioner"/>
+        </meta>
+        <!--1..* 身份证件号 -->
+        <identifier>
+          <!--证件类型-->
+          <type>
+            <coding>
+              <!-- 证件类型CodeSystem  地址 -->
+              <system value="http://CodeSystem.hl7fhir.cn/identity-document-type"/>
+              <!-- 0..1 证件类别编码 -->
+              <code value="01"/>
+              <!-- 0..1 证件类别名称 -->
+              <display value="身份证"/>
+            </coding>
+          </type>
+          <!--0..1 身份证件号码NamingSystem uri-->
+          <system value="http://NamingSystem.hl7fhir.cn/identityDocument"/>
+          <!-- 0..1 身份证件号码 -->
+          <value value="511002198609021982"/>
+        </identifier>
+        <active value="true"/>
+        <!-- 0..* 姓名 -->
+        <name>
+          <!-- 0..1 全名 -->
+          <text value="张三"/>
+        </name>
+        <telecom>
+          <!--  0..1 类型 phone | fax | email | pager | url | sms | other -->
+          <system value="phone"/>
+          <!-- 0..1 电话号码 -->
+          <value value="13309092736"/>
+        </telecom>
+        <!--  0..1 电子邮箱 -->
+        <telecom>
+          <!--  0..1 类型 phone | fax | email | pager | url | sms | other -->
+          <system value="email"/>
+          <!-- 0..1 电子邮箱 -->
+          <value value="263736484@qq.com"/>
+        </telecom>
+        <!-- 0..* 地址-->
+        <address>
+          <!-- 0..1 地址的完整描述 -->
+          <text value="成都市XXX区XXX小区XXXX号"/>
+        </address>
+
+        <!-- 0..1 所学专业代码 GB/T16835-1997-->
+        <qualification>
+          <!--0..1  所学专业代码 -->
+          <code>
+            <coding>
+              <!-- 所学专业代码  CodeSystem  地址 -->
+              <system value="http://CodeSystem.hl7fhir.cn/Codeofnormalandshort-cyclespeciality"/>
+              <!-- 0..1 所学专业代码 -->
+              <code value="[code]"/>
+              <!-- 0..1 所学专业名称 -->
+              <display value="[string]"/>
+            </coding>
+          </code>
+        </qualification>
+        <!-- 0..1 专业技术职务代码 GB/T8561-2001-->
+        <qualification>
+          <!--0..1  专业技术职务代码 -->
+          <code>
+            <coding>
+              <!-- 专业技术职务代码  CodeSystem  地址 -->
+              <system value="http://CodeSystem.hl7fhir.cn/Code-of-professional-technical-position"/>
+              <!-- 0..1 专业技术职务代码 -->
+              <code value="[code]"/>
+              <!-- 0..1专业技术职务名称 -->
+              <display value="[string]"/>
+            </coding>
+          </code>
+        </qualification>
+        <!-- 0..1 所学专业 -->
+        <qualification>
+          <!--0..1  所学专业代码 -->
+          <code>
+            <coding>
+              <!--所学专业代码  CodeSystem  地址 -->
+              <system value="http://CodeSystem.hl7fhir.cn/Codeofnormalandshort-cyclespeciality"/>
+              <!-- 0..1 所学专业代码 -->
+              <code value="[code]"/>
+              <!-- 0..1 所学专业名称 -->
+              <display value="[string]"/>
+            </coding>
+          </code>
+        </qualification>
+        <!-- 0..1 学历（最高学历参见 值域的属性） -->
+        <qualification>
+          <!--0..1  证书编码 -->
+          <identifier>
+            <!-- 一级学科代码-->
+            <type>
+              <coding>
+                <!-- 一级学科代码CodeSystem  地址 (GB/T13745-92)-->
+                <system value="http://CodeSystem.hl7fhir.cn/Classification-of-disciplines"/>
+                <!-- 0..1 一级学科代码编码 -->
+                <code value="[code]"/>
+                <!-- 0..1 一级学科代码名称 -->
+                <display value="[string]"/>
+              </coding>
+            </type>
+            <!--0..1 学历证书编码  NamingSystem uri-->
+            <system value="http://SichuanMedicalCommunity.FHIR.PRESS/NamingSystem/Classification-of-disciplines-code"/>
+            <!-- 0..1 证书编码 -->
+            <value value="[string]"/>
+          </identifier>
+          <!--0..1  证书类别 -->
+          <code>
+            <coding>
+              <!-- 学历证书类别  CodeSystem  地址 GB/T 4658-2006-->
+              <system value="http://CodeSystem.hl7fhir.cn/record-of-formal-schooling"/>
+              <!-- 0..1 学历证书编码 -->
+              <code value="[code]"/>
+              <!-- 0..1 学历证书名称 -->
+              <display value="[string]"/>
+            </coding>
+          </code>
+        </qualification>
+        <!-- 0..1 学位（最高学位参见 值域的属性） -->
+        <qualification>
+          <!--0..1  证书类别 -->
+          <code>
+            <coding>
+              <!-- 学位证书类别  CodeSystem  地址 GB/T 6864-2003-->
+              <system value="http://CodeSystem.hl7fhir.cn/degree-of-PRC"/>
+              <!-- 0..1 学位证书编码 -->
+              <code value="[code]"/>
+              <!-- 0..1 学位证书名称 -->
+              <display value="[string]"/>
+            </coding>
+          </code>
+        </qualification>
+        <!-- 0..1 执业证书（医生） -->
+        <qualification>
+          <!--0..1  证书编码 -->
+          <identifier>
+            <!--0..1 医师/卫生监督员执业证书编码  NamingSystem uri-->
+            <system value="http://SichuanMedicalCommunity.FHIR.PRESS/NamingSystem/Code-of-Practice-Certificate"/>
+            <!-- 0..1 医师/卫生监督员执业证书编码/注册护士执业证书编码 -->
+            <value value="[string]"/>
+          </identifier>
+          <!--0..1  证书类别 -->
+          <code>
+            <coding>
+              <!-- 证书执业类别代码  CodeSystem  地址 -->
+              <system value="http://CodeSystem.hl7fhir.cn/practitioner-practice-type"/>
+              <!-- 0..1 医师执业类别代码编码 -->
+              <code value="[code]"/>
+              <!-- 0..1 医师执业类别代码名称 -->
+              <display value="[string]"/>
+            </coding>
+          </code>
+        </qualification>
+
+        <!-- 0..1 生理性别 -->
+        <gender>
+          <extension url="http://StructureDefinition.hl7fhir.cn/sexual-distinction-of-human">
+            <valueCoding>
+              <!-- 0..1 生理性别 CodeSystem url  地址-->
+              <system value="http://CodeSystem.hl7fhir.cn/physiological-gender"/>
+              <!-- 0..1 生理性别代码-->
+              <code value="01"/>
+              <!-- 0..1 生理性别说明 -->
+              <display value="男"/>
+            </valueCoding>
+          </extension>
+        </gender>
+        <!-- 0..1 出生日期 -->
+        <birthDate value="1980-01-01"/>
+        <!-- 0..* 照片 -->
+        <photo>
+          <!-- 0..1 uri地址 -->
+          <url value="http://www.cctrry.com/images/image1.png"/>
+          <!-- 0..1 标题 -->
+          <title value="头像"/>
+        </photo>
+        <photo>
+          <!-- 0..1 uri地址 -->
+          <url value="http://www.cctrry.com/images/image2.png"/>
+          <!-- 0..1 标题 -->
+          <title value="寸照"/>
+        </photo>
+        <extension url="http://StructureDefinition.hl7fhir.cn/BriefIntroduction">
+          <valueString value="擅长运用中医、中西医结合治疗血小板减少、血小板增多等血液疾病独树一帜，她在多年临床发现治疗血液病单纯靠西药激素治疗并不理想，立志另辟蹊径潜心进修中医，对多种疑难病症有着丰富的临床诊疗经验。"/>
+        </extension>
+        <!-- 0..1 国籍   GB/T 2659 世界各国和地区名称代码-->
+        <extension url="http://StructureDefinition.hl7fhir.cn/Nationality">
+          <valueCoding>
+            <!-- 0..1 世界各国和地区名称代码 CodeSystem url  地址  -->
+            <system value="http://CodeSystem.hl7fhir.cn/countries-and-regions"/>
+            <!-- 0..1 世界各国和地区名称代码-->
+            <code value="64"/>
+            <!-- 0..1 世界各国和地区名称代码说明 -->
+            <display value="中华人民共和国"/>
+          </valueCoding>
+        </extension>
+        <!-- 0..1 民族  中华56个民族代码， GB 3304-->
+        <extension url="http://StructureDefinition.hl7fhir.cn/ChineseEthnicity">
+          <valueCoding>
+            <!-- 0..1 民族类别 CodeSystem url  地址-->
+            <system value="http://CodeSystem.hl7fhir.cn/nationalites-of-PRC"/>
+            <!-- 0..1 民族类别代码-->
+            <code value="01"/>
+            <!-- 0..1 民族类别说明 -->
+            <display value="汉族"/>
+          </valueCoding>
+        </extension>
+        <!-- 0..1 政治面貌， GB 4762-1984-->
+        <extension url="http://StructureDefinition.hl7fhir.cn/sexual-distinction-of-human">
+          <extension url="orgnaztion">
+            <valueCoding>
+              <!-- 0..1 政治面貌 CodeSystem url  地址-->
+              <system value="http://CodeSystem.hl7fhir.cn/politic-affiliation"/>
+              <!-- 0..1 政治面貌代码-->
+              <code value="01"/>
+              <!-- 0..1 政治面貌说明 -->
+              <display value="群众"/>
+            </valueCoding>
+          </extension>
+        </extension>
+        <!-- 0..1 参加工作日期-->
+        <extension url="http://StructureDefinition.hl7fhir.cn/date-start-work">
+          <valueDate value="2014-01-01"/>
+        </extension>
+        <!-- 0..1 是否多地点执业医师-->
+        <extension url="http://StructureDefinition.hl7fhir.cn/is-work-for-multi-org">
+          <valueBoolean value="false"/>
+        </extension>
+      </Practitioner>
+    </resource>
+  </entry>
+
+  <!--************************患者信息（黎明）******************************-->
+  <entry>
+    <resource>
+      <Patient xmlns="http://hl7.org/fhir">
+        <!--0..1 患者ID-->
+        <id value="Patient001-example"/>
+        <meta>
+          <profile value="http://StructureDefinition.hl7fhir.cn/Patient"/>
+        </meta>
+        <!--1..* 身份证件号 -->
+        <identifier>
+          <!--证件类型-->
+          <type>
+            <coding>
+              <!-- 证件类型CodeSystem  地址 -->
+              <system value="http://CodeSystem.hl7fhir.cn/identity-document-type"/>
+              <!-- 0..1 证件类别编码 -->
+              <code value="01"/>
+              <!-- 0..1 证件类别名称 -->
+              <display value="身份证"/>
+            </coding>
+          </type>
+          <!--0..1 身份证件号码NamingSystem uri-->
+          <system value="http://NamingSystem.hl7fhir.cn/identityDocument"/>
+          <!-- 0..1 身份证件号码 -->
+          <value value="511002938706190932"/>
+        </identifier>
+        <!-- 0..* 患者姓名 -->
+        <name>
+          <!-- 0..1 全名 -->
+          <text value="黎明"/>
+        </name>
+        <!-- 0..1 生理性别 -->
+        <gender>
+          <extension url="http://StructureDefinition.hl7fhir.cn/sexual-distinction-of-human">
+            <valueCoding>
+              <!-- 0..1 生理性别 CodeSystem url  地址-->
+              <system value="http://CodeSystem.hl7fhir.cn/physiological-gender"/>
+              <!-- 0..1 生理性别代码-->
+              <code value="01"/>
+              <!-- 0..1 生理性别说明 -->
+              <display value="男"/>
+            </valueCoding>
+          </extension>
+        </gender>
+        <!--  0..* 联系电话 -->
+        <telecom>
+          <!--  0..1 类型 phone | fax | email | pager | url | sms | other -->
+          <system value="phone"/>
+          <!-- 0..1 电话号码 -->
+          <value value="13387362763"/>
+        </telecom>
+        <!-- 0..1 出生日期 -->
+        <birthDate value="1980-02-01"/>
+        <!--0..1 地址-->
+        <address>
+          <!-- 0..1 地址的完整描述 -->
+          <text value="[string]"/>
+          <!--行政区划代码(由于行政区划为12位村) -->
+          <extension url="http://StructureDefinition.hl7fhir.cn/AdministrativeDivision">
+            <!--行政区划代码 -->
+            <valueString value="5101002029378110"/>
+          </extension>
+        </address>
+
+        <!--联系人 -->
+        <contact>
+          <relationship>
+            <coding>
+              <system value="http://CodeSystem.hl7fhir.cn/contact-relationship" />
+              <!-- 联系人关系代码 -->
+              <code value="father" />
+              <!-- 联系人关系名称 -->
+              <display value="父亲"/>
+            </coding>
+          </relationship>
+          <!-- 联系人姓名 -->
+          <name>
+            <text value="李四" />
+          </name>
+        </contact>
+        <!-- 0..1 婚姻状况 GB/T 2261.2-->
+        <maritalStatus>
+          <coding>
+            <!-- 婚姻状况CodeSystem  地址 -->
+            <system value="http://CodeSystem.hl7fhir.cn/marital-status"/>
+            <!-- 0..1 婚姻状况编码 -->
+            <code value="01"/>
+            <!-- 0..1 婚姻状况 -->
+            <display value="已婚"/>
+          </coding>
+        </maritalStatus>
+        <!-- 民族 -->
+        <extension url="http://StructureDefinition.hl7fhir.cn/ChineseEthnicity">
+          <valueCoding>
+            <system value="http://CodeSystem.hl7fhir.cn/nationalites-of-PRC"/>
+            <!-- 民族编码 -->
+            <code value="1"/>
+            <!-- 民族名称 -->
+            <display value="汉族"/>
+          </valueCoding>
+        </extension>
+      </Patient>
+    </resource>
+  </entry>
+
+  
+
+
+
+
+
+
+
+
+
+
+</Bundle>
+
+

@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <id value="encounter-family-doctor" />
+  <url value="http://StructureDefinition.hl7fhir.cn/encounter-family-doctor" />
+  <name value="EncounterFamilyDoctor" />
+  <title value="家庭医生医疗服务" />
+  <status value="draft" />
+  <description value="该资源描述家庭医生服务的资源，描述按照签约情况执行服务的情况。" />
+  <fhirVersion value="4.0.1" />
+  <mapping>
+    <identity value="workflow" />
+    <uri value="http://hl7.org/fhir/workflow" />
+    <name value="Workflow Pattern" />
+  </mapping>
+  <mapping>
+    <identity value="rim" />
+    <uri value="http://hl7.org/v3" />
+    <name value="RIM Mapping" />
+  </mapping>
+  <mapping>
+    <identity value="w5" />
+    <uri value="http://hl7.org/fhir/fivews" />
+    <name value="FiveWs Pattern Mapping" />
+  </mapping>
+  <mapping>
+    <identity value="v2" />
+    <uri value="http://hl7.org/v2" />
+    <name value="HL7 v2 Mapping" />
+  </mapping>
+  <kind value="resource" />
+  <abstract value="false" />
+  <type value="Encounter" />
+  <baseDefinition value="http://hl7.org/fhir/StructureDefinition/Encounter" />
+  <derivation value="constraint" />
+  <differential>
+    <element id="Encounter.identifier">
+      <path value="Encounter.identifier" />
+      <type>
+        <code value="Identifier" />
+        <profile value="http://StructureDefinition.hl7fhir.cn/Identifier" />
+      </type>
+    </element>
+    <element id="Encounter.status.extension">
+      <path value="Encounter.status.extension" />
+      <slicing>
+        <discriminator>
+          <type value="value" />
+          <path value="url" />
+        </discriminator>
+        <rules value="open" />
+      </slicing>
+    </element>
+    <element id="Encounter.status.extension:status">
+      <path value="Encounter.status.extension" />
+      <sliceName value="status" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://StructureDefinition.hl7fhir.cn/resource-status" />
+      </type>
+      <binding>
+        <strength value="required" />
+        <valueSet value="http://ValueSet.hl7fhir.cn/encounter-status-vs" />
+      </binding>
+    </element>
+    <element id="Encounter.statusHistory">
+      <path value="Encounter.statusHistory" />
+      <max value="0" />
+    </element>
+    <element id="Encounter.class">
+      <path value="Encounter.class" />
+      <short value="医疗事件分类" />
+      <definition value="代表病人遭遇分类的概念，如门诊、住院、急诊、家庭健康或因地方差异而产生的其他情况。该出确定为家庭医生服务" />
+      <binding>
+        <strength value="extensible" />
+        <description value="医疗事件编码" />
+        <valueSet value="http://ValueSet.hl7fhir.cn/act-encounter-code-vs" />
+      </binding>
+    </element>
+    <element id="Encounter.classHistory">
+      <path value="Encounter.classHistory" />
+      <max value="0" />
+    </element>
+    <element id="Encounter.type">
+      <path value="Encounter.type" />
+      <short value="服务项目分类" />
+      <definition value="描述改家庭医生的服务项目分类。&#xD;&#xA;1：健康管理服务；2：健康咨询和用药指导服务；3：就医预约登记服务；4：转介转诊服务；5：基本公卫服务；6：基本医疗服务:9：其他。" />
+    </element>
+    <element id="Encounter.serviceType">
+      <path value="Encounter.serviceType" />
+      <short value="服务形式" />
+      <definition value="服务形式说明&#xD;&#xA;1：全程服务；2：上门服务；3：错时服务；4：预约服务；9：其他形式" />
+    </element>
+    <element id="Encounter.priority">
+      <path value="Encounter.priority" />
+      <max value="0" />
+    </element>
+    <element id="Encounter.subject">
+      <path value="Encounter.subject" />
+      <short value="患者" />
+      <definition value="描述当前被服务的患者" />
+    </element>
+    <element id="Encounter.episodeOfCare">
+      <path value="Encounter.episodeOfCare" />
+      <max value="0" />
+    </element>
+    <element id="Encounter.basedOn">
+      <path value="Encounter.basedOn" />
+      <short value="该服务基于的申请" />
+      <definition value="此次家庭医生服务，基于的服务申请" />
+    </element>
+    <element id="Encounter.participant">
+      <path value="Encounter.participant" />
+      <short value="服务医生" />
+      <definition value="描述这次家庭医生服务的服务医生" />
+    </element>
+    <element id="Encounter.participant.type">
+      <path value="Encounter.participant.type" />
+      <max value="0" />
+    </element>
+    <element id="Encounter.participant.period">
+      <path value="Encounter.participant.period" />
+      <max value="0" />
+    </element>
+    <element id="Encounter.appointment">
+      <path value="Encounter.appointment" />
+      <max value="0" />
+    </element>
+    <element id="Encounter.period">
+      <path value="Encounter.period" />
+      <short value="服务时间" />
+      <definition value="该次 服务" />
+    </element>
+    <element id="Encounter.length">
+      <path value="Encounter.length" />
+      <max value="0" />
+    </element>
+    <element id="Encounter.reasonCode">
+      <path value="Encounter.reasonCode" />
+      <max value="0" />
+    </element>
+    <element id="Encounter.reasonReference">
+      <path value="Encounter.reasonReference" />
+      <max value="0" />
+    </element>
+    <element id="Encounter.diagnosis">
+      <path value="Encounter.diagnosis" />
+      <max value="0" />
+    </element>
+    <element id="Encounter.account">
+      <path value="Encounter.account" />
+      <max value="0" />
+    </element>
+    <element id="Encounter.hospitalization">
+      <path value="Encounter.hospitalization" />
+      <max value="0" />
+    </element>
+    <element id="Encounter.location">
+      <path value="Encounter.location" />
+      <max value="0" />
+    </element>
+    <element id="Encounter.serviceProvider">
+      <path value="Encounter.serviceProvider" />
+      <max value="0" />
+    </element>
+    <element id="Encounter.partOf">
+      <path value="Encounter.partOf" />
+      <max value="0" />
+    </element>
+  </differential>
+</StructureDefinition>
