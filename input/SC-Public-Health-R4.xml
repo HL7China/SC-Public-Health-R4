@@ -59,7 +59,15 @@
 </reference>
 </resource> -->
 
-		
+		<resource>
+			<reference>
+				<!-- 资源示例 -->
+				<reference value="Task/ArchiveRegistration-example"/>
+			</reference>
+			<name value="家庭患者档案注册示例"/>
+			<description value="演示如何定义和引用家庭患者档案注册的简单示例"/>
+			<exampleCanonical value="http://hl7.org/fhir/StructureDefinition/Task"/>
+		</resource>
 		
 
 
