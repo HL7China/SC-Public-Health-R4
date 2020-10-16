@@ -11,7 +11,7 @@
 		<!-- 0..1 转诊编号NamingSystem uri-->
 		<system value="http://NamingSystem.hl7fhir.cn/hospital-referral-identifier"/>
 		<!-- 0..1 转诊编号 -->
-		<value value="A000000123345"/>
+		<value value="A0000001233451"/>
 	</identifier>
 
 	<!-- 1..1 预约状态 -->
