@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ServiceRequest xmlns="http://hl7.org/fhir">
+
+  <!--0..1 计划流水号-->
+  <id value="FamilyDoctorServiceRequest-example"/>
+
+  <meta>
+    <profile value="http://StructureDefinition.hl7fhir.cn/family-doctor-service-request"/>
+  </meta>
+
+
+  <!-- 0..* Reference(CarePlan) 家庭签约单 -->
+  <basedOn>
+    <!-- 0..1 Reference(CarePlan) 关联签约单信息 -->
+    <reference value="CarePlan/FamilyDoctorContract-example"/>
+  </basedOn>
+  <!-- 1..1 签约状态  draft | active | on-hold | revoked | completed | entered-in-error | unknown -->
+  <status value="active">
+    <extension url="http://StructureDefinition.hl7fhir.cn/resource-status">
+      <valueCoding>
+        <!-- 0..1 申请单状态 CodeSystem url  地址(draft | active | on-hold | revoked | completed | entered-in-error | unknown )-->
+        <system value="http://hl7.org/fhir/request-status"/>
+        <!-- 0..1 申请单状态代码-->
+        <code value="active"/>
+        <!-- 0..1申请单状态说明 -->
+        <display value="active"/>
+      </valueCoding>
+    </extension>
+  </status>
+  <!-- 1..1 签约意图 proposal | plan | order | option -->
+  <intent value="plan">
+    <extension url="http://StructureDefinition.hl7fhir.cn/resource-intent">
+      <valueCoding>
+        <!-- 0..1 申请意图 CodeSystem url  地址(proposal | plan | directive | order | original-order | reflex-order | filler-order | instance-order | option )-->
+        <system value="http://hl7.org/fhir/request-intent"/>
+        <!-- 0..1 申请意图代码-->
+        <code value="plan"/>
+        <!-- 0..1 申请意图说明 -->
+        <display value="plan"/>
+      </valueCoding>
+    </extension>
+  </intent>
+  <!-- 0..1 申请日期 -->
+  <authoredOn value="2019-02-10T13:00:00Z"/>
+
+  <!-- 0..* Reference(CareTeam) 执行团队 -->
+  <performer>
+    <!-- 0..1 Reference(CareTeam) 关联签约团队信息 -->
+    <reference value="CareTeam/TeamRegistration-example"/>
+  </performer>
+</ServiceRequest>
