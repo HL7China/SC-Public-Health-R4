@@ -21,12 +21,12 @@
     <system value="http://NamingSystem.hl7fhir.cn/identityDocument"/>
     <!-- 0..1 身份证件号码 -->
     <value value="511002198609021982"/>
-  </identifier> 
+  </identifier>
   <active value="true"/>
   <!-- 0..* 姓名 -->
   <name>
     <!-- 0..1 全名 -->
-    <text value="李明明"/>
+    <text value="张三"/>
   </name>
   <telecom>
     <!--  0..1 类型 phone | fax | email | pager | url | sms | other -->
@@ -45,7 +45,118 @@
   <address>
     <!-- 0..1 地址的完整描述 -->
     <text value="成都市XXX区XXX小区XXXX号"/>
-  </address> 
+  </address>
+
+  <!-- 0..1 所学专业代码 GB/T16835-1997-->
+  <qualification>
+    <!--0..1  所学专业代码 -->
+    <code>
+      <coding>
+        <!-- 所学专业代码  CodeSystem  地址 -->
+        <system value="http://CodeSystem.hl7fhir.cn/Codeofnormalandshort-cyclespeciality"/>
+        <!-- 0..1 所学专业代码 -->
+        <code value="[code]"/>
+        <!-- 0..1 所学专业名称 -->
+        <display value="[string]"/>
+      </coding>
+    </code>
+  </qualification>
+  <!-- 0..1 专业技术职务代码 GB/T8561-2001-->
+  <qualification>
+    <!--0..1  专业技术职务代码 -->
+    <code>
+      <coding>
+        <!-- 专业技术职务代码  CodeSystem  地址 -->
+        <system value="http://CodeSystem.hl7fhir.cn/Code-of-professional-technical-position"/>
+        <!-- 0..1 专业技术职务代码 -->
+        <code value="[code]"/>
+        <!-- 0..1专业技术职务名称 -->
+        <display value="[string]"/>
+      </coding>
+    </code>
+  </qualification>
+  <!-- 0..1 所学专业 -->
+  <qualification>
+    <!--0..1  所学专业代码 -->
+    <code>
+      <coding>
+        <!--所学专业代码  CodeSystem  地址 -->
+        <system value="http://CodeSystem.hl7fhir.cn/Codeofnormalandshort-cyclespeciality"/>
+        <!-- 0..1 所学专业代码 -->
+        <code value="[code]"/>
+        <!-- 0..1 所学专业名称 -->
+        <display value="[string]"/>
+      </coding>
+    </code>
+  </qualification>
+  <!-- 0..1 学历（最高学历参见 值域的属性） -->
+  <qualification>
+    <!--0..1  证书编码 -->
+    <identifier>
+      <!-- 一级学科代码-->
+      <type>
+        <coding>
+          <!-- 一级学科代码CodeSystem  地址 (GB/T13745-92)-->
+          <system value="http://CodeSystem.hl7fhir.cn/Classification-of-disciplines"/>
+          <!-- 0..1 一级学科代码编码 -->
+          <code value="[code]"/>
+          <!-- 0..1 一级学科代码名称 -->
+          <display value="[string]"/>
+        </coding>
+      </type>
+      <!--0..1 学历证书编码  NamingSystem uri-->
+      <system value="http://SichuanMedicalCommunity.FHIR.PRESS/NamingSystem/Classification-of-disciplines-code"/>
+      <!-- 0..1 证书编码 -->
+      <value value="[string]"/>
+    </identifier>
+    <!--0..1  证书类别 -->
+    <code>
+      <coding>
+        <!-- 学历证书类别  CodeSystem  地址 GB/T 4658-2006-->
+        <system value="http://CodeSystem.hl7fhir.cn/record-of-formal-schooling"/>
+        <!-- 0..1 学历证书编码 -->
+        <code value="[code]"/>
+        <!-- 0..1 学历证书名称 -->
+        <display value="[string]"/>
+      </coding>
+    </code>
+  </qualification>
+  <!-- 0..1 学位（最高学位参见 值域的属性） -->
+  <qualification>
+    <!--0..1  证书类别 -->
+    <code>
+      <coding>
+        <!-- 学位证书类别  CodeSystem  地址 GB/T 6864-2003-->
+        <system value="http://CodeSystem.hl7fhir.cn/degree-of-PRC"/>
+        <!-- 0..1 学位证书编码 -->
+        <code value="[code]"/>
+        <!-- 0..1 学位证书名称 -->
+        <display value="[string]"/>
+      </coding>
+    </code>
+  </qualification>
+  <!-- 0..1 执业证书（医生） -->
+  <qualification>
+    <!--0..1  证书编码 -->
+    <identifier>
+      <!--0..1 医师/卫生监督员执业证书编码  NamingSystem uri-->
+      <system value="http://SichuanMedicalCommunity.FHIR.PRESS/NamingSystem/Code-of-Practice-Certificate"/>
+      <!-- 0..1 医师/卫生监督员执业证书编码/注册护士执业证书编码 -->
+      <value value="[string]"/>
+    </identifier>
+    <!--0..1  证书类别 -->
+    <code>
+      <coding>
+        <!-- 证书执业类别代码  CodeSystem  地址 -->
+        <system value="http://CodeSystem.hl7fhir.cn/practitioner-practice-type"/>
+        <!-- 0..1 医师执业类别代码编码 -->
+        <code value="[code]"/>
+        <!-- 0..1 医师执业类别代码名称 -->
+        <display value="[string]"/>
+      </coding>
+    </code>
+  </qualification>
+
   <!-- 0..1 生理性别 -->
   <gender>
     <extension url="http://StructureDefinition.hl7fhir.cn/sexual-distinction-of-human">
@@ -60,13 +171,13 @@
     </extension>
   </gender>
   <!-- 0..1 出生日期 -->
-  <birthDate value="1980-01-01"/> 
+  <birthDate value="1980-01-01"/>
   <!-- 0..* 照片 -->
   <photo>
     <!-- 0..1 uri地址 -->
     <url value="http://www.cctrry.com/images/image1.png"/>
-      <!-- 0..1 标题 -->
-    <title value="头像"/>  
+    <!-- 0..1 标题 -->
+    <title value="头像"/>
   </photo>
   <photo>
     <!-- 0..1 uri地址 -->
@@ -75,7 +186,7 @@
     <title value="寸照"/>
   </photo>
   <extension url="http://StructureDefinition.hl7fhir.cn/BriefIntroduction">
-    <valueString value="擅长运用中医、中西医结合治疗血小板减少、血小板增多等血液疾病独树一帜，她在多年临床发现治疗血液病单纯靠西药激素治疗并不理想，立志另辟蹊径潜心进修中医，对多种疑难病症有着丰富的临床诊疗经验。"/>     
+    <valueString value="擅长运用中医、中西医结合治疗血小板减少、血小板增多等血液疾病独树一帜，她在多年临床发现治疗血液病单纯靠西药激素治疗并不理想，立志另辟蹊径潜心进修中医，对多种疑难病症有着丰富的临床诊疗经验。"/>
   </extension>
   <!-- 0..1 国籍   GB/T 2659 世界各国和地区名称代码-->
   <extension url="http://StructureDefinition.hl7fhir.cn/Nationality">
@@ -87,8 +198,8 @@
       <!-- 0..1 世界各国和地区名称代码说明 -->
       <display value="中华人民共和国"/>
     </valueCoding>
-  </extension> 
-  <!-- 0..1 民族  中华56个民族代码， GB 3304--> 
+  </extension>
+  <!-- 0..1 民族  中华56个民族代码， GB 3304-->
   <extension url="http://StructureDefinition.hl7fhir.cn/ChineseEthnicity">
     <valueCoding>
       <!-- 0..1 民族类别 CodeSystem url  地址-->
@@ -99,17 +210,17 @@
       <display value="汉族"/>
     </valueCoding>
   </extension>
-   <!-- 0..1 政治面貌， GB 4762-1984--> 
+  <!-- 0..1 政治面貌， GB 4762-1984-->
   <extension url="http://StructureDefinition.hl7fhir.cn/sexual-distinction-of-human">
     <extension url="orgnaztion">
       <valueCoding>
-      <!-- 0..1 政治面貌 CodeSystem url  地址-->
-      <system value="http://CodeSystem.hl7fhir.cn/politic-affiliation"/>
-      <!-- 0..1 政治面貌代码-->
-      <code value="01"/>
-      <!-- 0..1 政治面貌说明 -->
-      <display value="群众"/>
-     </valueCoding>
+        <!-- 0..1 政治面貌 CodeSystem url  地址-->
+        <system value="http://CodeSystem.hl7fhir.cn/politic-affiliation"/>
+        <!-- 0..1 政治面貌代码-->
+        <code value="01"/>
+        <!-- 0..1 政治面貌说明 -->
+        <display value="群众"/>
+      </valueCoding>
     </extension>
   </extension>
   <!-- 0..1 参加工作日期-->

@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Encounter xmlns="http://hl7.org/fhir">
+  <!--0..1 ID-->
+  <id value="EncounterFamilyDoctor-example"/>
+
+  <meta>
+    <profile value="http://StructureDefinition.hl7fhir.cn/encounter-family-doctor"/>
+  </meta>
+
+
+  <!-- 0..1 服务流水号 -->
+  <identifier>
+    <!--0..1 服务流水号NamingSystem uri-->
+    <system value="http://NamingSystem.hl7fhir.cn/Service-serial-identifier"/>
+    <!-- 0..1 服务流水号 -->
+    <value value="323632732673278363267"/>
+  </identifier>
+
+  <!-- 1..1 签约状态  draft | active | on-hold | revoked | completed | entered-in-error | unknown -->
+  <status value="active">
+    <extension url="http://StructureDefinition.hl7fhir.cn/resource-status">
+      <valueCoding>
+        <!-- 0..1 申请单状态 CodeSystem url  地址(draft | active | on-hold | revoked | completed | entered-in-error | unknown )-->
+        <system value="http://hl7.org/fhir/request-status"/>
+        <!-- 0..1 申请单状态代码-->
+        <code value="active"/>
+        <!-- 0..1申请单状态说明 -->
+        <display value="active"/>
+      </valueCoding>
+    </extension>
+  </status>
+
+  <!-- 1..1 医疗活动类别（固定为家庭医生服务） -->
+  <class>
+    <!--0..1 医疗活动类别  -->
+    <coding>
+      <!--0..1  医疗活动类别 CodeSsystem地址-->
+      <system value="http://CodeSsystem.hl7fhir.cn/encounter-code"/>
+      <!--0..1  医疗活动类别-->
+      <code value="07"/>
+      <!--0..1 医疗活动类别说明-->
+      <display value="家庭医生服务"/>
+    </coding>
+  </class>
+
+  <!-- 0..* 服务项目分类 -->
+  <type>
+    <!--0..1 服务项目分类  -->
+    <coding>
+      <!--0..1  服务项目分类 CodeSsystem地址-->
+      <system value="http://CodeSsystem.hl7fhir.cn/Service-type"/>
+      <!--0..1  服务项目分类-->
+      <code value="01"/>
+      <!--0..1 服务项目分类说明-->
+      <display value="服务项目分类1"/>
+    </coding>
+  </type>
+
+  <!-- 0..1 服务形式 -->
+  <serviceType>
+    <!--0..1 服务形式  -->
+    <coding>
+      <!--0..1  服务形式 CodeSsystem地址-->
+      <system value="http://CodeSsystem.hl7fhir.cn/Service-form"/>
+      <!--0..1  服务形式-->
+      <code value="01"/>
+      <!--0..1 服务形式说明-->
+      <display value="现场服务"/>
+    </coding>
+  </serviceType>
+
+  <!-- 0..1 Reference(Patient|Group) 服务对象 -->
+  <subject>
+    <!-- 0..1 Reference(Patient|Group) 关联患者|家庭信息 -->
+    <reference value="Group/Family-example"/>
+  </subject>
+
+  <!-- 0..* Reference(ServiceRequest) 执行服务申请 -->
+  <basedOn>
+    <!-- 0..1 Reference(ServiceRequest) 关联执行服务申请信息 -->
+    <reference value="ServiceRequest/FamilyDoctorServiceRequest-example"/>
+  </basedOn>
+
+  <!-- 0..* 服务医生 -->
+  <participant>
+    <!-- 0..1 Reference(Practitioner) 医护人员-->
+    <individual>
+      <!-- 0..1 Reference(Practitioner) 关联医护人员信息 -->
+      <reference value="Practitioner/Practitioner001-example"/>
+    </individual>
+  </participant>
+
+  <!-- 0..1 服务日期 -->
+  <period>
+    <!--  0..1 服务日期 -->
+    <start value="[dateTime]"/>
+  </period>
+</Encounter>
