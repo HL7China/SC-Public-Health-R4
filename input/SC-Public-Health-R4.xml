@@ -341,7 +341,7 @@
 		<resource>
 			<reference>
 				<!-- Bundle资源示例 -->
-				<reference value="Bundle/eam-registration-RESTful-example"/>
+				<reference value="Bundle/team-registration-RESTful-example"/>
 			</reference>
 			<name value="医生团队注册RESTful接口的Bundle示例"/>
 			<description value="演示如何定义和引用医生团队注册实际交互场景的RESTful数据交换Bundle示例"/>
