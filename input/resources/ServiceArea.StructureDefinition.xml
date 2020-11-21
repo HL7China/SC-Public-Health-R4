@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <id value="service-area" />
+  <url value="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/service-area" />
+  <name value="ServiceArea" />
+  <title value="服务人群（地域）" />
+  <status value="draft" />
+  <description value="描述 家庭医生团队的服务范围分组，这里主要描述按照地域范围划分的分组" />
+  <fhirVersion value="4.0.1" />
+  <mapping>
+    <identity value="rim" />
+    <uri value="http://hl7.org/v3" />
+    <name value="RIM Mapping" />
+  </mapping>
+  <mapping>
+    <identity value="w5" />
+    <uri value="http://hl7.org/fhir/fivews" />
+    <name value="FiveWs Pattern Mapping" />
+  </mapping>
+  <kind value="resource" />
+  <abstract value="false" />
+  <type value="Group" />
+  <baseDefinition value="http://hl7.org/fhir/StructureDefinition/Group" />
+  <derivation value="constraint" />
+  <differential>
+    <element id="Group">
+      <path value="Group" />
+      <short value="服务人群（地域）" />
+      <definition value="描述 家庭医生团队的服务范围分组，这里主要描述按照地域范围划分的分组" />
+    </element>
+    <element id="Group.identifier">
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+        <valueCode value="normative" />
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version">
+        <valueCode value="4.0.0" />
+      </extension>
+      <path value="Group.identifier" />
+      <max value="0" />
+    </element>
+    <element id="Group.active">
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+        <valueCode value="normative" />
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version">
+        <valueCode value="4.0.0" />
+      </extension>
+      <path value="Group.active" />
+      <short value="状态" />
+      <definition value="指示该服务范围的记录是可用的，还是仅为历史目的而保留。" />
+    </element>
+    <element id="Group.type">
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+        <valueCode value="normative" />
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version">
+        <valueCode value="4.0.0" />
+      </extension>
+      <path value="Group.type" />
+      <short value="分组类型" />
+      <definition value="确定该组所包括的资源种类的大致分类。在这里固定为  person" />
+    </element>
+    <element id="Group.actual">
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+        <valueCode value="normative" />
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version">
+        <valueCode value="4.0.0" />
+      </extension>
+      <path value="Group.actual" />
+      <short value="是否为真实人和家庭" />
+      <definition value="如果为真，则指示该资源引用一组特定的真实个体。如果为false，则组定义一组预期的个体。" />
+    </element>
+    <element id="Group.code">
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+        <valueCode value="normative" />
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version">
+        <valueCode value="4.0.0" />
+      </extension>
+      <path value="Group.code" />
+      <max value="0" />
+    </element>
+    <element id="Group.name">
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+        <valueCode value="normative" />
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version">
+        <valueCode value="4.0.0" />
+      </extension>
+      <path value="Group.name" />
+      <short value="服务范围名称" />
+      <definition value="描述该服务范围的诊室名称" />
+    </element>
+    <element id="Group.quantity">
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+        <valueCode value="normative" />
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version">
+        <valueCode value="4.0.0" />
+      </extension>
+      <path value="Group.quantity" />
+      <short value="成员数量" />
+      <definition value="描述该分组内成员数量" />
+    </element>
+    <element id="Group.managingEntity">
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+        <valueCode value="normative" />
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version">
+        <valueCode value="4.0.0" />
+      </extension>
+      <path value="Group.managingEntity" />
+      <short value="分组管理机构" />
+      <definition value="负责定义和维护组特征和/或注册成员的实体。" />
+    </element>
+    <element id="Group.characteristic">
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+        <valueCode value="normative" />
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version">
+        <valueCode value="4.0.0" />
+      </extension>
+      <path value="Group.characteristic" />
+      <short value="根据特性排除和包含" />
+      <definition value="识别团队成员的共同特征。" />
+    </element>
+    <element id="Group.characteristic.code">
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+        <valueCode value="normative" />
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version">
+        <valueCode value="4.0.0" />
+      </extension>
+      <path value="Group.characteristic.code" />
+      <short value="特性类型" />
+      <definition value="一种代码，用于识别要特征类型，这里固定位 行政区划代码" />
+      <type>
+        <code value="CodeableConcept" />
+        <profile value="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/CodeableConcept" />
+      </type>
+    </element>
+    <element id="Group.characteristic.code.coding">
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+        <valueCode value="normative" />
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version">
+        <valueCode value="4.0.0" />
+      </extension>
+      <path value="Group.characteristic.code.coding" />
+      <max value="0" />
+    </element>
+    <element id="Group.characteristic.code.text">
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+        <valueCode value="normative" />
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version">
+        <valueCode value="4.0.0" />
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/elementdefinition-translatable">
+        <valueBoolean value="true" />
+      </extension>
+      <path value="Group.characteristic.code.text" />
+      <fixedString value="行政区划编码" />
+    </element>
+    <element id="Group.characteristic.value[x]">
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+        <valueCode value="normative" />
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version">
+        <valueCode value="4.0.0" />
+      </extension>
+      <path value="Group.characteristic.value[x]" />
+      <short value="特性" />
+      <definition value="组成员的特性" />
+      <type>
+        <code value="CodeableConcept" />
+      </type>
+      <binding>
+        <strength value="example" />
+        <description value="行政区划编码" />
+        <valueSet value="http://fhir.scwjxx.cn/Sichuan/ValueSet/administrative-division-of-China-vs" />
+      </binding>
+    </element>
+    <element id="Group.characteristic.exclude">
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+        <valueCode value="normative" />
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version">
+        <valueCode value="4.0.0" />
+      </extension>
+      <path value="Group.characteristic.exclude" />
+      <short value="组包括或排除" />
+      <definition value="如果为真，表示该特征不是由该组成员持有的。，这里固定为false" />
+    </element>
+    <element id="Group.characteristic.period">
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+        <valueCode value="normative" />
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version">
+        <valueCode value="4.0.0" />
+      </extension>
+      <path value="Group.characteristic.period" />
+      <short value="特性的时间段" />
+      <definition value="描述该特性所持续的时间段" />
+      <type>
+        <code value="Period" />
+        <profile value="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/Period" />
+      </type>
+    </element>
+    <element id="Group.member">
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+        <valueCode value="normative" />
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version">
+        <valueCode value="4.0.0" />
+      </extension>
+      <path value="Group.member" />
+      <max value="0" />
+    </element>
+  </differential>
+</StructureDefinition>
