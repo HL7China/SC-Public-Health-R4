@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Group xmlns="http://hl7.org/fhir">
+  <!--0..1 ID-->
+  <id value="Family-example"/>
+
+  <meta>
+    <profile value="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/Family"/>
+  </meta>
+
+  <!--1..* 签约家庭档案号 -->
+  <identifier>
+    <!--0..1 签约家庭档案号NamingSystem uri-->
+    <system value="http://FHIR.PRESS/NamingSystem/family-archives-code "/>
+    <!-- 0..1 签约家庭档案号 -->
+    <value value="20192837371177172"/>
+  </identifier>
+
+  <!-- 1..1 分组类型 -->
+  <type value="person"/>
+  <!--  1..1 实际的或者描述性的 -->
+  <actual value="true"/>
+
+  <!-- 0..1 家庭名称 -->
+  <name value="黎明的家庭"/>
+
+  <!--  0..* 成员 -->
+  <member>
+    <!-- 1..1 Reference(Patient） 家庭成员-->
+    <entity>
+      <!-- 0..1 Reference(Patient) 关联家庭成员信息 -->
+      <reference value="Patient/Patient001-example"/>
+    </entity>
+  </member>
+  <member>
+    <!-- 1..1 Reference(Patient） 家庭成员-->
+    <entity>
+      <!-- 0..1 Reference(Patient) 关联家庭成员信息 -->
+      <reference value="Patient/Patient002-example"/>
+    </entity>
+  </member>
+</Group>
