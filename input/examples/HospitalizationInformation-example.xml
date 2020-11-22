@@ -241,7 +241,7 @@
            </identifier>
            <display value="机构名称"/>
          </receiver>
-        <provider>
+        </provider>
 
          <priority> 
   	<coding>
