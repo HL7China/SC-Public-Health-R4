@@ -240,7 +240,7 @@
              <value value="机构编号"/>
            </identifier>
            <display value="机构名称"/>
-         </receiver>
+         </provider>
      
          <priority> 
   	<coding>
