@@ -193,7 +193,50 @@
     </resource>
   </entry>
 
- 
+  <!--************************医嘱清单列表******************************-->
+  <entry>
+    <resource>
+      <List xmlns="http://hl7.org/fhir">
+      <id value="List-example"/>
+        <meta>
+          <profile value="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/medical-advice"/>
+        </meta>
+​        <!-- 1..1 状态 current | retired | entered-in-error -->
+​        <status value="current"/>
+​        <!-- 1..1 模式 working | snapshot | changes -->
+​        <mode value="snapshot"/>
+        <title value="住院医嘱清单"/>
+
+        <!-- 0..1 Reference(Encounter )住院信息 -->
+        <encounter>
+          <reference value="Encounter/Encounter-example"/>
+        </encounter>
+    
+        <!-- 0..* Reference(Any) 住院医嘱清单 -->
+        <entry>
+          <item>
+            <!-- 0..1 编号 -->
+            <identifier>
+              <!--处方（医嘱）类型-->
+              <type>
+                <coding>
+                  <!-- 处方（医嘱）类型ValueSet  地址 -->
+                  <system value="http://fhir.scwjxx.cn/Sichuan/CodeSystem/prescribe-type"/>
+                  <!-- 0..1 处方（医嘱）类型编码 -->
+                  <code value="1"/>
+                  <!-- 0..1 处方（医嘱）类型名称 -->
+                  <display value="处方（医嘱）类型名称"/>
+                </coding>
+              </type>
+              <system value="http://fhir.scwjxx.cn/Sichuan/NamingSystem/prescribe-code"/>
+              <value value="000012345"/>
+            </identifier>
+            <display value="医嘱信息"/>
+          </item>
+        </entry>
+      </List>
+    </resource>
+  </entry>
 
  
 
