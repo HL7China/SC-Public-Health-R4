@@ -75,7 +75,123 @@
     </resource>
   </entry>
 
- 
+  <!--************************住院信息******************************-->
+  <entry>
+    <resource>
+      <Encounter xmlns="http://hl7.org/fhir">
+      <id value="Encounter-example"/>
+        <meta>
+          <profile value="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/hospitalization-information"/>
+        </meta>
+        
+      
+    
+        <!--住院号 -->
+        <identifier>
+          <system value="http://fhir.scwjxx.cn/Sichuan/NamingSystem/hospitalization-code" />
+          <value value="10010" />
+        </identifier>
+    
+        <!--固定值 -->
+        <status value="finished"/>
+    
+        <!--医疗事件类别-->
+        <class>
+          <system value="http://fhir.scwjxx.cn/Sichuan/CodeSystem/medical-event-type-code"/>
+          <code value="2"/>
+          <!--    outpatient    -->
+          <display value="住院"/>
+        </class>
+
+
+        <!--1..1  病人信息（用于EHR与基层HIS唯一性关联） -->
+        <subject>
+          <reference value="Patient/Patient001-example"/>
+        </subject>
+
+
+
+        <!--0..1  就诊机构信息 -->
+        <serviceProvider>
+          <!-- 0..1 编号 -->
+          <identifier>
+            <system value="http://fhir.scwjxx.cn/SiChuan/NamingSystem/medical-organization-identification"/>
+            <value value="机构编号"/>
+          </identifier>
+          <display value="机构名称"/>
+        </serviceProvider>
+    
+        <!--住院日期 -->
+        <period>
+          <start value="2019-02-10T13:00:00Z"/>
+          <end value="2019-02-12T13:00:00Z"/>
+        </period>
+    
+        <!--0..* 责任医护人员信息（可以包括主管医生、责任护士等） -->
+        <participant>
+          <!-- 0..* 医护人员类别 -->
+          <type>
+            <coding>
+              <!-- 医护人员类型ValueSet  地址 -->
+              <system value="http://fhir.scwjxx.cn/Sichuan/CodeSystem/medical-staff-type"/>
+              <!-- 0..1 医护人员类型编码 -->
+              <code value="1"/>
+              <!-- 0..1 医护人员类型名称 -->
+              <display value="主管医生"/>
+            </coding>
+          </type>
+          <!-- 0..1 负责时间段 -->
+          <period>
+            <start value="2019-02-10T13:00:00Z"/>
+            <end value="2019-02-12T13:00:00Z"/>           
+          </period>         
+          <individual>
+            <!-- 0..1 编号 -->
+            <identifier>
+              <!--证件类型-->
+              <type>
+                <coding>
+                  <!-- 证件类型ValueSet  地址 -->
+                  <system value="http://fhir.scwjxx.cn/Sichuan/CodeSystem/certificate-category"/>
+                  <!-- 0..1 证件类别编码 -->
+                  <code value="1"/>
+                  <!-- 0..1 证件类别名称 -->
+                  <display value="身份证"/>
+                </coding>
+              </type>
+              <system value="http://fhir.scwjxx.cn/Sichuan/NamingSystem/id-card"/>
+              <value value="511002196509120322"/>
+            </identifier>
+            <display value="姓名"/>
+          </individual>
+        </participant>
+    
+        <!--0..* 诊断（包括入院、出院、中医等类型诊断） -->
+        <diagnosis>
+          <!-- 0..1诊断类型-->
+          <use>
+            <coding>
+              <system value="http://fhir.scwjxx.cn/Sichuan/CodeSystem/diagnosis-type"/>
+              <!--诊断类型编码 -->
+              <code value="001"/>
+              <!--诊断类型名称 -->
+              <display value="入院诊断"/>
+            </coding>          
+          </use>
+          <condition>
+            <identifier>
+              <system value="http://fhir.scwjxx.cn/Sichuan/CodeSystem/diagnosis-code"/>
+              <value value="诊断编码"/>
+            </identifier>
+            <display value="诊断名称"/>
+          </condition>
+          <!-- 0..1 诊断权重 -->
+          <rank value="1"/>
+        </diagnosis>
+      </Encounter>
+      
+    </resource>
+  </entry>
 
  
 </Bundle>
