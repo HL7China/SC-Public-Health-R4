@@ -17,7 +17,7 @@
           <!--事件版本 0..1-->
           <version value="V1.0"/>
           <!--事件代码 0..1 -->
-          <code value="C09001/>
+          <code value="C09001"/>
           <!--事件名称 0..1 住院信息-->
           <display value="住院信息"/>
         </eventCoding>
@@ -81,7 +81,7 @@
   <entry>
     <resource>
       <Encounter xmlns="http://hl7.org/fhir">
-  <id value="<Encounter-example"/>
+      <id value="Encounter-example"/>
         <meta>
           <profile value="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/hospitalization-information"/>
         </meta>
@@ -199,7 +199,7 @@
   <entry>
     <resource>
       <List xmlns="http://hl7.org/fhir">
-      < id value="List-example"/>
+      <id value="List-example"/>
         <meta>
           <profile value="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/medical-advice"/>
         </meta>
@@ -244,11 +244,11 @@
   <!--************************费用信息******************************-->
   <entry>
     <resource>
+       <id value="Invoice-example"/>
       <Invoice xmlns="http://hl7.org/fhir">
         <meta>
           <profile value="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/fees-list"/>
-        </meta>
-​        <id value="Invoice-example"/>
+        </meta>      
 ​        <!-- 1..1 状态 -->
 ​        <status value="balanced"/>
 ​        <!-- 0..1 总费用 -->
