@@ -5,7 +5,7 @@
   <name value="MedicarePayment" />
   <title value="医保支付金额" />
   <status value="draft" />
-  <description value="医保支付金额" />
+  <description value="通过医保支付金额" />
   <fhirVersion value="4.0.1" />
   <mapping>
     <identity value="rim" />
