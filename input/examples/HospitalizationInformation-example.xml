@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Bundle xmlns="http://hl7.org/fhir">
   <!--流水号（重发改变）-->
-  <id value="0000064d-76a1-44a4-8948-8626db0e42ea"/>
+  <id value="HospitalizationInformation-example"/>
   <type value="message"/>
   <!--************************消息头****************************-->
   <entry>
@@ -17,9 +17,9 @@
           <!--事件版本 0..1-->
           <version value="V1.0"/>
           <!--事件代码 0..1 -->
-          <code value="[code]"/>
+          <code value="C09001/>
           <!--事件名称 0..1 住院信息-->
-          <display value="[string]"/>
+          <display value="住院信息"/>
         </eventCoding>
          <!-- 0..* 消息目的地应用程序-->
         <destination> 
@@ -61,15 +61,15 @@
         <!--消息实际内容 0..* -->
         <focus>
           <!-- 0..1 Reference(Encounter) 关联住院信息（EncounterID） -->
-          <reference value="Encounter/123"/>
+          <reference value="Encounter/Encounter-example"/>
         </focus>
         <focus>
           <!-- 0..1 Reference(Invoice) 关联费用信息（InvoiceID） -->
-          <reference value="Invoice/123"/>
+          <reference value="Invoice/Invoice-example"/>
         </focus>
         <focus>
           <!-- 0..1 Reference(Claim) 关联保险报销信息（ClaimID） -->
-          <reference value="Claim/123"/>
+          <reference value="Claim/Claim-example"/>
         </focus>
   </MessageHeader>
     </resource>
@@ -81,12 +81,12 @@
   <entry>
     <resource>
       <Encounter xmlns="http://hl7.org/fhir">
-
+  <id value="<Encounter-example"/>
         <meta>
           <profile value="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/hospitalization-information"/>
         </meta>
         
-        <id value="123"/>
+      
     
         <!--住院号 -->
         <identifier>
@@ -108,7 +108,7 @@
 
         <!--1..1  病人信息（用于EHR与基层HIS唯一性关联） -->
         <subject>
-          <reference value="Patient/123"/>
+          <reference value="Patient/Patient001-example"/>
         </subject>
 
 
@@ -125,8 +125,8 @@
     
         <!--住院日期 -->
         <period>
-          <start value="2019-09-08"/>
-          <end value="2019-09-08"/>
+          <start value="2019-02-10T13:00:00Z"/>
+          <end value="2019-02-12T13:00:00Z"/>
         </period>
     
         <!--0..* 责任医护人员信息（可以包括主管医生、责任护士等） -->
@@ -144,8 +144,8 @@
           </type>
           <!-- 0..1 负责时间段 -->
           <period>
-            <start value="2019-09-08"/>
-            <end value="2019-09-08"/>           
+            <start value="2019-02-10T13:00:00Z"/>
+            <end value="2019-02-12T13:00:00Z"/>           
           </period>         
           <individual>
             <!-- 0..1 编号 -->
@@ -175,7 +175,7 @@
             <coding>
               <system value="http://fhir.scwjxx.cn/Sichuan/CodeSystem/diagnosis-type"/>
               <!--诊断类型编码 -->
-              <code value="XXXX"/>
+              <code value="001"/>
               <!--诊断类型名称 -->
               <display value="入院诊断"/>
             </coding>          
@@ -188,7 +188,7 @@
             <display value="诊断名称"/>
           </condition>
           <!-- 0..1 诊断权重 -->
-          <rank value="[positiveInt]"/>
+          <rank value="1"/>
         </diagnosis>
       </Encounter>
       
@@ -199,6 +199,7 @@
   <entry>
     <resource>
       <List xmlns="http://hl7.org/fhir">
+      < id value="List-example"/>
         <meta>
           <profile value="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/medical-advice"/>
         </meta>
@@ -211,7 +212,7 @@
 
         <!-- 0..1 Reference(Encounter )住院信息 -->
         <encounter>
-          <reference value="Encounter/123"/>
+          <reference value="Encounter/Encounter-example"/>
         </encounter>
     
         <!-- 0..* Reference(Any) 住院医嘱清单 -->
@@ -247,13 +248,13 @@
         <meta>
           <profile value="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/fees-list"/>
         </meta>
-​        <id value="12345"/>
+​        <id value="Invoice-example"/>
 ​        <!-- 1..1 状态 -->
 ​        <status value="balanced"/>
 ​        <!-- 0..1 总费用 -->
 ​        <totalGross>
 ​          <!-- 0..1 费用额 -->
-​          <value value="[decimal]"/>
+​          <value value="150"/>
 ​        </totalGross>
 ​      </Invoice>
 ​    </resource>
@@ -263,7 +264,7 @@
   <entry>
     <resource>
       <Claim xmlns="http://hl7.org/fhir">
-
+         <id value="Claim-example"/>
         <meta>
           <profile value="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/medical-insurance-reimbursement"/>
         </meta>
@@ -271,7 +272,7 @@
 ​        <!-- 0..1 保险报销总额 -->
 ​        <total>
 ​          <!-- 0..1 费用额 -->
-​          <value value="[decimal]"/>
+​          <value value="230"/>
 ​        </total>
 ​      </Claim>
 ​    </resource>
