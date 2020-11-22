@@ -241,8 +241,7 @@
            </identifier>
            <display value="机构名称"/>
          </receiver>
-        </provider>
-
+     
          <priority> 
   	<coding>
               <system value="http://terminology.hl7.org/CodeSystem/processpriority"/>
