@@ -45,7 +45,7 @@
         <!-- 本地资源定义（encounter-family-doctor） -->
         <reference value="StructureDefinition/encounter-family-doctor"/>
       </reference>
-      <description value="引用第三方的病历文书，并且把病历文书作为附件形式上传。"/>
+      <description value="该资源描述家庭医生服务的资源，描述按照签约情况执行服务的情况。"/>
     </resource>
 
 
@@ -125,8 +125,265 @@
 </reference>
 </resource> -->
 
+		 <resource>
+      <reference>
+        <!-- 资源示例 -->
+        <reference value="CareTeam/CareTeam-example"/>
+      </reference>
+      <name value="签约团队示例"/>
+      <description value="演示如何定义和引用签约团队的简单示例"/>
+      <exampleCanonical value="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/family-doctor-contract-team"/>
+    </resource>
+
+	 <resource>
+      <reference>
+        <!-- 资源示例 -->
+        <reference value="Encounter/EncounterFamilyDoctor-example"/>
+      </reference>
+      <name value="家庭医生服务示例"/>
+      <description value="演示如何定义和引用家庭医生服务的简单示例"/>
+      <exampleCanonical value="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/encounter-family-doctor"/>
+    </resource>
+
+	 <resource>
+      <reference>
+        <!-- 资源示例 -->
+        <reference value="CarePlan/FamilyDoctorContract-example"/>
+      </reference>
+      <name value="家庭医生签约示例"/>
+      <description value="演示如何定义和引用家庭医生签约的简单示例"/>
+      <exampleCanonical value="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/family-doctor-contract"/>
+    </resource>
+
+		 <resource>
+      <reference>
+        <!-- 资源示例 -->
+        <reference value="ServiceRequest/FamilyDoctorServiceRequest-example"/>
+      </reference>
+      <name value="家庭医生服务申请示例"/>
+      <description value="演示如何定义和引用家庭医生服务申请的简单示例"/>
+      <exampleCanonical value="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/family-doctor-service-request"/>
+    </resource>
+
+		 <resource>
+      <reference>
+        <!-- 资源示例 -->
+        <reference value="CarePlan/FamilyDoctorContract-example"/>
+      </reference>
+      <name value="家庭医生签约示例"/>
+      <description value="演示如何定义和引用家庭医生签约的简单示例"/>
+      <exampleCanonical value="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/family-doctor-contract"/>
+    </resource>
+
+		 <resource>
+      <reference>
+        <!-- 资源示例 -->
+        <reference value="Group/Family-example"/>
+      </reference>
+      <name value="家庭示例"/>
+      <description value="演示如何定义和引用家庭的简单示例"/>
+      <exampleCanonical value="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/Family"/>
+    </resource>
+
+	<resource>
+      <reference>
+        <!-- 资源示例 -->
+        <reference value="Task/TeamRegistration-example"/>
+      </reference>
+      <name value="医生团队注册示例"/>
+      <description value="演示如何定义和引用医生团队注册的简单示例"/>
+      <exampleCanonical value="http://hl7.org/fhir/StructureDefinition/Task"/>
+    </resource>
+
+	<resource>
+      <reference>
+        <!-- 资源示例 -->
+        <reference value="Task/ArchiveRegistration-example"/>
+      </reference>
+      <name value="家庭患者档案注册示例"/>
+      <description value="演示如何定义和引用家庭患者档案注册注册的简单示例"/>
+      <exampleCanonical value="http://hl7.org/fhir/StructureDefinition/Task"/>
+    </resource>
 		
-		
+
+ <resource>
+      <reference>
+        <!-- ActivityDefinition资源示例 -->
+        <reference value="ActivityDefinition/ad-archive-registration"/>
+      </reference>
+      <name value="家庭患者档案注册ActivityDefinition示例"/>
+      <description value="演示如何定义和引用家庭患者档案注册ActivityDefinition的简单示例"/>
+      <exampleCanonical value="http://hl7.org/fhir/StructureDefinition/ActivityDefinition"/>
+    </resource>
+
+
+ <resource>
+      <reference>
+        <!-- ActivityDefinition资源示例 -->
+        <reference value="ActivityDefinition/ad-hospital-referral"/>
+      </reference>
+      <name value="执行家庭医生签约计划ActivityDefinition示例"/>
+      <description value="演示如何定义和引用执行家庭医生签约计划ActivityDefinition的简单示例"/>
+      <exampleCanonical value="http://hl7.org/fhir/StructureDefinition/ActivityDefinition"/>
+    </resource>
+
+
+ <resource>
+      <reference>
+        <!-- ActivityDefinition资源示例 -->
+        <reference value="ActivityDefinition/ad-signing-of-contract"/>
+      </reference>
+      <name value="家庭医生签约ActivityDefinition示例"/>
+      <description value="演示如何定义和引用家庭医生签约ActivityDefinition的简单示例"/>
+      <exampleCanonical value="http://hl7.org/fhir/StructureDefinition/ActivityDefinition"/>
+    </resource>
+
+
+ <resource>
+      <reference>
+        <!-- ActivityDefinition资源示例 -->
+        <reference value="ActivityDefinition/ad-team-registration"/>
+      </reference>
+      <name value="团队注册ActivityDefinition示例"/>
+      <description value="演示如何定义和引用团队注册ActivityDefinition的简单示例"/>
+      <exampleCanonical value="http://hl7.org/fhir/StructureDefinition/ActivityDefinition"/>
+    </resource>
+
+   <resource>
+      <reference>
+        <!-- PlanDefinition资源示例 -->
+        <reference value="PlanDefinition/pd-family-doctor"/>
+      </reference>
+      <name value="家庭医生签约的流程定义PlanDefinition示例"/>
+      <description value="演示如何定义和引用家庭医生签约的流程定义PlanDefinition的简单示例"/>
+      <exampleCanonical value="http://hl7.org/fhir/StructureDefinition/PlanDefinition"/>
+    </resource>
+
+
+
+  <resource>
+      <reference>
+        <!-- MessageDefinition资源示例 -->
+        <reference value="MessageDefinition/md-archive-registration"/>
+      </reference>
+      <name value="家庭患者档案注册消息定义MessageDefinition的示例"/>
+      <description value="演示如何定义和引用家庭患者档案注册消息定义MessageDefinition的示例"/>
+      <exampleCanonical value="http://hl7.org/fhir/StructureDefinition/MessageDefinition"/>
+    </resource>
+
+	  <resource>
+      <reference>
+        <!-- MessageDefinition资源示例 -->
+        <reference value="MessageDefinition/md-execute-plan"/>
+      </reference>
+      <name value="执行家庭医生签约计划消息定义MessageDefinition的示例"/>
+      <description value="演示如何定义和引用执行家庭医生签约计划消息定义MessageDefinition的示例"/>
+      <exampleCanonical value="http://hl7.org/fhir/StructureDefinition/MessageDefinition"/>
+    </resource>
+
+	  <resource>
+      <reference>
+        <!-- MessageDefinition资源示例 -->
+        <reference value="MessageDefinition/md-signing-of-contract"/>
+      </reference>
+      <name value="家庭医生签约消息定义MessageDefinition的示例"/>
+      <description value="演示如何定义和引用家庭医生签约消息定义MessageDefinition的示例"/>
+      <exampleCanonical value="http://hl7.org/fhir/StructureDefinition/MessageDefinition"/>
+    </resource>
+
+	  <resource>
+      <reference>
+        <!-- MessageDefinition资源示例 -->
+        <reference value="MessageDefinition/md-team-registration"/>
+      </reference>
+      <name value="医生团队注册消息定义MessageDefinition的示例"/>
+      <description value="演示如何定义和引用医生团队注册消息定义MessageDefinition的示例"/>
+      <exampleCanonical value="http://hl7.org/fhir/StructureDefinition/MessageDefinition"/>
+    </resource>
+
+
+	  <resource>
+      <reference>
+        <!-- Bundle资源示例 -->
+        <reference value="Bundle/archive-registration-example"/>
+      </reference>
+      <name value="家庭患者档案注册消息交换Bundle示例"/>
+      <description value="演示如何定义和引用家庭患者档案注册实际交互场景的数据交换Bundle示例"/>
+      <exampleCanonical value="http://hl7.org/fhir/StructureDefinition/Bundle"/>
+    </resource>
+
+	  <resource>
+      <reference>
+        <!-- Bundle资源示例 -->
+        <reference value="Bundle/signing-of-contract-example"/>
+      </reference>
+      <name value="家庭医生签约消息交换Bundle示例"/>
+      <description value="演示如何定义和引用家庭医生签约实际交互场景的数据交换Bundle示例"/>
+      <exampleCanonical value="http://hl7.org/fhir/StructureDefinition/Bundle"/>
+    </resource>
+
+	  <resource>
+      <reference>
+        <!-- Bundle资源示例 -->
+        <reference value="Bundle/team-registration-example"/>
+      </reference>
+      <name value="医生团队注册消息交换Bundle示例"/>
+      <description value="演示如何定义和引用医生团队注册实际交互场景的数据交换Bundle示例"/>
+      <exampleCanonical value="http://hl7.org/fhir/StructureDefinition/Bundle"/>
+    </resource>
+
+
+	  <resource>
+      <reference>
+        <!-- Bundle资源示例 -->
+        <reference value="Bundle/execute-plan-example"/>
+      </reference>
+      <name value="执行家庭医生签约计划消息交换Bundle示例"/>
+      <description value="演示如何定义和引用执行家庭医生签约计划实际交互场景的数据交换Bundle示例"/>
+      <exampleCanonical value="http://hl7.org/fhir/StructureDefinition/Bundle"/>
+    </resource>
+
+
+	 <resource>
+      <reference>
+        <!-- Bundle资源示例 -->
+        <reference value="Bundle/archive-registration-RESTful-example"/>
+      </reference>
+      <name value="家庭患者档案注册RESTful接口的Bundle示例"/>
+      <description value="演示如何定义和引用家庭患者档案注册实际交互场景的RESTful数据交换Bundle示例"/>
+      <exampleCanonical value="http://hl7.org/fhir/StructureDefinition/Bundle"/>
+    </resource>
+
+	  <resource>
+      <reference>
+        <!-- Bundle资源示例 -->
+        <reference value="Bundle/signing-of-contract-RESTful-example"/>
+      </reference>
+      <name value="家庭医生签约RESTful接口的Bundle示例"/>
+      <description value="演示如何定义和引用家庭医生签约实际交互场景的RESTful数据交换Bundle示例"/>
+      <exampleCanonical value="http://hl7.org/fhir/StructureDefinition/Bundle"/>
+    </resource>
+
+	  <resource>
+      <reference>
+        <!-- Bundle资源示例 -->
+        <reference value="Bundle/team-registration-RESTful-example"/>
+      </reference>
+      <name value="医生团队注册RESTful接口的Bundle示例"/>
+      <description value="演示如何定义和引用医生团队注册实际交互场景的RESTful数据交换Bundle示例"/>
+      <exampleCanonical value="http://hl7.org/fhir/StructureDefinition/Bundle"/>
+    </resource>
+
+
+	  <resource>
+      <reference>
+        <!-- Bundle资源示例 -->
+        <reference value="Bundle/execute-plan-RESTful-example"/>
+      </reference>
+      <name value="执行家庭医生签约计划RESTful接口的Bundle示例"/>
+      <description value="演示如何定义和引用执行家庭医生签约计划实际交互场景的RESTful数据交换Bundle示例"/>
+      <exampleCanonical value="http://hl7.org/fhir/StructureDefinition/Bundle"/>
+    </resource>
 
 
 

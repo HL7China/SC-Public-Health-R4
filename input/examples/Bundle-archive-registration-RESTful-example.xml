@@ -10,7 +10,7 @@
       <Task xmlns="http://hl7.org/fhir">
         <id value="ArchiveRegistration-example"/>
         <!-- 0..1 canonical(ActivityDefinition) 关联ActivityDefinition -->
-        <instantiatesCanonical value="http://fhir.scwjxx.cn/Sichuan/ActivityDefinition/ad-team-registration"/>
+        <instantiatesCanonical value="http://fhir.scwjxx.cn/Sichuan/ActivityDefinition/ad-archive-registration"/>
         <!-- 1..1 状态 draft | requested | received | accepted | + -->
         <status value="requested"/>
 
