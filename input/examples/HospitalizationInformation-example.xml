@@ -250,7 +250,7 @@
               <!--优先级名称 -->
               <display value="Immediate"/>
             </coding> 
-         <priority>
+         </priority>
 
 ​        <!-- 0..1 保险报销总额 -->
 ​        <total>
