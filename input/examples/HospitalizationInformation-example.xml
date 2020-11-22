@@ -231,7 +231,7 @@
               <!--保险名称 -->
               <display value="Institutional"/>
             </coding> 
-        <type>
+        </type>
 	
         <provider>
           <!-- 0..1 编号 -->
