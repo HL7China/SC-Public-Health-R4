@@ -222,7 +222,37 @@
         <meta>
           <profile value="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/medical-insurance-reimbursement"/>
         </meta>
-​        <id value="12345"/>
+        <status value="active"/>
+        <type>
+	 <coding>
+              <system value="http://terminology.hl7.org/CodeSystem/claim-type"/>
+              <!--保险编码 -->
+              <code value="institutional"/>
+              <!--保险名称 -->
+              <display value="Institutional"/>
+            </coding> 
+        <type>
+	
+        <provider>
+          <!-- 0..1 编号 -->
+           <identifier>
+             <system value="http://fhir.scwjxx.cn/Sichuan/NamingSystem/medical-organization-identification"/>
+             <value value="机构编号"/>
+           </identifier>
+           <display value="机构名称"/>
+         </receiver>
+        <provider>
+
+         <priority> 
+  	<coding>
+              <system value="http://terminology.hl7.org/CodeSystem/processpriority"/>
+              <!--优先级编码 -->
+              <code value="stat"/>
+              <!--优先级名称 -->
+              <display value="Immediate"/>
+            </coding> 
+         <priority>
+
 ​        <!-- 0..1 保险报销总额 -->
 ​        <total>
 ​          <!-- 0..1 费用额 -->
