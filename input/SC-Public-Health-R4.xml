@@ -390,6 +390,16 @@
     </resource>
 
 
+  <resource>
+      <reference>
+        <!-- Bundle资源示例 -->
+        <reference value="Bundle/HospitalizationInformation-example"/>
+      </reference>
+      <name value="住院信息提交RESTful接口的Bundle示例"/>
+      <description value="演示如何定义和引用住院信息提交实际交互场景的RESTful数据交换Bundle示例"/>
+      <exampleCanonical value="http://hl7.org/fhir/StructureDefinition/Bundle"/>
+    </resource>
+
 
 
 		<!--    <resource>
