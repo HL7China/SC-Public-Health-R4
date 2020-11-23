@@ -238,15 +238,9 @@
           <patient>
                <reference value="Patient/Patient001-example"/>
           </patient>
-        <created value="2019-02-12T13:00:00Z"/>
+        <created value="2020-08-23"/>
         
-        <provider>
-          <!-- 0..1 编号 -->
-           <identifier>
-             <system value="http://fhir.scwjxx.cn/Sichuan/NamingSystem/medical-organization-identification"/>
-             <value value="机构编号"/>
-           </identifier>
-           <display value="机构名称"/>
+          <provider>
           <reference value="Organization/Organization001-example"/>
          </provider>
      
