@@ -213,6 +213,9 @@
     <resource>
             <Claim xmlns="http://hl7.org/fhir">
           <id value="Claim-example"/>
+           <meta>
+          <profile value="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/medical-insurance-reimbursement"/>
+        </meta>
           <status value="active"/> 
           <type> 
             <coding> 
