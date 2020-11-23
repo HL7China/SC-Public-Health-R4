@@ -198,9 +198,6 @@
     <resource>     
       <Invoice xmlns="http://hl7.org/fhir">
        <id value="Invoice-example"/>
-        <meta>
-          <profile value="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/fees-list"/>
-        </meta>      
 ​        <!-- 1..1 状态 -->
 ​        <status value="balanced"/>
 ​        <!-- 0..1 总费用 -->
