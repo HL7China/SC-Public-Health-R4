@@ -190,7 +190,22 @@
     </resource>
   </entry>
 
-  
+  <!--************************住院信息******************************-->
+  <entry>
+    <resource>
+      <Invoice xmlns="http://hl7.org/fhir">
+        <id value="Invoice-example"/>   
+      <meta>
+                <profile value="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/fees-list"/>
+              </meta>
+        <status value="issued"/> 
+          <totalGross> 
+            <value value="48"/> 
+              <currency value="EUR"/> 
+        </totalGross> 
+      </Invoice> 
+    </resource>
+  </entry>
 
  
  
