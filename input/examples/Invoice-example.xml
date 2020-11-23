@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Invoice xmlns="http://hl7.org/fhir">
+  <id value="Invoice-example"/>   
+  <status value="issued"/> 
+    <totalGross> 
+      <value value="48"/> 
+        <currency value="EUR"/> 
+  </totalGross> 
+</Invoice> 
