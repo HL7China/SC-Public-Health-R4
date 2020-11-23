@@ -83,9 +83,6 @@
         <meta>
           <profile value="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/hospitalization-information"/>
         </meta>
-        
-      
-    
         <!--住院号 -->
         <identifier>
           <system value="http://fhir.scwjxx.cn/Sichuan/NamingSystem/hospitalization-code" />
@@ -193,21 +190,7 @@
     </resource>
   </entry>
 
-   <!--************************费用信息******************************-->
-  <entry>
-    <resource>     
-      <Invoice xmlns="http://hl7.org/fhir">
-       <id value="Invoice-example"/>
-​        <!-- 1..1 状态 -->
-​        <status value="issued"/>
-​        <!-- 0..1 总费用 -->
-​        <totalGross>
-​          <!-- 0..1 费用额 -->
-​          <value value="150"/>
-​        </totalGross>
-​      </Invoice>
-​    </resource>
-  </entry>
+  
 
  
  
