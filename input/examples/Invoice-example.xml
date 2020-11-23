@@ -9,6 +9,6 @@
 ​        <!-- 0..1 总费用 -->
 ​        <totalGross>
 ​          <!-- 0..1 费用额 -->
-​          <value value="150"/>
+​          <value value="150.00"/>
 ​        </totalGross>
 ​      </Invoice>

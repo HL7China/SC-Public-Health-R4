@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <id value="fees-list" />
+  <url value="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/fees-list" />
+  <name value="FeesList" />
+  <title value="费用信息" />
+  <status value="draft" />
+  <description value="描述医疗活动的总费用信息。" />
+  <fhirVersion value="4.0.1" />
+  <mapping>
+    <identity value="v2" />
+    <uri value="http://hl7.org/v2" />
+    <name value="HL7 v2 Mapping" />
+  </mapping>
+  <mapping>
+    <identity value="rim" />
+    <uri value="http://hl7.org/v3" />
+    <name value="RIM Mapping" />
+  </mapping>
+  <mapping>
+    <identity value="w5" />
+    <uri value="http://hl7.org/fhir/fivews" />
+    <name value="FiveWs Pattern Mapping" />
+  </mapping>
+  <mapping>
+    <identity value="workflow" />
+    <uri value="http://hl7.org/fhir/workflow" />
+    <name value="Workflow Pattern" />
+  </mapping>
+  <kind value="resource" />
+  <abstract value="false" />
+  <type value="Invoice" />
+  <baseDefinition value="http://hl7.org/fhir/StructureDefinition/Invoice" />
+  <derivation value="constraint" />
+  <differential>
+    <element id="Invoice">
+      <path value="Invoice" />
+      <short value="费用清单" />
+      <definition value="描述医疗活动的总费用信息。" />
+    </element>
+    <element id="Invoice.totalGross">
+      <path value="Invoice.totalGross" />
+      <short value="总金额" />
+      <definition value="发票的总额" />
+    </element>
+  </differential>
+</StructureDefinition>
