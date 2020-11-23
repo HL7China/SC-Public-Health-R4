@@ -199,7 +199,7 @@
       <Invoice xmlns="http://hl7.org/fhir">
        <id value="Invoice-example"/>
 ​        <!-- 1..1 状态 -->
-​        <status value="balanced"/>
+​        <status value="issued"/>
 ​        <!-- 0..1 总费用 -->
 ​        <totalGross>
 ​          <!-- 0..1 费用额 -->
