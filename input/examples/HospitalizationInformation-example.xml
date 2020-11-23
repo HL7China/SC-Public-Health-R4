@@ -190,7 +190,7 @@
     </resource>
   </entry>
 
-  <!--************************住院信息******************************-->
+  <!--************************费用信息******************************-->
   <entry>
     <resource>
       <Invoice xmlns="http://hl7.org/fhir">
@@ -199,6 +199,7 @@
                 <profile value="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/fees-list"/>
               </meta>
         <status value="issued"/> 
+         <!-- 0..1 费用总金额 -->
           <totalGross> 
             <value value="48"/> 
               <currency value="EUR"/> 
@@ -207,6 +208,56 @@
     </resource>
   </entry>
 
+ <!--************************社保信息******************************-->
+  <entry>
+    <resource>
+     <Claim xmlns="http://hl7.org/fhir">
+         <id value="Claim-example"/>
+        <meta>
+          <profile value="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/medical-insurance-reimbursement"/>
+        </meta>
+        <status value="active"/>
+        <type>
+           <coding>
+              <system value="http://terminology.hl7.org/CodeSystem/claim-type"/>
+              <!--保险编码 -->
+              <code value="institutional"/>
+              <!--保险名称 -->
+              <display value="Institutional"/>
+            </coding> 
+        </type>
+        <!-- 1..1  目的  claim | preauthorization | predetermination -->
+         <use value="claim"/>
+         <!-- 1..1 Reference(Patient) 患者 -->
+          <patient>
+               <reference value="Patient/Patient001-example"/>
+          </patient>
+        <created value="2020-08-23"/>
+        
+          <provider>
+          <reference value="Organization/Organization001-example"/>
+         </provider>
+     
+         <priority> 
+  	      <coding>
+              <system value="http://terminology.hl7.org/CodeSystem/processpriority"/>
+              <!--优先级编码 -->
+              <code value="stat"/>
+              <!--优先级名称 -->
+              <display value="Immediate"/>
+            </coding> 
+         </priority>
+​        <!-- 0..1 保险报销总额 -->
+​        <total>
+​          <!-- 0..1 费用额 -->
+​          <value value="48"/> 
+              <currency value="EUR"/> 
+​        </total>
+​      </Claim>
+    </resource>
+  </entry>
+
+ 
  
  
   
