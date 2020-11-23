@@ -219,7 +219,9 @@
     <resource>
       <Claim xmlns="http://hl7.org/fhir">
          <id value="Claim-example"/>
-        
+        <meta>
+          <profile value="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/medical-insurance-reimbursement"/>
+        </meta>
         <status value="active"/>
         <type>
            <coding>
@@ -230,7 +232,13 @@
               <display value="Institutional"/>
             </coding> 
         </type>
-	
+        <!-- 1..1  目的  claim | preauthorization | predetermination -->
+         <use value="claim"/>
+         <!-- 1..1 Reference(Patient) 患者 -->
+          <patient>
+               <reference value="Patient/Patient001-example"/>
+          </patient>
+        <created value="2019-02-12T13:00:00Z"/>
         <provider>
           <!-- 0..1 编号 -->
            <identifier>
@@ -241,7 +249,7 @@
          </provider>
      
          <priority> 
-  	          <coding>
+  	      <coding>
               <system value="http://terminology.hl7.org/CodeSystem/processpriority"/>
               <!--优先级编码 -->
               <code value="stat"/>
