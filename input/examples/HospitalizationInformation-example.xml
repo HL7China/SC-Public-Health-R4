@@ -208,9 +208,49 @@
     </resource>
   </entry>
 
+    <!--************************费用信息******************************-->
+  <entry>
+    <resource>
+            <Claim xmlns="http://hl7.org/fhir">
+          <id value="Claim-example"/>
+          <status value="active"/> 
+          <type> 
+            <coding> 
+              <system value="http://terminology.hl7.org/CodeSystem/claim-type"/> 
+              <code value="oral"/> 
+            </coding>   
+          </type> 
+          <use value="claim"/> 
+          <patient> 
+            <reference value="Patient/Patient001-example"/> 
+          </patient> 
+          <created value="2014-08-16"/> 
+          <provider> 
+             <!-- 0..1 编号 -->
+            <identifier>
+              <system value="http://fhir.scwjxx.cn/Sichuan/NamingSystem/medical-organization-identification"/>
+              <value value="51029383464728188a0029"/>
+            </identifier>
+            <display value="xxx医保局"/>
+          </provider> 
+          <priority> 
+            <coding> 
+              <code value="normal"/> 
+            </coding> 
+          </priority> 
+
+            <total> 
+            <value value="12500.00"/> 
+            <currency value="USD"/>  
+          </total>  
+        </Claim> 
+    </resource>
+  </entry>
+
  
 
  
+
  
  
   

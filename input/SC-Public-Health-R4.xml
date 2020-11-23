@@ -401,15 +401,7 @@
     </resource>
 
 
-	 <resource>
-      <reference>
-        <!-- 资源示例 -->
-        <reference value="Claim/Claim-example"/>
-      </reference>
-      <name value="医保费用信息示例"/>
-      <description value="演示如何定义和引用医保费用信息的简单示例"/>
-     
-    </resource>
+
 
 
 		<!--    <resource>
