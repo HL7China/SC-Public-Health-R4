@@ -217,102 +217,54 @@
   <!--************************保险报销信息******************************-->
   <entry>
     <resource>
-     <Claim xmlns="http://hl7.org/fhir">
-  <id value="Claim-example"/> 
-
-
-  <identifier> 
-    <system value="http://happyvalley.com/claim"/> 
-    <value value="12345"/> 
-  </identifier> 
-
-  <status value="active"/> 
-
-  <type> 
-    <coding> 
-      <system value="http://terminology.hl7.org/CodeSystem/claim-type"/> 
-      <code value="oral"/> 
-    </coding>   
-  </type> 
-
-  <use value="claim"/> 
-
-  <patient> 
-    <reference value="Patient/1"/> 
-  </patient> 
-
-  <created value="2014-08-16"/> 
-
-  <insurer> 
-    <reference value="Organization/2"/> 
-  </insurer> 
-
-  <provider> 
-    <reference value="Organization/1"/> 
-  </provider> 
-
-  <priority> 
-    <coding> 
-      <code value="normal"/> 
-    </coding> 
-  </priority> 
-
-  <payee> 
-    <type> 
-      <coding> 
-        <code value="provider"/> 
-      </coding> 
-    </type> 
-  </payee> 
-
-  <careTeam> 
-    <sequence value="1"/> 
-    <provider> 
-      <reference value="Practitioner/example"/> 
-    </provider> 
-  </careTeam> 
-
-  <diagnosis> 
-    <sequence value="1"/> 
-    <diagnosisCodeableConcept> 
-      <coding> 
-        <code value="123456"/> 
-      </coding>  
-    </diagnosisCodeableConcept> 
-  </diagnosis> 
-
-  <insurance> 
-    <sequence value="1"/> 
-    <focal value="true"/> 
-    <identifier> 
-      <system value="http://happyvalley.com/claim"/> 
-      <value value="12345"/> 
-    </identifier> 
-    <coverage> 
-      <reference value="Coverage/9876B1"/> 
-    </coverage> 
-  </insurance> 
-
-  <item> 
-    <sequence value="1"/> 
-    <careTeamSequence value="1"/> 
-    <productOrService> 
-      <coding> 
-        <code value="1200"/> 
-      </coding>  
-    </productOrService> 
-    <servicedDate value="2014-08-16"/> 
-    <unitPrice> 
-      <value value="135.57"/> 
-      <currency value="USD"/>  
-    </unitPrice>  
-    <net> 
-      <value value="135.57"/> 
-      <currency value="USD"/>  
-    </net>  
-  </item> 
-
-</Claim> 
+      <Claim xmlns="http://hl7.org/fhir">
+         <id value="Claim-example"/>
+        <meta>
+          <profile value="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/medical-insurance-reimbursement"/>
+        </meta>
+        <status value="active"/>
+        <type>
+           <coding>
+              <system value="http://terminology.hl7.org/CodeSystem/claim-type"/>
+              <!--保险编码 -->
+              <code value="institutional"/>
+              <!--保险名称 -->
+              <display value="Institutional"/>
+            </coding> 
+        </type>
+        <!-- 1..1  目的  claim | preauthorization | predetermination -->
+         <use value="claim"/>
+         <!-- 1..1 Reference(Patient) 患者 -->
+          <patient>
+               <reference value="Patient/Patient001-example"/>
+          </patient>
+        <created value="2019-02-12T13:00:00Z"/>
+        
+        <provider>
+          <!-- 0..1 编号 -->
+           <identifier>
+             <system value="http://fhir.scwjxx.cn/Sichuan/NamingSystem/medical-organization-identification"/>
+             <value value="机构编号"/>
+           </identifier>
+           <display value="机构名称"/>
+          <reference value="Organization/Organization001-example"/>
+         </provider>
+     
+         <priority> 
+  	      <coding>
+              <system value="http://terminology.hl7.org/CodeSystem/processpriority"/>
+              <!--优先级编码 -->
+              <code value="stat"/>
+              <!--优先级名称 -->
+              <display value="Immediate"/>
+            </coding> 
+         </priority>
+​        <!-- 0..1 保险报销总额 -->
+​        <total>
+​          <!-- 0..1 费用额 -->
+​          <value value="230"/>
+​        </total>
+​      </Claim>
       </resource>
  </entry>
 </Bundle>
