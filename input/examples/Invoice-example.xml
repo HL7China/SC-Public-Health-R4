@@ -2,7 +2,7 @@
 <Invoice xmlns="http://hl7.org/fhir">
        <id value="Invoice-example"/>
          <meta>
-          <profile value="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/fees-list"/>
+          <profile value="http://hl7.org/fhir/StructureDefinition/Invoice"/>
         </meta>
 ​        <!-- 1..1 状态 -->
 ​        <status value="issued"/>

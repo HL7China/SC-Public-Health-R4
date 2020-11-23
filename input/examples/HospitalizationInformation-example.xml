@@ -63,7 +63,14 @@
           <!-- 0..1 Reference(Encounter) 关联住院信息（EncounterID） -->
           <reference value="Encounter/Encounter-example"/>
         </focus>
-        
+        <focus>
+          <!-- 0..1 Reference(Invoice) 关联费用信息（InvoiceID） -->
+          <reference value="Invoice/Invoice-example"/>
+        </focus>
+        <focus>
+          <!-- 0..1 Reference(Claim) 关联保险报销信息（ClaimID） -->
+          <reference value="Claim/Claim-example"/>
+        </focus>
   </MessageHeader>
     </resource>
   </entry>
