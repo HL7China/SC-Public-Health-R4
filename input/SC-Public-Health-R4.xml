@@ -501,7 +501,7 @@
 		<resource>
 			<reference>
 				<!-- 签约类型 -->
-				<reference value="ValueSet/Signed-channel-vs"/>
+				<reference value="ValueSet/Signed-type-vs"/>
 			</reference>
 			<name value="签约类型"/>
 			<description value="签约类型  1：个人签约；2：家庭签约"/>
