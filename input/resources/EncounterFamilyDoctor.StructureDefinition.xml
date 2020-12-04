@@ -71,6 +71,10 @@
       <path value="Encounter.class" />
       <short value="医疗事件分类" />
       <definition value="代表病人遭遇分类的概念，如门诊、住院、急诊、家庭健康或因地方差异而产生的其他情况。该出确定为家庭医生服务" />
+      <type>
+        <code value="Coding" />
+        <profile value="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/Coding" />
+      </type>
       <binding>
         <strength value="extensible" />
         <description value="医疗事件编码" />
@@ -85,11 +89,19 @@
       <path value="Encounter.type" />
       <short value="服务项目分类" />
       <definition value="描述改家庭医生的服务项目分类。&#xD;&#xA;1：健康管理服务；2：健康咨询和用药指导服务；3：就医预约登记服务；4：转介转诊服务；5：基本公卫服务；6：基本医疗服务:9：其他。" />
+      <type>
+        <code value="CodeableConcept" />
+        <profile value="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/CodeableConcept" />
+      </type>
     </element>
     <element id="Encounter.serviceType">
       <path value="Encounter.serviceType" />
       <short value="服务形式" />
       <definition value="服务形式说明&#xD;&#xA;1：全程服务；2：上门服务；3：错时服务；4：预约服务；9：其他形式" />
+      <type>
+        <code value="CodeableConcept" />
+        <profile value="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/CodeableConcept" />
+      </type>
     </element>
     <element id="Encounter.priority">
       <path value="Encounter.priority" />
@@ -99,6 +111,10 @@
       <path value="Encounter.subject" />
       <short value="患者" />
       <definition value="描述当前被服务的患者" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/Reference" />
+      </type>
     </element>
     <element id="Encounter.episodeOfCare">
       <path value="Encounter.episodeOfCare" />
@@ -108,6 +124,10 @@
       <path value="Encounter.basedOn" />
       <short value="该服务基于的申请" />
       <definition value="此次家庭医生服务，基于的服务申请" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/Reference" />
+      </type>
     </element>
     <element id="Encounter.participant">
       <path value="Encounter.participant" />
@@ -122,6 +142,13 @@
       <path value="Encounter.participant.period" />
       <max value="0" />
     </element>
+    <element id="Encounter.participant.individual">
+      <path value="Encounter.participant.individual" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/Reference" />
+      </type>
+    </element>
     <element id="Encounter.appointment">
       <path value="Encounter.appointment" />
       <max value="0" />
@@ -130,6 +157,10 @@
       <path value="Encounter.period" />
       <short value="服务时间" />
       <definition value="该次 服务" />
+      <type>
+        <code value="Period" />
+        <profile value="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/Period" />
+      </type>
     </element>
     <element id="Encounter.length">
       <path value="Encounter.length" />

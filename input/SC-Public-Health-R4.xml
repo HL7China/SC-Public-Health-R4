@@ -389,6 +389,124 @@
       <exampleCanonical value="http://hl7.org/fhir/StructureDefinition/Bundle"/>
     </resource>
 
+
+
+<resource>
+			<reference>
+				<!-- 家庭医生服务方式 -->
+				<reference value="ValueSet/encounter-serviceType-vs"/>
+			</reference>
+			<name value="家庭医生服务方式"/>
+			<description value="家庭医生服务方式 1：全程服务；2：上门服务；3：错时服务；4：预约服务；9：其他形式"/>
+		</resource>
+		
+		<resource>
+			<reference>
+				<!-- 签约意图 -->
+				<reference value="ValueSet/care-plan-intent-vs"/>
+			</reference>
+			<name value="签约意图"/>
+			<description value="签约意图  标识家庭医生签约的意图"/>
+		</resource>
+		
+		<resource>
+			<reference>
+				<!-- 签约状态 -->
+				<reference value="ValueSet/care-plan-status-vs"/>
+			</reference>
+			<name value="签约状态"/>
+			<description value="签约状态，标识家庭医生签约的全部流程状态"/>
+		</resource>
+		
+		<resource>
+			<reference>
+				<!-- 团队类型 -->
+				<reference value="ValueSet/care-team-category-vs"/>
+			</reference>
+			<name value="团队类型"/>
+			<description value="团队类型  1：全科；2：专科；9：其他"/>
+		</resource>
+		
+		<resource>
+			<reference>
+				<!-- 签约人群标签  -->
+				<reference value="ValueSet/Crowd-type-vs"/>
+			</reference>
+			<name value="签约人群标签 "/>
+			<description value="签约人群标签 01：老年人；02：残疾人；03：计生扶贫对象；04：贫困人口；05：0到6岁儿童；06：高血压；07：糖尿病；08：脑卒中；09：孕产妇；10：结核病；11：失独家庭；12：重性精神疾病；99：其他"/>
+		</resource>
+		
+		<resource>
+			<reference>
+				<!-- 医疗事件分类 -->
+				<reference value="ValueSet/act-encounter-code-vs"/>
+			</reference>
+			<name value="医疗事件分类"/>
+			<description value="医疗事件分类  门诊、急诊、随访、体检、家庭医生签约。"/>
+		</resource>
+		
+		<resource>
+			<reference>
+				<!-- 家庭医生服务项目分类 -->
+				<reference value="ValueSet/encounter-type-vs"/>
+			</reference>
+			<name value="家庭医生服务项目分类"/>
+			<description value="家庭医生服务项目分类:1：健康管理服务；2：健康咨询和用药指导服务；3：就医预约登记服务；4：转介转诊服务；5：基本公卫服务；6：基本医疗服务:9：其他。"/>
+		</resource>
+		
+		<resource>
+			<reference>
+				<!-- 医生属性 -->
+				<reference value="ValueSet/participant-role-vs"/>
+			</reference>
+			<name value="医生属性"/>
+			<description value="医生在团队中的属性"/>
+		</resource>
+		
+		<resource>
+			<reference>
+				<!-- 服务项目明细编码 -->
+				<reference value="ValueSet/service-details-vs"/>
+			</reference>
+			<name value="服务项目明细编码"/>
+			<description value="服务项目明细编码，家庭医生签约的服务项目明细"/>
+		</resource>
+		
+		<resource>
+			<reference>
+				<!-- 签约服务包 -->
+				<reference value="ValueSet/Service-package-vs"/>
+			</reference>
+			<name value="签约服务包"/>
+			<description value="签约服务包   家庭医生签约的服务项目打包"/>
+		</resource>
+		
+		<resource>
+			<reference>
+				<!-- 服务分类 -->
+				<reference value="ValueSet/service-type-vs"/>
+			</reference>
+			<name value="服务分类"/>
+			<description value="将提供的服务的广泛分类(如心脏病学)。"/>
+		</resource>
+		<resource>
+			<reference>
+				<!-- 签约渠道 -->
+				<reference value="ValueSet/Signed-channel-vs"/>
+			</reference>
+			<name value="签约渠道"/>
+			<description value="签约渠道   1：诊间；2：公卫推荐；3：直接录入；4：续约；5：网上自助签约；9：其他"/>
+		</resource>
+		
+		<resource>
+			<reference>
+				<!-- 签约类型 -->
+				<reference value="ValueSet/Signed-channel-vs"/>
+			</reference>
+			<name value="签约类型"/>
+			<description value="签约类型  1：个人签约；2：家庭签约"/>
+		</resource>
+		
     
 
 

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValueSet xmlns="http://hl7.org/fhir"> 
+	<id value="encounter-type-vs"/>
+ <url value="http://fhir.scwjxx.cn/Sichuan/ValueSet/encounter-type-vs"/>
+ <name value="encounter-type-vs"/><!-- ?? 0..1 Name for this value set (computer friendly) -->
+ <title value="家庭医生服务项目分类 "/><!-- 0..1 Name for this value set (human friendly) -->
+ <status value="draft"/><!-- 1..1 draft | active | retired | unknown -->
+  <description value="1：健康管理服务；2：健康咨询和用药指导服务；3：就医预约登记服务；4：转介转诊服务；5：基本公卫服务；6：基本医疗服务:9：其他。"/>
+ <compose>  <!-- 0..1 Content logical definition of the value set (CLD) --> 
+  <include>  <!-- 1..* Include one or more codes from a code system or other value set(s) -->
+   <system value="http://fhir.scwjxx.cn/Sichuan/CodeSystem/encounter-type"/><!-- ?? 0..1 The system the codes come from --> 
+  </include>
+  <exclude><!-- ?? 0..* Content as for ValueSet.compose.include Explicitly exclude codes from a code system or other value sets --></exclude>
+ </compose>
+</ValueSet>

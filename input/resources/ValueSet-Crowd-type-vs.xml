@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValueSet xmlns="http://hl7.org/fhir"> 
+	<id value="Crowd-type-vs"/>
+ <url value="http://fhir.scwjxx.cn/Sichuan/ValueSet/Crowd-type-vs"/>
+ <name value="Crowd-type-vs"/><!-- ?? 0..1 Name for this value set (computer friendly) -->
+ <title value="签约人群标签 "/><!-- 0..1 Name for this value set (human friendly) -->
+ <status value="draft"/><!-- 1..1 draft | active | retired | unknown -->
+  <description value="签约人群标签 01：老年人；02：残疾人；03：计生扶贫对象；04：贫困人口；05：0到6岁儿童；06：高血压；07：糖尿病；08：脑卒中；09：孕产妇；10：结核病；11：失独家庭；12：重性精神疾病；99：其他"/>
+ <compose>  <!-- 0..1 Content logical definition of the value set (CLD) --> 
+  <include>  <!-- 1..* Include one or more codes from a code system or other value set(s) -->
+   <system value="http://fhir.scwjxx.cn/Sichuan/CodeSystem/Crowd-type"/><!-- ?? 0..1 The system the codes come from --> 
+  </include>
+  <exclude><!-- ?? 0..* Content as for ValueSet.compose.include Explicitly exclude codes from a code system or other value sets --></exclude>
+ </compose>
+</ValueSet>
