@@ -1,20 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ActivityDefinition xmlns="http://hl7.org/fhir">
-	<id value="medical-records-submitted"/>
+	<id value="ad-medical-records-submitted"/>
 	<!-- 0..1 ActivityDefinition 的全局URL -->
-	<url value="http://ActivityDefinition.hl7fhir.cn/medical-records-submitted"/>
+	<url value="http://fhir.scwjxx.cn/Sichuan/ActivityDefinition/ad-medical-records-submitted"/>
 
 	<!-- 0..* 活动标识符 -->
 	<identifier>
 		<!-- 0..1 活动标识符NamingSystem uri-->
-		<system value="http://NamingSystem.hl7fhir.cn/activityDefinition-identifier"/>
+		<system value="http://fhir.scwjxx.cn/Sichuan/NamingSystem/activityDefinition-identifier"/>
 		<!-- 0..1 活动标识符 -->
-		<value value="medical-records-submitted"/>
+		<value value="ad-medical-records-submitted"/>
 	</identifier>
 	<!-- 0..1 版本号 -->
 	<version value="1.0.0"/>
 	<!-- ?? 0..1 活动名称（计算机友好） -->
-	<name value="medical-records-submitted"/>
+	<name value="ad-medical-records-submitted"/>
 	<!-- 0..1 活动名称（人友好） -->
 	<title value="上传完整病历"/>
 	<!-- 1..1 状态 draft | active | retired | unknown -->
@@ -38,7 +38,7 @@
 	<description value="定义双向转诊-住院流程的上传完整病历活动，通过创建ActivityDefinition的实例，患者到诊确认后，转出医疗机构上传患者的完整的电子病历信息到转入医疗机构。该活动的实际参与者为转出医院医生。"/>
 	<jurisdiction>
 		<coding>
-			<system value="http://CodeSystem.hl7fhir.cn/countries-and-regions"/>
+			<system value="http://fhir.scwjxx.cn/Sichuan/CodeSystem/countries-and-regions"/>
 			<code value="156"/>
 		</coding>
 		<text value="中国"/>
@@ -53,7 +53,7 @@
 	<topic>
 		<coding>
 			<!-- 0..1 话题类别 CodeSystem url treatment|education|assessment-->
-			<system value="http://terminology.hl7.org/CodeSystem/definition-topic"/>
+			<system value="http://fhir.scwjxx.cn/Sichuan/CodeSystem/definition-topic"/>
 			<!-- 0..1 话题类别代码-->
 			<code value="treatment"/>
 			<!-- 0..1 话题类别名称 -->
@@ -76,7 +76,7 @@
 		<role>
 			<coding>
 				<!-- 0..1 参与者角色 CodeSystem url  -->
-				<system value="http://CodeSystem.hl7fhir.cn/encounter-participant-type"/>
+				<system value="http://fhir.scwjxx.cn/Sichuan/CodeSystem/encounter-participant-type"/>
 				<!-- 0..1 参与者角色代码-->
 				<code value="01"/>
 				<!-- 0..1 参与者角色 -->

@@ -4,7 +4,7 @@ using FHIR version '4.0.1'
 
 include FHIRHelpers version '4.0.1'
 
-codesystem "Observation Category Codes": 'http://terminology.hl7.org/CodeSystem/observation-category'
+codesystem "Observation Category Codes": 'http://fhir.scwjxx.cn/Sichuan/CodeSystem/observation-category'
 
 valueset "Encounter Inpatient": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307'
 valueset "Emergency Department Visit": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.292'

@@ -11,7 +11,7 @@
 				<!--消息事件 1..1-->
 				<eventCoding>
 					<!-- 0..1 事件类型 CodeSystem url  -->
-					<system value="http://CodeSystem.hl7fhir.cn/activity-code"/>
+					<system value="http://fhir.scwjxx.cn/Sichuan/CodeSystem/activity-code"/>
 					<!-- 0..1 事件类型代码-->
 					<code value="C01003"/>
 					<!-- 0..1 事件类型名称 -->
@@ -31,11 +31,10 @@
 				<!--消息实际内容 0..*-->
 				<focus>
 					<!-- 0..1 Reference(AppointmentResponse) 关联工作流信息 -->
-					<reference value="AppointmentResponse/patient-arrive-response"/>
+					<reference value="AppointmentResponse/PatientArriveResponse-example"/>
 				</focus>
 				<!-- 0..1 canonical(MessageDefinition) Link to the definition for this message -->
- 				<definition value="http://MessageDefinition.hl7fhir.cn/patient-arrive-response"/>
-					
+ 				<definition value="MessageDefinition/md-patient-arrive-response"/>
 			</MessageHeader>
 		</resource>
 	</entry>
@@ -45,14 +44,14 @@
 		<resource>
 			<AppointmentResponse xmlns="http://hl7.org/fhir">
 				<!-- 0..1 患者到诊应答逻辑ID -->
-				<id value="patient-arrive-response"/>
+				<id value="PatientArriveResponse-example"/>
 				<meta>
-					<profile value="http://StructureDefinition.hl7fhir.cn/hospital-referral-response"/>
+					<profile value="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/hospital-referral-response"/>
 				</meta>
 				<!-- 0..* 同意转诊编号 -->
 				<identifier>
 					<!-- 0..1 同意转诊编号NamingSystem uri-->
-					<system value="http://NamingSystem.hl7fhir.cn/hospital-referral-response-identifier"/>
+					<system value="http://fhir.scwjxx.cn/Sichuan/NamingSystem/hospital-referral-response-identifier"/>
 					<!-- 0..1 同意转诊编号 -->
 					<value value="YBAU00003"/>
 				</identifier>
@@ -68,7 +67,7 @@
 				<participantType>
 					<coding>
 						<!-- 0..1 参与者角色 CodeSystem url  -->
-						<system value="http://CodeSystem.hl7fhir.cn/encounter-participant-type"/>
+						<system value="http://fhir.scwjxx.cn/Sichuan/CodeSystem/encounter-participant-type"/>
 						<!-- 0..1 参与者角色代码-->
 						<code value="01"/>
 						<!-- 0..1 参与者角色 -->

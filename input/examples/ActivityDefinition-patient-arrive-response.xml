@@ -1,20 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ActivityDefinition xmlns="http://hl7.org/fhir">
-	<id value="patient-arrive-response"/>
+	<id value="ad-patient-arrive-response"/>
 	<!-- 0..1 ActivityDefinition 的全局URL -->
-	<url value="http://ActivityDefinition.hl7fhir.cn/patient-arrive-response"/>
+	<url value="http://fhir.scwjxx.cn/Sichuan/ActivityDefinition/ad-patient-arrive-response"/>
 
 	<!-- 0..* 活动标识符 -->
 	<identifier>
 		<!-- 0..1 活动标识符NamingSystem uri-->
-		<system value="http://NamingSystem.hl7fhir.cn/activityDefinition-identifier"/>
+		<system value="http://fhir.scwjxx.cn/Sichuan/NamingSystem/activityDefinition-identifier"/>
 		<!-- 0..1 活动标识符 -->
-		<value value="patient-arrive-response"/>
+		<value value="ad-patient-arrive-response"/>
 	</identifier>
 	<!-- 0..1 版本号 -->
 	<version value="1.0.0"/>
 	<!-- ?? 0..1 活动名称（计算机友好） -->
-	<name value="patient-arrive-response"/>
+	<name value="ad-patient-arrive-response"/>
 	<!-- 0..1 活动名称（人友好） -->
 	<title value="患者到诊应答"/>
 	<!-- 1..1 状态 draft | active | retired | unknown -->
@@ -38,7 +38,7 @@
 	<description value="定义双向转诊-住院流程的患者到诊应答活动，通过创建ActivityDefinition的实例，患者到达转入医院后，向转出医院发送患者到诊应答。该活动的参与者为患者本人"/>
 	<jurisdiction>
 		<coding>
-			<system value="http://CodeSystem.hl7fhir.cn/countries-and-regions"/>
+			<system value="http://fhir.scwjxx.cn/Sichuan/CodeSystem/countries-and-regions"/>
 			<code value="156"/>
 		</coding>
 		<text value="中国"/>
@@ -53,7 +53,7 @@
 	<topic>
 		<coding>
 			<!-- 0..1 话题类别 CodeSystem url treatment|education|assessment-->
-			<system value="http://terminology.hl7.org/CodeSystem/definition-topic"/>
+			<system value="http://fhir.scwjxx.cn/Sichuan/CodeSystem/definition-topic"/>
 			<!-- 0..1 话题类别代码-->
 			<code value="treatment"/>
 			<!-- 0..1 话题类别名称 -->
@@ -63,7 +63,7 @@
 	<!-- 0..1 资源类型 -->
 	<kind value="AppointmentResponse"/>
 	<!-- 0..1 canonical(StructureDefinition) 资源的profile文件地址 -->
-	<profile value="http://StructureDefinition.hl7fhir.cn/hospital-referral-response"/>
+	<profile value="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/hospital-referral-response"/>
 		
 
 	<!-- 0..1 优先级 routine | urgent | asap | stat -->

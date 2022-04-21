@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="participation-status" />
-  <url value="http://StructureDefinition.hl7fhir.cn/participation-status" />
+  <url value="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/participation-status" />
   <name value="ParticipationStatus" />
   <title value="应答预约状态" />
   <status value="draft" />
@@ -39,7 +39,7 @@
     </element>
     <element id="Extension.url">
       <path value="Extension.url" />
-      <fixedUri value="http://StructureDefinition.hl7fhir.cn/participation-status" />
+      <fixedUri value="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/participation-status" />
     </element>
     <element id="Extension.value[x]">
       <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
@@ -57,7 +57,7 @@
       <binding>
         <strength value="required" />
         <description value="应答预约状态" />
-        <valueSet value="http://ValueSet.hl7fhir.cn/participationstatus-vs" />
+        <valueSet value="http://fhir.scwjxx.cn/Sichuan/ValueSet/participationstatus-vs" />
       </binding>
     </element>
   </differential>

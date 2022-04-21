@@ -1,0 +1,359 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<PlanDefinition xmlns="http://hl7.org/fhir">
+	<id value="pd-outpatient-register"/>
+	<!-- 0..1 Canonical identifier for this plan definition, represented as a URI (globally unique) -->
+	<url value="http://fhir.scwjxx.cn/Sichuan/PlanDefinition/pd-outpatient-register"/>
+	<!-- 0..* 计划定义编号 -->
+	<!-- 0..* 活动标识符 -->
+	<identifier>
+		<!-- 0..1 活动标识符NamingSystem uri-->
+		<system value="http://fhir.scwjxx.cn/Sichuan/NamingSystem/planDefinition-identifier"/>
+		<!-- 0..1 活动标识符 -->
+		<value value="pd-outpatient-register"/>
+	</identifier>
+	<!-- 0..1 版本号 -->
+	<version value="1.0.0"/>
+	<!-- ?? 0..1 计划名称（计算机友好）-->
+	<name value="pd-outpatient-register"/>
+	<!-- 0..1 计划名称（人友好） -->
+	<title value="门诊预约挂号"/>
+	<!-- 0..1  计划定义类型  CodeableConcept order-set | clinical-protocol | eca-rule | workflow-definition -->
+	<type>
+		<coding>
+			<!-- 0..1 计划定义类型 CodeSystem url  -->
+			<system value="http://terminology.hl7.org/CodeSystem/plan-definition-type"/>
+			<!-- 0..1 计划定义类型代码-->
+			<code value="workflow-definition"/>
+			<!-- 0..1 计划定义类型名称 -->
+			<display value="Workflow Definition"/>
+		</coding>
+	</type>
+	<!-- 1..1 状态  draft | active | retired | unknown -->
+	<status value="active"/>
+
+	<!-- 0..1 最后更新时间 -->
+	<date value="2019-11-12T13:00:00Z"/>
+	<!-- 0..1 发布者 -->
+	<publisher value="HL7FHIR.CN" />
+	<contact>
+		<telecom>
+			<system value="url"/>
+			<value value="https://www.hl7fhir.cn"/>
+		</telecom>
+		<telecom>
+			<system value="email"/>
+			<value value="contact@hl7fhir.cn"/>
+		</telecom>
+	</contact>
+	<!-- 0..1 计划定义的自然语言描述 -->
+	<description value="使用PlanDefinition资源进行定义整个门诊预约挂号流程，该流程资源中包含Action节点，该节点为0..*定义，可以组装多个步骤。每个Action关联一个 ActivityDefinition定义的步骤。流程开始后，每次步骤实例化具体的资源对应 ActivityDefinition定义的步骤，该流程分为六个步骤，分别为确定门诊班次、确定门诊时段、确定门诊号源、患者预约挂号、挂号确认应答、门诊患者到诊应答。
+确定门诊班次 为该流程的第一步，确定班次后，根据班次信息确定门诊时段，完成时段确定后，根据时段信息确定门诊号源，号源信息公布后，等待患者挂号预约，患者选择对应号源后，提交患者预约挂号申请，医院返回挂号确认应答，挂号成功后，患者到达医院，提交门诊患者到诊应答，该流程定义的总共6个action，分别对应上面6个步骤，并且通过relatedAction节点描述每个步骤和其他步骤的关系。"/>
+	
+	<jurisdiction>
+		<coding>
+			<system value="http://fhir.scwjxx.cn/Sichuan/CodeSystem/countries-and-regions"/>
+			<code value="156"/>
+		</coding>
+		<text value="中国"/>
+	</jurisdiction>
+	<!-- 0..1 为什么定义此计划定义 -->
+	<purpose value="[markdown]"/>
+	<!-- 0..1 描述计划定义的临床用法 -->
+	<usage value="[string]"/>
+	<!-- 0..1 使用和/或发布限制（版权） -->
+	<copyright value="[markdown]"/>
+	<!-- 0..1 计划定义何时被发布者批准 -->
+	<approvalDate value="2019-10-10"/>
+	<!-- 0..1 上次审核计划定义的时间 -->
+	<lastReviewDate value="2019-10-15"/>
+	<!-- 0..1 计划定义有效期 -->
+	<effectivePeriod>
+		<!-- 0..1 开始时间 -->
+		<start value="2019-11-12T13:00:00Z"/>
+		<!-- 0..1 结束时间 -->
+		<end value="2022-02-20T13:00:00Z"/>
+	</effectivePeriod>
+
+	<!-- 0..* 步骤 -->
+	<!--确定门诊班次-->
+	<action>
+		<!-- 0..1 操作前缀 (e.g. 1. or A.) -->
+		<prefix value="1"/>
+		<!-- 0..1 步骤名称 -->
+		<title value="确定门诊班次"/>
+		<!-- 0..1 简要描述行动 -->
+		<description value="根据医生、诊室等资源进行排版班次确定，包括班次时间段，排班的参与者，包括医生和诊室等信息。"/>
+		<!-- 0..1 人可读的行为描述（计算机无法自动执行） -->
+		<textEquivalent value="[string]"/>
+		<!-- 0..1 routine | urgent | asap | stat -->
+		<priority value="routine"/>
+		<!-- 0..* 提供动作或动作组含义的代码（事件）。 -->
+		<code>
+			<coding>
+				<!-- 0..1 事件类型 CodeSystem url  -->
+				<system value="http://fhir.scwjxx.cn/Sichuan/CodeSystem/bussiness-event-code"/>
+				<!-- 0..1 事件类型代码-->
+				<code value="C03001"/>
+				<!-- 0..1 事件类型名称 -->
+				<display value="确定门诊班次"/>
+			</coding>
+		</code>
+
+
+		<!-- 0..* 动作的相关关系 -->
+		<relatedAction>
+				<!-- 1..1 相关步骤的ID -->
+			<actionId value="ad-slot-of-clinic-visits"/>
+			<!-- 1..1 关系   before-start | before | before-end | concurrent-with-start | concurrent | concurrent-with-end | after-start | after | after-end -->
+			<relationship value="before-start"/>
+		</relatedAction>
+
+
+		<!-- 0..1 步骤的必须性 must | could | must-unless-documented -->
+		<requiredBehavior value="must"/>		
+		<!-- 0..1定义是否通常应预先选择动作。 yes | no -->
+		<precheckBehavior value="no"/>			
+		<!-- 0..1 单次或者多次运行 single | multiple -->
+		<cardinalityBehavior value="multiple"/>
+		<!-- 0..1 该步骤的活动定义  -->
+		<definitionCanonical value="http://fhir.scwjxx.cn/Sichuan/ActivityDefinition/ad-schedule-of-clinic-visits"/>
+		
+	</action>
+
+	<!-- 确定门诊时段 -->
+	<action>
+		<!-- 0..1 操作前缀 (e.g. 1. or A.) -->
+		<prefix value="2"/>
+		<!-- 0..1 步骤名称 -->
+		<title value="确定门诊时段"/>
+		<!-- 0..1 简要描述行动 -->
+		<description value="根据排班信息确定本次内的时段信息。，包括班次时间段，关联的班次。"/>
+		<!-- 0..1 人可读的行为描述（计算机无法自动执行） -->
+		<textEquivalent value="[string]"/>
+		<!-- 0..1 routine | urgent | asap | stat -->
+		<priority value="routine"/>
+		<!-- 0..* 提供动作或动作组含义的代码（事件）。 -->
+		<code>
+			<coding>
+				<!-- 0..1 事件类型 CodeSystem url  -->
+				<system value="http://fhir.scwjxx.cn/Sichuan/CodeSystem/bussiness-event-code"/>
+				<!-- 0..1 事件类型代码-->
+				<code value="C03002"/>
+				<!-- 0..1 事件类型名称 -->
+				<display value="门诊就诊时段"/>
+			</coding>
+		</code>
+
+		<!-- 0..* 动作的相关关系 -->
+		<relatedAction>
+			<!-- 1..1 相关步骤的ID -->
+			<actionId value="ad-schedule-of-clinic-visits"/>
+			<!-- 1..1 关系   before-start | before | before-end | concurrent-with-start | concurrent | concurrent-with-end | after-start | after | after-end -->
+			<relationship value="after-start"/>
+		</relatedAction>
+
+
+				
+		<!-- 0..1 步骤的必须性 must | could | must-unless-documented -->
+		<requiredBehavior value="must"/>
+		<!-- 0..1定义是否通常应预先选择动作。 yes | no -->
+		<precheckBehavior value="no"/>
+		<!-- 0..1 单次或者多次运行 single | multiple -->
+		<cardinalityBehavior value="multiple"/>
+		<!-- 0..1 该步骤的活动定义  -->
+		<definitionCanonical value="http://fhir.scwjxx.cn/Sichuan/ActivityDefinition/ad-slot-of-clinic-visits"/>
+			
+	</action>
+
+  <!-- 确定门诊号源 -->
+  <action>
+    <!-- 0..1 操作前缀 (e.g. 1. or A.) -->
+    <prefix value="3"/>
+    <!-- 0..1 步骤名称 -->
+    <title value="确定门诊号源"/>
+    <!-- 0..1 简要描述行动 -->
+    <description value="根据排班信息和班次信息确定本时段内的号院信息。包括时间段，或者号源总数等信息。"/>
+    <!-- 0..1 人可读的行为描述（计算机无法自动执行） -->
+    <textEquivalent value="[string]"/>
+    <!-- 0..1 routine | urgent | asap | stat -->
+    <priority value="routine"/>
+    <!-- 0..* 提供动作或动作组含义的代码（事件）。 -->
+    <code>
+      <coding>
+        <!-- 0..1 事件类型 CodeSystem url  -->
+        <system value="http://fhir.scwjxx.cn/Sichuan/CodeSystem/bussiness-event-code"/>
+        <!-- 0..1 事件类型代码-->
+        <code value="C03003"/>
+        <!-- 0..1 事件类型名称 -->
+        <display value="确定门诊号源"/>
+      </coding>
+    </code>
+
+
+    <!-- 0..* 动作的相关关系 -->
+    <relatedAction>
+      <!-- 1..1 相关步骤的ID -->
+      <actionId value="ad-slot-of-clinic-visits"/>
+      <!-- 1..1 关系   before-start | before | before-end | concurrent-with-start | concurrent | concurrent-with-end | after-start | after | after-end -->
+      <relationship value="after-start"/>
+    </relatedAction>
+
+
+  
+   
+    <!-- 0..1 步骤的必须性 must | could | must-unless-documented -->
+    <requiredBehavior value="must"/>
+    <!-- 0..1定义是否通常应预先选择动作。 yes | no -->
+    <precheckBehavior value="no"/>
+    <!-- 0..1 单次或者多次运行 single | multiple -->
+    <cardinalityBehavior value="multiple"/>
+    <!-- 0..1 该步骤的活动定义  -->
+    <definitionCanonical value="http://fhir.scwjxx.cn/Sichuan/ActivityDefinition/ad-source-of-outpatient-service"/>
+
+  </action>
+
+  <!-- 患者预约挂号 -->
+  <action>
+    <!-- 0..1 操作前缀 (e.g. 1. or A.) -->
+    <prefix value="4"/>
+    <!-- 0..1 步骤名称 -->
+    <title value="患者预约挂号"/>
+    <!-- 0..1 简要描述行动 -->
+    <description value="根据排班号源信息，患者选择一个号源，并且确定信息后，预约该号源。"/>
+    <!-- 0..1 人可读的行为描述（计算机无法自动执行） -->
+    <textEquivalent value="[string]"/>
+    <!-- 0..1 routine | urgent | asap | stat -->
+    <priority value="routine"/>
+    <!-- 0..* 提供动作或动作组含义的代码（事件）。 -->
+    <code>
+      <coding>
+        <!-- 0..1 事件类型 CodeSystem url  -->
+        <system value="http://fhir.scwjxx.cn/Sichuan/CodeSystem/bussiness-event-code"/>
+        <!-- 0..1 事件类型代码-->
+        <code value="C03004"/>
+        <!-- 0..1 事件类型名称 -->
+        <display value="患者预约挂号"/>
+      </coding>
+    </code>
+
+
+    <!-- 0..* 动作的相关关系 -->
+    <relatedAction>
+      <!-- 1..1 相关步骤的ID -->
+      <actionId value="ad-source-of-outpatient-service"/>
+      <!-- 1..1 关系   before-start | before | before-end | concurrent-with-start | concurrent | concurrent-with-end | after-start | after | after-end -->
+      <relationship value="after-start"/>
+    </relatedAction>
+
+
+   
+ 
+
+    <!-- 0..1 步骤的必须性 must | could | must-unless-documented -->
+    <requiredBehavior value="must"/>
+    <!-- 0..1定义是否通常应预先选择动作。 yes | no -->
+    <precheckBehavior value="no"/>
+    <!-- 0..1 单次或者多次运行 single | multiple -->
+    <cardinalityBehavior value="single"/>
+    <!-- 0..1 该步骤的活动定义  -->
+    <definitionCanonical value="http://fhir.scwjxx.cn/Sichuan/ActivityDefinition/ad-appointment-register"/>
+
+  </action>
+
+  <!-- 挂号确认应答 -->
+  <action>
+    <!-- 0..1 操作前缀 (e.g. 1. or A.) -->
+    <prefix value="5"/>
+    <!-- 0..1 步骤名称 -->
+    <title value="挂号确认应答"/>
+    <!-- 0..1 简要描述行动 -->
+    <description value="根收到患者的挂号申请后，医院给出挂号情况的应答，由于医生为先行排班，该应该固定为同意预约。"/>
+    <!-- 0..1 人可读的行为描述（计算机无法自动执行） -->
+    <textEquivalent value="[string]"/>
+    <!-- 0..1 routine | urgent | asap | stat -->
+    <priority value="routine"/>
+    <!-- 0..* 提供动作或动作组含义的代码（事件）。 -->
+    <code>
+      <coding>
+        <!-- 0..1 事件类型 CodeSystem url  -->
+        <system value="http://fhir.scwjxx.cn/Sichuan/CodeSystem/bussiness-event-code"/>
+        <!-- 0..1 事件类型代码-->
+        <code value="C03005"/>
+        <!-- 0..1 事件类型名称 -->
+        <display value="挂号确认应答"/>
+      </coding>
+    </code>
+
+
+    <!-- 0..* 动作的相关关系 -->
+    <relatedAction>
+      <!-- 1..1 相关步骤的ID -->
+      <actionId value="ad-appointment-register"/>
+      <!-- 1..1 关系   before-start | before | before-end | concurrent-with-start | concurrent | concurrent-with-end | after-start | after | after-end -->
+      <relationship value="after-start"/>
+    </relatedAction>
+
+
+  
+ 
+
+    <!-- 0..1 步骤的必须性 must | could | must-unless-documented -->
+    <requiredBehavior value="must"/>
+    <!-- 0..1定义是否通常应预先选择动作。 yes | no -->
+    <precheckBehavior value="no"/>
+    <!-- 0..1 单次或者多次运行 single | multiple -->
+    <cardinalityBehavior value="single"/>
+    <!-- 0..1 该步骤的活动定义  -->
+    <definitionCanonical value="http://fhir.scwjxx.cn/Sichuan/ActivityDefinition/ad-registrated-response"/>
+
+  </action>
+
+  <!-- 门诊患者到诊应答 -->
+  <action>
+    <!-- 0..1 操作前缀 (e.g. 1. or A.) -->
+    <prefix value="2"/>
+    <!-- 0..1 步骤名称 -->
+    <title value="门诊患者到诊应答"/>
+    <!-- 0..1 简要描述行动 -->
+    <description value="患者到达挂号医院后，发送患者到诊应答。"/>
+    <!-- 0..1 人可读的行为描述（计算机无法自动执行） -->
+    <textEquivalent value="[string]"/>
+    <!-- 0..1 routine | urgent | asap | stat -->
+    <priority value="routine"/>
+    <!-- 0..* 提供动作或动作组含义的代码（事件）。 -->
+    <code>
+      <coding>
+        <!-- 0..1 事件类型 CodeSystem url  -->
+        <system value="http://fhir.scwjxx.cn/Sichuan/CodeSystem/bussiness-event-code"/>
+        <!-- 0..1 事件类型代码-->
+        <code value="C03006"/>
+        <!-- 0..1 事件类型名称 -->
+        <display value="门诊患者到诊应答"/>
+      </coding>
+    </code>
+
+
+    <!-- 0..* 动作的相关关系 -->
+    <relatedAction>
+      <!-- 1..1 相关步骤的ID -->
+      <actionId value="ad-appointment-register"/>
+      <!-- 1..1 关系   before-start | before | before-end | concurrent-with-start | concurrent | concurrent-with-end | after-start | after | after-end -->
+      <relationship value="after-start"/>
+    </relatedAction>
+
+
+  
+  
+
+    <!-- 0..1 步骤的必须性 must | could | must-unless-documented -->
+    <requiredBehavior value="must"/>
+    <!-- 0..1定义是否通常应预先选择动作。 yes | no -->
+    <precheckBehavior value="no"/>
+    <!-- 0..1 单次或者多次运行 single | multiple -->
+    <cardinalityBehavior value="single"/>
+    <!-- 0..1 该步骤的活动定义  -->
+    <definitionCanonical value="http://fhir.scwjxx.cn/Sichuan/ActivityDefinition/ad-patient-outpatient-arrive-response"/>
+
+  </action>
+
+</PlanDefinition>

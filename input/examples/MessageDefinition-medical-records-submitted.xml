@@ -1,20 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <MessageDefinition xmlns="http://hl7.org/fhir">
-  <id value="medical-records-submitted"/>
+  <id value="md-medical-records-submitted"/>
   <!-- 0..1 Business Identifier for a given MessageDefinition -->
-  <url value="http://MessageDefinition.hl7fhir.cn/medical-records-submitted"/>
+  <url value="http://fhir.scwjxx.cn/Sichuan/MessageDefinition/md-medical-records-submitted"/>
 
   <!-- 0..* Identifier Primary key for the message definition on a given server -->
   <identifier>
     <!-- 0..1 活动标识符NamingSystem uri-->
-    <system value="http://NamingSystem.hl7fhir.cn/messageDefinition-identifier"/>
+    <system value="http://fhir.scwjxx.cn/Sichuan/NamingSystem/messageDefinition-identifier"/>
     <!-- 0..1 活动标识符 -->
-    <value value="medical-records-submitted"/>
+    <value value="md-medical-records-submitted"/>
   </identifier>
   <!-- 0..1 版本 -->
   <version value="0.2.0"/>
   <!-- ?? 0..1 消息名称（计算机友好）-->
-  <name value="medical-records-submitted"/>
+  <name value="md-medical-records-submitted"/>
   <!-- 0..1 消息名称（人友好） -->
   <title value="上传完整病历"/>
   <!-- 1..1 状态 draft | active | retired | unknown -->
@@ -38,7 +38,7 @@
 
   <jurisdiction>
     <coding>
-      <system value="http://CodeSystem.hl7fhir.cn/countries-and-regions"/>
+      <system value="http://fhir.scwjxx.cn/Sichuan/CodeSystem/countries-and-regions"/>
       <code value="156"/>
     </coding>
     <text value="中国"/>
@@ -48,12 +48,12 @@
 
 
   <!-- 0..* canonical(ActivityDefinition|PlanDefinition) Protocol/workflow this is part of -->
-  <parent value="http://ActivityDefinition.hl7fhir.cn/medical-records-submitted"/>
+  <parent value="http://fhir.scwjxx.cn/Sichuan/ActivityDefinition/ad-medical-records-submitted"/>
   
   <!-- 1..1 Coding|uri 事件定义 -->
   <eventCoding>
       <!-- 0..1 事件类型 CodeSystem url  -->
-      <system value="http://CodeSystem.hl7fhir.cn/activity-code"/>
+      <system value="http://fhir.scwjxx.cn/Sichuan/CodeSystem/activity-code"/>
       <!-- 0..1 事件类型代码-->
       <code value="C01004"/>
       <!-- 0..1 事件类型名称 -->

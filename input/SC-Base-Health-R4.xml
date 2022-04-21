@@ -1,0 +1,1021 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- 此资源所引用的内容都将作为指南的一部分生成。持续更新中 -->
+<ImplementationGuide xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../input-cache/schemas/R5/fhir-single.xsd">
+	<id value="SC-Base-Health-IG"/>
+	<!--  <extension url="http://hl7.org/fhir/tools/StructureDefinition/igpublisher-spreadsheet">
+    <valueString value="resources-spreadsheet.xml"/>
+  </extension>-->
+	<url value="http://fhir.scwjxx.cn/Sichuan/ImplementationGuide/SC-Base-Health-R4"/>
+	<!-- 此实施指南的版本。除非指定了 "propagate-version" 扩展元素，否则所有引用资源都将继承此版本号 -->
+	<version value="0.0.2"/>
+	<name value="SC Base Health IG"/>
+	<title value="四川省基层卫生实施指南  "/>
+	<status value="draft"/>
+	<experimental value="true"/>
+	<publisher value="HL7FHIR.CN" />
+	<contact>
+		<telecom>
+			<system value="url"/>
+			<value value="https://www.hl7fhir.cn"/>
+		</telecom>
+		<telecom>
+			<system value="email"/>
+			<value value="contact@hl7fhir.cn"/>
+		</telecom>
+	</contact>
+	<description value="四川省基层卫生实施指南是[中国核心实施指南](http://build.fhir.org/ig/HL7China/CN-CORE-R4/)规范集中的一个子规范。
+它基于核心指南定义了四川省基层卫生信息化所涉及的通用资源与常用场景，它与其它子规范一起组成了中国核心指南的规范集。"/>
+	<jurisdiction>
+		<coding>
+      <system value="http://fhir.scwjxx.cn/Sichuan/CodeSystem/countries-and-regions"/>
+			<code value="156"/>
+		</coding>
+		<text value="中国"/>
+	</jurisdiction>
+	<packageId value="hl7fhir.cn.core.r4.base-health.sc" />
+	<!-- 参见 https://spdx.org/licenses/AGPL-3.0-or-later.html -->
+	<license value="AGPL-3.0-or-later" />
+	<!-- 实施指南里的内容是基于FHIR R4版本的 -->
+	<fhirVersion value="4.0.1"/>
+	<definition>
+		<!--0..* 生成IG需求信息。其中grouping节点可由IGPublisher自动定义，也可手动定义个性化需求。 -->
+
+
+    <resource>
+      <reference>
+        <!-- 本地资源定义（HospitalReferral） -->
+        <reference value="StructureDefinition/hospital-referral"/>
+      </reference>
+      <description value="该资源描述住院转诊的的申请。包括上转、下转都使用该资源。"/>
+    </resource>
+
+    <resource>
+      <reference>
+        <!-- 本地资源定义（HospitalReferralResponse） -->
+        <reference value="StructureDefinition/hospital-referral-response"/>
+      </reference>
+      <description value="该资源描述在提交转诊申请后，由各个参与方 给出是否同意的转诊应答。包括 医生、患者。"/>
+    </resource>
+
+    <resource>
+      <reference>
+        <!-- 本地资源定义（participation-status） -->
+        <reference value="StructureDefinition/participation-status"/>
+      </reference>
+      <description value="预约参与状态，描述预约参与人的应约状态，包括同意、拒绝、未知、未响应等。"/>
+    </resource>
+    
+    <resource>
+      <reference>
+        <!-- 本地资源定义（ChargeItem） -->
+        <reference value="StructureDefinition/ChargeItem"/>
+      </reference>
+      <description value="描述费用信息的资源"/>
+    </resource>
+
+    <resource>
+      <reference>
+        <!-- 本地资源定义（outpatient-registration-source） -->
+        <reference value="StructureDefinition/outpatient-registration-source"/>
+      </reference>
+      <description value="该资源描述门诊号源信息，包括号源、挂号都是用该资源。"/>
+    </resource>
+
+    
+    <resource>
+      <reference>
+        <!-- 本地资源定义（outpatient-schedule） -->
+        <reference value="StructureDefinition/outpatient-schedule"/>
+      </reference>
+      <description value="门诊排班，号源所属班次，是排班表、排期表的组成部分，该资源主要描述门诊排班"/>
+    </resource>
+
+    <resource>
+      <reference>
+        <!-- 本地资源定义（participation-status） -->
+        <reference value="StructureDefinition/outpatient-slot"/>
+      </reference>
+      <description value="门诊号源时段，根据排班信息确定本次内的时段信息。"/>
+    </resource>
+
+
+    <resource>
+      <reference>
+        <!-- 本地资源定义（patient-arrive-response） -->
+        <reference value="StructureDefinition/patient-arrive-response"/>
+      </reference>
+      <description value="在门诊挂号场景中，患者以约定时间到达医院就诊履约的应答资源。"/>
+    </resource>
+
+    <resource>
+      <reference>
+        <!-- 本地资源定义（registrated-response） -->
+        <reference value="StructureDefinition/registrated-response"/>
+      </reference>
+      <description value="根收到患者的挂号申请后，医院给出挂号情况的应答。"/>
+    </resource>
+
+    <resource>
+      <reference>
+        <!-- 本地资源定义（medical-record-documentation） -->
+        <reference value="StructureDefinition/medical-record-documentation"/>
+      </reference>
+      <description value="引用第三方的病历文书，并且把病历文书作为附件形式上传。"/>
+    </resource>
+
+		
+
+		<!--<resource>
+<reference>
+<reference value="MyLogicalModel/AS"/>
+</reference>
+</resource> -->
+
+
+    <resource>
+      <reference>
+        <!-- 资源示例 -->
+        <reference value="Appointment/HospitalReferral-example"/>
+      </reference>
+      <name value="转诊预约申请示例"/>
+      <description value="演示如何定义和引用转诊预约申请的简单示例"/>
+      <exampleCanonical value="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/hospital-referral"/>
+    </resource>
+
+
+    <resource>
+      <reference>
+        <!-- 资源示例 -->
+        <reference value="AppointmentResponse/HospitalReferralResponse-example"/>
+      </reference>
+      <name value="转诊预约应答示例"/>
+      <description value="演示如何定义和引用转诊预约应答的简单示例"/>
+      <exampleCanonical value="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/hospital-referral-response"/>
+    </resource>
+
+    <resource>
+      <reference>
+        <!-- 资源示例 -->
+        <reference value="AppointmentResponse/PatientArriveResponse-example"/>
+      </reference>
+      <name value="患者到诊应答示例"/>
+      <description value="演示如何定义和引用患者到诊应答的简单示例"/>
+      <exampleCanonical value="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/hospital-referral-response"/>
+    </resource>
+
+    <resource>
+      <reference>
+        <!-- 资源示例 -->
+        <reference value="Task/medicalrecordssubmitted-example"/>
+      </reference>
+      <name value="上传完整病历示例"/>
+      <description value="演示如何定义和引用上传完整病历的简单示例"/>
+      <exampleCanonical value="http://hl7.org/fhir/StructureDefinition/Task"/>
+    </resource>
+
+
+
+
+    <resource>
+      <reference>
+        <!-- ActivityDefinition资源示例 -->
+        <reference value="ActivityDefinition/ad-hospital-referral"/>
+      </reference>
+      <name value="转诊预约申请ActivityDefinition示例"/>
+      <description value="演示如何定义和引用转诊预约申请ActivityDefinition的简单示例"/>
+      <exampleCanonical value="http://hl7.org/fhir/StructureDefinition/ActivityDefinition"/>
+    </resource>
+
+    <resource>
+      <reference>
+        <!-- ActivityDefinition资源示例 -->
+        <reference value="ActivityDefinition/ad-hospital-referral-response"/>
+      </reference>
+      <name value="转诊预约应答ActivityDefinition示例"/>
+      <description value="演示如何定义和引用转诊预约应答ActivityDefinition的简单示例"/>
+      <exampleCanonical value="http://hl7.org/fhir/StructureDefinition/ActivityDefinition"/>
+    </resource>
+
+
+
+
+    <resource>
+      <reference>
+        <!-- ActivityDefinition资源示例 -->
+        <reference value="ActivityDefinition/ad-patient-arrive-response"/>
+      </reference>
+      <name value="患者到诊应答ActivityDefinition示例"/>
+      <description value="演示如何定义和引用患者到诊应答ActivityDefinition的简单示例"/>
+      <exampleCanonical value="http://hl7.org/fhir/StructureDefinition/ActivityDefinition"/>
+    </resource>
+
+
+
+    <resource>
+      <reference>
+        <!-- ActivityDefinition资源示例 -->
+        <reference value="ActivityDefinition/ad-medical-records-submitted"/>
+      </reference>
+      <name value="上传完整病历ActivityDefinition示例"/>
+      <description value="演示如何定义和引用上传完整病历ActivityDefinition的简单示例"/>
+      <exampleCanonical value="http://hl7.org/fhir/StructureDefinition/ActivityDefinition"/>
+    </resource>
+
+
+
+
+
+
+    <resource>
+      <reference>
+        <!-- PlanDefinition资源示例 -->
+        <reference value="PlanDefinition/pd-hospital-referral"/>
+      </reference>
+      <name value="住院双转的流程定义PlanDefinition示例"/>
+      <description value="演示如何定义和引用住院双转的流程定义PlanDefinition的简单示例"/>
+      <exampleCanonical value="http://hl7.org/fhir/StructureDefinition/PlanDefinition"/>
+    </resource>
+
+    <resource>
+      <reference>
+        <!-- Bundle资源示例 -->
+        <reference value="Bundle/hospital-referral-example"/>
+      </reference>
+      <name value="转诊预约申请消息交换Bundle示例"/>
+      <description value="演示如何定义和引用转诊申请实际交互场景的数据交换Bundle示例"/>
+      <exampleCanonical value="http://hl7.org/fhir/StructureDefinition/Bundle"/>
+    </resource>
+
+
+
+    <resource>
+      <reference>
+        <!-- Bundle资源示例 -->
+        <reference value="Bundle/hospital-referral-response-example"/>
+      </reference>
+      <name value="转诊预约应答消息交换Bundle示例"/>
+      <description value="演示如何定义和引用转诊预约应答实际交互场景的数据交换Bundle示例"/>
+      <exampleCanonical value="http://hl7.org/fhir/StructureDefinition/Bundle"/>
+    </resource>
+
+
+    <resource>
+      <reference>
+        <!-- Bundle资源示例 -->
+        <reference value="Bundle/patient-arrive-response-example"/>
+      </reference>
+      <name value="患者到诊应答消息交换Bundle示例"/>
+      <description value="演示如何定义和引用患者到诊应答实际交互场景的数据交换Bundle示例"/>
+      <exampleCanonical value="http://hl7.org/fhir/StructureDefinition/Bundle"/>
+    </resource>
+
+    <resource>
+      <reference>
+        <!-- Bundle资源示例 -->
+        <reference value="Bundle/medical-records-submitted-example"/>
+      </reference>
+      <name value="上传完整病历消息交换Bundle示例"/>
+      <description value="演示如何定义和引用上传完整病历实际交互场景的数据交换Bundle示例"/>
+      <exampleCanonical value="http://hl7.org/fhir/StructureDefinition/Bundle"/>
+    </resource>
+
+
+    <resource>
+      <reference>
+        <!-- Bundle-RESTful资源示例 -->
+        <reference value="Bundle/hospital-referral-RESTful-example"/>
+      </reference>
+      <name value="转诊预约申请RESTful接口的Bundle示例"/>
+      <description value="演示如何定义和引用转诊申请实际交互场景的RESTful数据交换Bundle示例"/>
+      <exampleCanonical value="http://hl7.org/fhir/StructureDefinition/Bundle"/>
+    </resource>
+
+
+
+    <resource>
+      <reference>
+        <!-- Bundle资源示例 -->
+        <reference value="Bundle/hospital-referral-response-RESTful-example"/>
+      </reference>
+      <name value="转诊预约应答RESTful接口的Bundle示例"/>
+      <description value="演示如何定义和引用转诊预约应答实际交互场景的RESTful数据交换Bundle示例"/>
+      <exampleCanonical value="http://hl7.org/fhir/StructureDefinition/Bundle"/>
+    </resource>
+
+
+    <resource>
+      <reference>
+        <!-- Bundle资源示例 -->
+        <reference value="Bundle/patient-arrive-response-RESTful-example"/>
+      </reference>
+      <name value="患者到诊应答RESTful接口的Bundle示例"/>
+      <description value="演示如何定义和引用患者到诊应答实际交互场景的RESTful数据交换Bundle示例"/>
+      <exampleCanonical value="http://hl7.org/fhir/StructureDefinition/Bundle"/>
+    </resource>
+
+    <resource>
+      <reference>
+        <!-- Bundle资源示例 -->
+        <reference value="Bundle/medical-records-submitted-RESTful-example"/>
+      </reference>
+      <name value="上传完整病历RESTful接口的Bundle示例"/>
+      <description value="演示如何定义和引用上传完整病历实际交互场景的RESTful数据交换Bundle示例"/>
+      <exampleCanonical value="http://hl7.org/fhir/StructureDefinition/Bundle"/>
+    </resource>
+
+    <resource>
+      <reference>
+        <!-- MessageDefinition资源示例 -->
+        <reference value="MessageDefinition/md-hospital-referral"/>
+      </reference>
+      <name value="转诊预约申请消息定义MessageDefinition的示例"/>
+      <description value="演示如何定义和引用转诊申请消息定义MessageDefinition的示例"/>
+      <exampleCanonical value="http://hl7.org/fhir/StructureDefinition/MessageDefinition"/>
+    </resource>
+
+
+
+    <resource>
+      <reference>
+        <!-- MessageDefinition资源示例 -->
+        <reference value="MessageDefinition/md-hospital-referral-response"/>
+      </reference>
+      <name value="转诊预约应答消息定义MessageDefinition的示例"/>
+      <description value="演示如何定义和引用转诊预约应答消息定义MessageDefinition的示例"/>
+      <exampleCanonical value="http://hl7.org/fhir/StructureDefinition/MessageDefinition"/>
+    </resource>
+
+
+    <resource>
+      <reference>
+        <!-- MessageDefinition资源示例 -->
+        <reference value="MessageDefinition/md-patient-arrive-response"/>
+      </reference>
+      <name value="患者到诊应答消息定义MessageDefinition的示例。"/>
+      <description value="演示如何定义和引用患者到诊应答消息定义MessageDefinition的示例"/>
+      <exampleCanonical value="http://hl7.org/fhir/StructureDefinition/MessageDefinition"/>
+    </resource>
+
+    <resource>
+      <reference>
+        <!-- MessageDefinition资源示例 -->
+        <reference value="MessageDefinition/md-medical-records-submitted"/>
+      </reference>
+      <name value="上传完整病历消息定义MessageDefinition的示例。"/>
+      <description value="演示如何定义和引用上传完整病历消息定义MessageDefinition的示例"/>
+      <exampleCanonical value="http://hl7.org/fhir/StructureDefinition/MessageDefinition"/>
+    </resource>
+
+    <resource>
+      <reference>
+        <!-- DocumentReference资源示例 -->
+        <reference value="DocumentReference/DocumentReference001-example"/>
+      </reference>
+      <name value="病历-转诊（院）记录示例"/>
+      <description value="演示如何定义和引用病历-转诊（院）记录的示例"/>
+      <exampleCanonical value="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/medical-record-documentation"/>
+    </resource>
+
+    <resource>
+      <reference>
+        <!-- DocumentReference资源示例 -->
+        <reference value="DocumentReference/DocumentReference002-example"/>
+      </reference>
+      <name value="病历-检验报告示例"/>
+      <description value="演示如何定义和引用病历-检验报告的示例"/>
+      <exampleCanonical value="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/medical-record-documentation"/>
+    </resource>
+
+    <resource>
+      <reference>
+        <!-- DocumentReference资源示例 -->
+        <reference value="DocumentReference/DocumentReference003-example"/>
+      </reference>
+      <name value="病历-医药处方示例"/>
+      <description value="演示如何定义和引用病历-医药处方的示例"/>
+      <exampleCanonical value="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/medical-record-documentation"/>
+    </resource>
+
+    <resource>
+      <reference>
+        <!-- DocumentReference资源示例 -->
+        <reference value="DocumentReference/DocumentReference004-example"/>
+      </reference>
+      <name value="病历-出院小结示例"/>
+      <description value="演示如何定义和引用出院小结的示例"/>
+      <exampleCanonical value="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/medical-record-documentation"/>
+    </resource>
+
+    <resource>
+      <reference>
+        <!-- DocumentReference资源示例 -->
+        <reference value="List/List001-example"/>
+      </reference>
+      <name value="患者张三的在院病历记录示例"/>
+      <description value="演示如何定义和引用患者张三在院病历记录示例"/>
+      <exampleCanonical value="http://hl7.org/fhir/StructureDefinition/List"/>
+    </resource>
+
+
+
+    <resource>
+      <reference>
+        <!-- ActivityDefinition资源示例 -->
+        <reference value="ActivityDefinition/ad-appointment-register"/>
+      </reference>
+      <name value="患者预约挂号ActivityDefinition示例"/>
+      <description value="演示如何定义和引用患者预约挂号ActivityDefinition的简单示例"/>
+      <exampleCanonical value="http://hl7.org/fhir/StructureDefinition/ActivityDefinition"/>
+    </resource>
+
+    <resource>
+      <reference>
+        <!-- ActivityDefinition资源示例 -->
+        <reference value="ActivityDefinition/ad-patient-outpatient-arrive-response"/>
+      </reference>
+      <name value="门诊患者到诊应答ActivityDefinition示例"/>
+      <description value="演示如何定义和引用门诊患者到诊应答ActivityDefinition的简单示例"/>
+      <exampleCanonical value="http://hl7.org/fhir/StructureDefinition/ActivityDefinition"/>
+    </resource>
+
+
+    <resource>
+      <reference>
+        <!-- ActivityDefinition资源示例 -->
+        <reference value="ActivityDefinition/ad-registrated-response"/>
+      </reference>
+      <name value="挂号确认应答ActivityDefinition示例"/>
+      <description value="演示如何定义和引用挂号确认应答ActivityDefinition的简单示例"/>
+      <exampleCanonical value="http://hl7.org/fhir/StructureDefinition/ActivityDefinition"/>
+    </resource>
+
+
+    <resource>
+      <reference>
+        <!-- ActivityDefinition资源示例 -->
+        <reference value="ActivityDefinition/ad-schedule-of-clinic-visits"/>
+      </reference>
+      <name value="确定门诊班次ActivityDefinition示例"/>
+      <description value="演示如何定义和引用确定门诊班次ActivityDefinition的简单示例"/>
+      <exampleCanonical value="http://hl7.org/fhir/StructureDefinition/ActivityDefinition"/>
+    </resource>
+
+
+    <resource>
+      <reference>
+        <!-- ActivityDefinition资源示例 -->
+        <reference value="ActivityDefinition/ad-slot-of-clinic-visits"/>
+      </reference>
+      <name value="确定门诊时段ActivityDefinition示例"/>
+      <description value="演示如何定义和引用确定门诊时段ActivityDefinition的简单示例"/>
+      <exampleCanonical value="http://hl7.org/fhir/StructureDefinition/ActivityDefinition"/>
+    </resource>
+
+
+    <resource>
+      <reference>
+        <!-- ActivityDefinition资源示例 -->
+        <reference value="ActivityDefinition/ad-source-of-outpatient-service"/>
+      </reference>
+      <name value="确定门诊号源ActivityDefinition示例"/>
+      <description value="演示如何定义和引用确定门诊号源ActivityDefinition的简单示例"/>
+      <exampleCanonical value="http://hl7.org/fhir/StructureDefinition/ActivityDefinition"/>
+    </resource>
+
+
+
+    <resource>
+      <reference>
+        <!-- PlanDefinition资源示例 -->
+        <reference value="PlanDefinition/pd-outpatient-register"/>
+      </reference>
+      <name value="门诊预约挂号的流程定义PlanDefinition示例"/>
+      <description value="演示如何定义和引用门诊预约挂号的流程定义PlanDefinition的简单示例"/>
+      <exampleCanonical value="http://hl7.org/fhir/StructureDefinition/PlanDefinition"/>
+    </resource>
+
+
+    <resource>
+      <reference>
+        <!-- MessageDefinition资源示例 -->
+        <reference value="MessageDefinition/md-appointment-register"/>
+      </reference>
+      <name value="患者预约挂号消息定义MessageDefinition的示例"/>
+      <description value="演示如何定义和引用患者预约挂号消息定义MessageDefinition的示例"/>
+      <exampleCanonical value="http://hl7.org/fhir/StructureDefinition/MessageDefinition"/>
+    </resource>
+
+
+    <resource>
+      <reference>
+        <!-- MessageDefinition资源示例 -->
+        <reference value="MessageDefinition/md-patient-outpatient-arrive-response"/>
+      </reference>
+      <name value="门诊患者到诊应答消息定义MessageDefinition的示例"/>
+      <description value="演示如何定义和引用门诊患者到诊应答消息定义MessageDefinition的示例"/>
+      <exampleCanonical value="http://hl7.org/fhir/StructureDefinition/MessageDefinition"/>
+    </resource>
+
+
+    <resource>
+      <reference>
+        <!-- MessageDefinition资源示例 -->
+        <reference value="MessageDefinition/md-registrated-response"/>
+      </reference>
+      <name value="挂号确认应答消息定义MessageDefinition的示例"/>
+      <description value="演示如何定义和引用挂号确认应答消息定义MessageDefinition的示例"/>
+      <exampleCanonical value="http://hl7.org/fhir/StructureDefinition/MessageDefinition"/>
+    </resource>
+
+
+    <resource>
+      <reference>
+        <!-- MessageDefinition资源示例 -->
+        <reference value="MessageDefinition/md-schedule-of-clinic-visits"/>
+      </reference>
+      <name value="确定门诊班次消息定义MessageDefinition的示例"/>
+      <description value="演示如何定义和引用确定门诊班次消息定义MessageDefinition的示例"/>
+      <exampleCanonical value="http://hl7.org/fhir/StructureDefinition/MessageDefinition"/>
+    </resource>
+
+
+    <resource>
+      <reference>
+        <!-- MessageDefinition资源示例 -->
+        <reference value="MessageDefinition/md-slot-of-clinic-visits"/>
+      </reference>
+      <name value="确定门诊时段消息定义MessageDefinition的示例"/>
+      <description value="演示如何定义和引用确定门诊时段消息定义MessageDefinition的示例"/>
+      <exampleCanonical value="http://hl7.org/fhir/StructureDefinition/MessageDefinition"/>
+    </resource>
+
+
+    <resource>
+      <reference>
+        <!-- MessageDefinition资源示例 -->
+        <reference value="MessageDefinition/md-source-of-outpatient-service"/>
+      </reference>
+      <name value="确定门诊号源消息定义MessageDefinition的示例"/>
+      <description value="演示如何定义和引用确定门诊号源消息定义MessageDefinition的示例"/>
+      <exampleCanonical value="http://hl7.org/fhir/StructureDefinition/MessageDefinition"/>
+    </resource>
+
+
+
+
+      <resource>
+      <reference>
+        <!-- Task资源示例 -->
+        <reference value="Task/SlotVisits-example"/>
+      </reference>
+      <name value="确定门诊时段示例"/>
+      <description value="演示如何定义和引用确定门诊时段的示例"/>
+      <exampleCanonical value="http://hl7.org/fhir/StructureDefinition/Task"/>
+    </resource>
+
+
+  <resource>
+      <reference>
+        <!-- Task资源示例 -->
+        <reference value="Task/ScheduleVisits-example"/>
+      </reference>
+      <name value="确定门诊班次的示例"/>
+      <description value="演示如何定义和引用确定门诊班次的示例"/>
+      <exampleCanonical value="http://hl7.org/fhir/StructureDefinition/Task"/>
+    </resource>
+
+
+  <resource>
+      <reference>
+        <!-- Schedulen资源示例 -->
+        <reference value="Schedule/ScheduleOfClinicVisits-example"/>
+      </reference>
+      <name value="门诊班次的示例"/>
+      <description value="演示如何定义和引用门诊班次的示例"/>
+      <exampleCanonical value="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/outpatient-schedule"/>
+    </resource>
+
+
+  <resource>
+      <reference>
+        <!-- AppointmentResponse资源示例 -->
+        <reference value="AppointmentResponse/RegistratedResponse-example"/>
+      </reference>
+      <name value="挂号确认应答的示例"/>
+      <description value="演示如何定义和引用挂号确认应答的示例"/>
+      <exampleCanonical value="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/hospital-referral-response"/>
+    </resource>
+
+
+  <resource>
+      <reference>
+        <!-- Slot资源示例 -->
+        <reference value="Slot/OutpatientSlot-example"/>
+      </reference>
+      <name value="门诊号源时段的示例"/>
+      <description value="演示如何定义和引用门诊号源时段的示例"/>
+      <exampleCanonical value="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/outpatient-slot"/>
+    </resource>
+
+
+  <resource>
+      <reference>
+        <!-- Appointment资源示例 -->
+        <reference value="Appointment/OutpatientRegistrationSource-example"/>
+      </reference>
+      <name value="门诊号源的示例"/>
+      <description value="演示如何定义和引用门诊号源的示例"/>
+      <exampleCanonical value="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/outpatient-registration-source"/>
+    </resource>
+
+
+  <resource>
+      <reference>
+        <!-- MessageDefinition资源示例 -->
+        <reference value="ChargeItem/ChargeItem-example"/>
+      </reference>
+      <name value="挂号费用信息的示例"/>
+      <description value="演示如何定义和引用挂号费用信息的示例"/>
+      <exampleCanonical value="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/ChargeItem"/>
+    </resource>
+
+
+
+
+<resource>
+      <reference>
+        <!-- Bundle资源示例 -->
+        <reference value="Bundle/appointment-register-example"/>
+      </reference>
+      <name value="患者预约挂号消息交换Bundle示例"/>
+      <description value="演示如何定义和引用患者预约挂号实际交互场景的数据交换Bundle示例"/>
+      <exampleCanonical value="http://hl7.org/fhir/StructureDefinition/Bundle"/>
+    </resource>
+
+
+    <resource>
+      <reference>
+        <!-- Bundle资源示例 -->
+        <reference value="Bundle/patient-outpatient-arrive-response-example"/>
+      </reference>
+      <name value="门诊患者到诊确认消息交换Bundle示例"/>
+      <description value="演示如何定义和引用门诊患者到诊确认实际交互场景的数据交换Bundle示例"/>
+      <exampleCanonical value="http://hl7.org/fhir/StructureDefinition/Bundle"/>
+    </resource>
+
+    <resource>
+      <reference>
+        <!-- Bundle资源示例 -->
+        <reference value="Bundle/registrated-response-example"/>
+      </reference>
+      <name value="挂号确认应答消息交换Bundle示例"/>
+      <description value="演示如何定义和引用挂号确认应答实际交互场景的数据交换Bundle示例"/>
+      <exampleCanonical value="http://hl7.org/fhir/StructureDefinition/Bundle"/>
+    </resource>
+
+    <resource>
+      <reference>
+        <!-- Bundle资源示例 -->
+        <reference value="Bundle/schedule-of-clinic-visits-example"/>
+      </reference>
+      <name value="确定门诊班次消息交换Bundle示例"/>
+      <description value="演示如何定义和引用确定门诊班次实际交互场景的数据交换Bundle示例"/>
+      <exampleCanonical value="http://hl7.org/fhir/StructureDefinition/Bundle"/>
+    </resource>
+
+    <resource>
+      <reference>
+        <!-- Bundle资源示例 -->
+        <reference value="Bundle/slot-of-clinic-visits-example"/>
+      </reference>
+      <name value="确定门诊时段消息交换Bundle示例"/>
+      <description value="演示如何定义和引用确定门诊时段实际交互场景的数据交换Bundle示例"/>
+      <exampleCanonical value="http://hl7.org/fhir/StructureDefinition/Bundle"/>
+    </resource>
+
+    <resource>
+      <reference>
+        <!-- Bundle资源示例 -->
+        <reference value="Bundle/source-of-outpatient-service-example"/>
+      </reference>
+      <name value="确定门诊号源消息交换Bundle示例"/>
+      <description value="演示如何定义和引用确定门诊号源实际交互场景的数据交换Bundle示例"/>
+      <exampleCanonical value="http://hl7.org/fhir/StructureDefinition/Bundle"/>
+    </resource>
+
+
+
+
+
+
+<resource>
+      <reference>
+        <!-- Bundle资源示例 -->
+        <reference value="Bundle/appointment-register-RESTful-example"/>
+      </reference>
+      <name value="患者预约挂号RESTful接口的Bundle示例"/>
+      <description value="演示如何定义和引用患者预约挂号实际交互场景的RESTful数据交换Bundle示例"/>
+      <exampleCanonical value="http://hl7.org/fhir/StructureDefinition/Bundle"/>
+    </resource>
+
+
+    <resource>
+      <reference>
+        <!-- Bundle资源示例 -->
+        <reference value="Bundle/patient-outpatient-arrive-response-RESTful-example"/>
+      </reference>
+      <name value="门诊患者到诊确认RESTful接口的Bundle示例"/>
+      <description value="演示如何定义和引用门诊患者到诊确认实际交互场景的RESTful数据交换Bundle示例"/>
+      <exampleCanonical value="http://hl7.org/fhir/StructureDefinition/Bundle"/>
+    </resource>
+
+    <resource>
+      <reference>
+        <!-- Bundle资源示例 -->
+        <reference value="Bundle/schedule-of-clinic-visits-RESTful-example"/>
+      </reference>
+      <name value="确定门诊班次RESTful接口的Bundle示例"/>
+      <description value="演示如何定义和引用确定门诊班次实际交互场景的RESTful数据交换Bundle示例"/>
+      <exampleCanonical value="http://hl7.org/fhir/StructureDefinition/Bundle"/>
+    </resource>
+
+    <resource>
+      <reference>
+        <!-- Bundle资源示例 -->
+        <reference value="Bundle/slot-of-clinic-visits-RESTful-example"/>
+      </reference>
+      <name value="确定门诊时段RESTful接口的Bundle示例"/>
+      <description value="演示如何定义和引用确定门诊时段实际交互场景的RESTful数据交换Bundle示例"/>
+      <exampleCanonical value="http://hl7.org/fhir/StructureDefinition/Bundle"/>
+    </resource>
+
+    <resource>
+      <reference>
+        <!-- Bundle资源示例 -->
+        <reference value="Bundle/source-of-outpatient-service-RESTful-example"/>
+      </reference>
+      <name value="确定门诊号源RESTful接口的Bundle示例"/>
+      <description value="演示如何定义和引用确定门诊号源实际交互场景的RESTful数据交换Bundle示例"/>
+      <exampleCanonical value="http://hl7.org/fhir/StructureDefinition/Bundle"/>
+    </resource>
+
+
+
+   
+
+
+    <resource>
+      <reference>
+        <!-- 预约的整体状态 -->
+        <reference value="ValueSet/appointment-status-vs"/>
+      </reference>
+      <name value="预约的整体状态"/>
+	    <description value="预约的整体状态。整个预约过程中保持唯一"/>
+    </resource>
+
+    <resource>
+      <reference>
+        <!-- 患者预约类型 -->
+        <reference value="ValueSet/appointment-type-vs"/>
+      </reference>
+      <name value="患者预约类型"/>
+	    <description value="患者预约类型，包括  网上预约、现场预约，自助预约"/>
+    </resource>
+	
+	
+	<resource>
+      <reference>
+        <!-- 费用状态 -->
+        <reference value="ValueSet/chargeitem-status-vs"/>
+      </reference>
+      <name value="费用状态"/>
+	    <description value="费用状态，计划|可计费|不可计费|中止|已计费|进入"/>
+    </resource>
+	
+	
+	<resource>
+      <reference>
+        <!-- 文档类别 -->
+        <reference value="ValueSet/document-category-vs"/>
+      </reference>
+      <name value="文档类别"/>
+	    <description value="文档类别，描述该文档的实际文档内容的分类，如转诊（院）记录"/>
+    </resource>
+	
+	<resource>
+      <reference>
+        <!-- 文档引用的状态 -->
+        <reference value="ValueSet/document-reference-status-vs"/>
+      </reference>
+      <name value="文档引用的状态"/>
+	    <description value="文档引用的状态 如：  草稿，当前最新， 被取代， 输入错误的，未知"/>
+    </resource>
+	
+	<resource>
+      <reference>
+        <!-- 文档分类  -->
+        <reference value="ValueSet/document-type-vs"/>
+      </reference>
+      <name value="文档分类 "/>
+	    <description value="描述患者在院文档的分类的代码系统，如城乡居民健康档案基本数据集"/>
+    </resource>
+	
+	<resource>
+      <reference>
+        <!-- 参与者角色 -->
+        <reference value="ValueSet/encounter-participant-type-vs"/>
+      </reference>
+      <name value="参与者角色"/>
+	    <description value="参与者角色 如：医护人员，患者，诊室，其他，设备"/>
+    </resource>
+	
+	<resource>
+      <reference>
+        <!-- 医疗事件状态 -->
+        <reference value="ValueSet/encounter-status-vs"/>
+      </reference>
+      <name value="医疗事件状态"/>
+	    <description value="医疗事件状态，描述医疗事件的过程中"/>
+    </resource>
+	
+	
+	<resource>
+      <reference>
+        <!-- 预约应答状态 -->
+        <reference value="ValueSet/participationstatus-vs"/>
+      </reference>
+      <name value="预约应答状态"/>
+	    <description value="预约应答状态，包括应答者对此次预约的回应结果，如：同意，不同意等。"/>
+    </resource>
+	
+	<resource>
+      <reference>
+        <!-- 文档密级 -->
+        <reference value="ValueSet/security-labels-vs"/>
+      </reference>
+      <name value="文档密级"/>
+	    <description value="描述文档的保密等级"/>
+    </resource>
+	
+	<resource>
+      <reference>
+        <!-- 服务分类 -->
+        <reference value="ValueSet/service-category-vs"/>
+      </reference>
+      <name value="服务分类"/>
+	    <description value="服务分类，包括医疗服务，康养服务，美容服务，儿童保健、老年护理等"/>
+    </resource>
+	<resource>
+      <reference>
+        <!-- 服务项目分类  -->
+        <reference value="ValueSet/service-type-vs"/>
+      </reference>
+      <name value="服务项目分类 "/>
+	    <description value="服务项目分类，包括  门诊预约挂号、检查预约、手术预约、转诊预约"/>
+    </resource>
+	
+	<resource>
+      <reference>
+        <!-- 时段 状态 -->
+        <reference value="ValueSet/Slot-status-vs"/>
+      </reference>
+      <name value="时段 状态"/>
+	    <description value="时段 状态，描述排班时段的状态信息。"/>
+    </resource>
+
+    <!--<resource>
+      <reference>
+        --><!-- 活动事件编码值域集 --><!--
+        <reference value="ValueSet/activity-code-vs"/>
+      </reference>
+      <name value="活动事件编码"/>
+    </resource>-->
+
+
+
+
+		<!--    <resource>
+      <reference>
+        <reference value="Library/example"/>
+      </reference>
+      <name value="Simple library example"/>
+      <description value="A simple example showing how library is pre-loaded"/>
+    </resource> -->
+		<page>
+			<!-- 若不指定目录页面，模板将强制为 toc.html -->
+			<nameUrl value="toc.html"/>
+			<title value="目录"/>
+			<generation value="html"/>
+			<page>
+				<nameUrl value="index.html"/>
+				<title value="首页"/>
+				<generation value="markdown"/>
+			</page>
+			<page>
+                <nameUrl value="spec.html"/>
+                <title value="规范定义"/>
+                <generation value="markdown"/>
+
+               <page>
+                   <nameUrl value="profiles.html"/>
+                   <title value="资源结构"/>
+                   <generation value="markdown"/>
+              </page>
+
+               <page>
+                  <nameUrl value="extensions.html"/>
+                  <title value="扩展元素"/>
+                  <generation value="markdown"/>
+               </page>
+
+               <page>
+                  <nameUrl value="terminology.html"/>
+                   <title value="术语编码"/>
+                  <generation value="markdown"/>
+               </page>
+
+                <page>
+                  <nameUrl value="REST.html"/>
+                  <title value="微服务API"/>
+                   <generation value="markdown"/>
+               </page>
+
+                <page>
+                   <nameUrl value="messages.html"/>
+                   <title value="消息交换"/>
+                   <generation value="markdown"/>
+              </page>
+
+           </page>
+
+<page>
+<nameUrl value="useage-scenarios.html"/>
+<title value="使用场景"/>
+<generation value="markdown"/>
+			<page>
+                 <nameUrl value="hospital-referral.html"/>
+				<title value="双向转诊-住院"/>
+				<generation value="markdown"/> 
+              </page>
+</page>
+
+			 
+
+		  	 <page>
+               <nameUrl value="downloads.html"/>
+    			<title value="下载"/>
+    			<generation value="html"/>
+ 			 </page>
+			<!-- 
+			<page>
+				<nameUrl value="changes.html"/>
+				<title value="指南历史版本"/>
+				<generation value="html"/>
+			</page>
+			-->
+		</page>
+		<!-- copyright year 是IGPublisher的强制参数 -->
+		<parameter>
+			<code value="copyrightyear"/>
+			<value value="2020+"/>
+		</parameter>
+		<!-- releaselabel should be the ballot status for HL7-published IGs. -->
+		<parameter>
+			<code value="releaselabel"/>
+			<value value="CI Build"/>
+		</parameter>
+		<parameter>
+			<code value="find-other-resources"/>
+			<value value="true"/>
+		</parameter>
+		<parameter>
+			<code value="path-resource"/>
+			<value value="input\history"/>
+		</parameter>
+		<parameter>
+			<code value="path-binary"/>
+			<value value="input\cql"/>
+		</parameter>
+		<parameter>
+			<code value="path-liquid"/>
+			<value value="templates\liquid"/>
+		</parameter>
+		<!-- Uncomment one or more of these if you want to limit which syntaxes are supported or want to disable the display of mappings
+    <parameter>
+      <code value="excludexml"/>
+      <value value="true"/>
+    </parameter>
+    <parameter>
+      <code value="excludejson"/>
+      <value value="true"/>
+    </parameter>
+    <parameter>
+      <code value="excludettl"/>
+      <value value="true"/>
+    </parameter>
+    <parameter>
+      <code value="excludemap"/>
+      <value value="true"/>
+    </parameter>-->
+	</definition>
+</ImplementationGuide>

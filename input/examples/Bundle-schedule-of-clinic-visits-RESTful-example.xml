@@ -1,0 +1,634 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Bundle xmlns="http://hl7.org/fhir">
+	<id value="schedule-of-clinic-visits-RESTful-example"/>
+	<type value="transaction"/>
+	
+	
+		
+  <!--************************确定排班信息******************************-->
+  <entry>
+    <resource>
+      <Task xmlns="http://hl7.org/fhir">
+        <id value="ScheduleVisits-example"/>
+        <!-- 0..1 canonical(ActivityDefinition) 关联ActivityDefinition -->
+        <instantiatesCanonical value="http://fhir.scwjxx.cn/Sichuan/ActivityDefinition/ad-schedule-of-clinic-visits"/>
+        <!-- 1..1 状态 draft | requested | received | accepted | + -->
+        <status value="requested"/>
+
+        <!-- 1..1 目的 unknown | proposal | plan | order | original-order | reflex-order | filler-order | instance-order | option -->
+        <intent value="proposal"/>
+
+        <!-- 0..1 CodeableConcept 事件类型 -->
+        <businessStatus>
+          <coding>
+            <!-- 0..1 事件类型 CodeSystem url  -->
+            <system value="http://fhir.scwjxx.cn/Sichuan/CodeSystem/bussiness-event-code"/>
+            <!-- 0..1 事件类型代码-->
+            <code value="C03001"/>
+            <!-- 0..1 事件类型名称 -->
+            <display value="确定门诊班次"/>
+          </coding>
+        </businessStatus>
+
+        <!-- 0..1 CodeableConcept Task Type 任务类型-->
+        <code>
+          <coding>
+            <!-- 0..1 任务类型 CodeSystem url  -->
+            <system value="http://hl7.org/fhir/CodeSystem/task-code"/>
+            <!-- 0..1 任务类型代码-->
+            <code value="approve"/>
+            <!-- 0..1 任务类型名称 -->
+            <display value="Activate/approve the focal resource"/>
+          </coding>
+        </code>
+        <!-- 0..1 任务描述 -->
+        <description value="根据医生、诊室等资源进行排版班次确定，包括班次时间段，排班的参与者，包括医生和诊室等信息。"/>
+        <!-- 0..1 Reference(Any) 关联该任务正在处理的资源 -->
+        <focus>
+          <reference value="Schedule/ScheduleOfClinicVisits-example"/>
+        </focus>
+        <!-- ?? 0..1 任务创建日期 -->
+        <authoredOn value="2019-02-10T13:00:00Z"/>
+        <!-- ?? 0..1 最后更新日期 -->
+        <lastModified value="2019-02-10T13:00:00Z"/>
+        <!-- 0..1 任务创建者，关联医护人员 -->
+        <requester>
+          <reference value="Practitioner/Practitioner001-example"/>
+        </requester>
+
+        <!-- 0..* 任务备注 -->
+        <note>
+          <!-- 1..1 The annotation  - text content (as markdown) -->
+          <text value="[markdown]"/>
+        </note>
+      </Task>
+    </resource>
+  </entry>
+							
+					
+<!--************************排班信息******************************-->
+	<entry>
+		<resource>
+			<Schedule xmlns="http://hl7.org/fhir">
+				  <id value="ScheduleOfClinicVisits-example"/>
+				  <meta>
+					<profile value="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/outpatient-schedule"/>
+				  </meta>
+
+				  <!-- 0..* 排班编号 -->
+				  <identifier>
+					<!--0..1 排班编号 NamingSystem uri-->
+					<system value="http://fhir.scwjxx.cn/Sichuan/NamingSystem/outpatient-schedule-identifier"/>
+					<!-- 0..1 排班编号 -->
+					<value value="[string]"/>
+				  </identifier>
+  
+				  <!-- 0..1 是否在用 -->
+				  <active value="true"/>
+
+
+				  <!-- 0..1 时段 -->
+				  <serviceCategory>
+					<!-- 0..* 时段编码 -->
+					<coding>
+					  <!-- 0..1 时段代码 CodeSystem url  地址（上午、下午、晚上）-->
+					  <system value="http://fhir.scwjxx.cn/Sichuan/CodeSystem/service-category"/>
+					  <!-- 0..1 时段代码-->
+					  <code value="01"/>
+					  <!-- 0..1 时段名称 -->
+					  <display value="上午"/>
+					</coding>
+				  </serviceCategory>
+
+				
+
+				 
+				  <!-- 0..1 班次时段 -->
+				  <planningHorizon>
+					<!-- ?? 0..1 开始时间 -->
+					<start value="2019-02-08T13:00:00Z"/>
+					<!-- ?? 0..1 结束时间 -->
+					<end value="2019-02-12T13:00:00Z"/>
+				  </planningHorizon>
+
+				  <!-- 1..1  医生-->
+				  <actor>
+					<!-- 0..1 Reference(Practitioner) 关联医护人员信息 -->
+					<reference value="Practitioner/Practitioner001-example"/>
+				  </actor>
+
+				  <!-- 1..1  诊室-->
+				  <actor>
+				  <!-- 0..1 Reference(Location) 关联诊室信息 -->
+					<reference value="Location/OutpatientConsultationRoom001-example"/>
+				  </actor>
+  
+  
+				  <!-- 0..1 排班备注-->
+				  <comment value="[string]"/>
+				</Schedule>
+		</resource>
+	</entry>
+
+	<!--************************门诊诊室信息******************************-->
+	<entry>
+		<resource>
+			<Location xmlns="http://hl7.org/fhir">
+				<!--0..1 诊室ID-->
+				<id value="OutpatientConsultationRoom001-example"/>
+				<meta>
+					<profile value="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/outpatient-consultation-room"/>
+				</meta>
+
+				<!--0..* 诊室号 -->
+				<identifier>
+					<!-- 0..1 诊室号NamingSystem uri-->
+					<system value="http://fhir.scwjxx.cn/Sichuan/NamingSystem/consulting-room-identifier"/>
+					<!-- 0..1 诊室号 -->
+					<value value="X00001"/>
+				</identifier>
+
+				<!-- 0..1 诊室名称 -->
+				<name value="骨1诊"/>
+				<!-- 0..* 诊室别名 -->
+				<alias value="骨科1诊室"/>
+				<!-- 0..1 关于诊室的其他详细信息，可以作为进一步的信息显示 -->
+				<description value="该诊室为骨科1号诊室"/>
+
+				<!-- 0..1 位置功能类型 -->
+				<type>
+					<!--0..1 位置功能类别  （固定为房间）-->
+					<coding>
+						<!--0..1  位置功能类别 CodeSsystem地址-->
+						<system value="http://fhir.scwjxx.cn/Sichuan/CodeSystem/location-role-type"/>
+						<!--0..1  位置功能类别-->
+						<code value="01"/>
+						<!--0..1 位置功能类别说明-->
+						<display value="门诊诊室"/>
+					</coding>
+				</type>
+
+				<!-- 0..1 诊室物理形式 -->
+				<physicalType>
+					<coding>
+						<!--病床物理形式 CodeSystem地址-->
+						<system value="http://terminology.hl7.org/CodeSystem/location-physical-type"/>
+						<!-- 0..1 病床物理形式代码-->
+						<code value="ro"/>
+						<!-- 0..1 病床物理形式 -->
+						<display value="Room"/>
+					</coding>
+				</physicalType>
+
+				<!-- 0..1 Reference(Organization) 科室信息 -->
+				<managingOrganization>
+					<!-- 0..1  Reference(Organization）关联组织机构信息（科室） -->
+					<reference value="Organization/Department001-example"/>
+				</managingOrganization>
+			</Location>
+		</resource>
+	</entry>
+
+	<!--************************科室信息******************************-->
+	<entry>
+		<resource>
+			<Organization xmlns="http://hl7.org/fhir">
+				<id value="Department001-example"/>
+				<meta>
+					<profile value="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/Department"/>
+				</meta>
+				<!--0..1 科室编号-->
+				<identifier>
+					<!--0..1 科室编号 NamingSystem uri-->
+					<system value="http://fhir.scwjxx.cn/Sichuan/NamingSystem/department-identifier"/>
+					<!-- 0..1 科室编号 -->
+					<value value="ABC0000001"/>
+				</identifier>
+				<!-- 0..1 是否可用 -->
+				<active value="true"/>
+
+				<!-- 0..1 组织机构层级种类（固定为科室） -->
+				<type>
+					<coding>
+						<!--组织机构层级种类 CodeSystem地址-->
+						<system value="http://fhir.scwjxx.cn/Sichuan/CodeSystem/hierarchy-kind"/>
+						<!-- 0..1 组织机构层级种类代码-->
+						<code value="A100"/>
+						<!-- 0..1 组织机构层级种类 -->
+						<display value="科室"/>
+					</coding>
+				</type>
+
+
+				<!--  0..1 科室名称 -->
+				<name value="普通外科"/>
+				<!-- 0..* 病区别名 -->
+				<alias value="外1科"/>
+				<!--  0..1 联系电话 -->
+				<telecom>
+					<!--  0..1 类型 phone | fax | email | pager | url | sms | other -->
+					<system value="phone"/>
+					<!-- 0..1 电话号码 -->
+					<value value="13309876352"/>
+				</telecom>
+				<!--  0..1 电子邮箱 -->
+				<telecom>
+					<!--  0..1 类型 phone | fax | email | pager | url | sms | other -->
+					<system value="email"/>
+					<!-- 0..1 电子邮箱 -->
+					<value value="cdyyy@qq.com"/>
+				</telecom>
+
+				<!-- 0..1 Reference(Organization)  -->
+				<partOf>
+					<!-- 0..1  Reference(Organization）关联组织机构信息（病区） -->
+					<reference value="Organization/EndemicArea001-example"/>
+				</partOf>
+
+
+				<!--0..1 图片 -->
+				<extension url="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/organization-picture">
+					<!--0..1 logo图片 -->
+					<extension url="logo">
+						<ValueAttachment>
+							<!-- 0..1 图片url -->
+							<url value="http://upload.cdzxy.com/2020/0703/thumb_309_232_20200703094539230.jpg"/>
+							<!-- 0..1 图片标题 -->
+							<title value="科室logo"/>
+						</ValueAttachment>
+					</extension>
+					<!--0..* 其他图片 -->
+					<extension url="images">
+						<ValueAttachment>
+							<!-- 0..1 图片url -->
+							<url value="http://upload.cdzxy.com/2020/0703/thumb_309_232_20200703094739309.jpg"/>
+							<!-- 0..1 图片标题 -->
+							<title value="科室实景图1"/>
+						</ValueAttachment>
+					</extension>
+					<extension url="images">
+						<ValueAttachment>
+							<!-- 0..1 图片url -->
+							<url value="http://upload.cdzxy.com/2017/0724/20170724063817937.jpg"/>
+							<!-- 0..1 图片标题 -->
+							<title value="科室实景图2"/>
+						</ValueAttachment>
+					</extension>
+				</extension>
+
+				<!--科室简介 -->
+				<extension url="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/BriefIntroduction">
+					<!--科室简介 -->
+					<valueString value="XXXXXXXX科室针对【血小板减少】、【血小板增多】、【过敏性紫癜】、【贫血】等病提供专业治疗方案。"/>
+				</extension>
+			</Organization>
+		</resource>
+	</entry>
+
+	<!--************************病区信息******************************-->
+	<entry>
+		<resource>
+			<Organization xmlns="http://hl7.org/fhir">
+				<id value="EndemicArea001-example"/>
+				<meta>
+					<profile value="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/EndemicArea"/>
+				</meta>
+				<!--0..1 病区编号-->
+				<identifier>
+					<!--0..1 病区编号 NamingSystem uri-->
+					<system value="http://fhir.scwjxx.cn/Sichuan/NamingSystem/endemic-area-identifier"/>
+					<!-- 0..1 病区编号 -->
+					<value value="ABC0000001"/>
+				</identifier>
+				<!-- 0..1 是否可用 -->
+				<active value="true"/>
+
+				<!-- 0..1 组织机构层级种类（固定为病区） -->
+				<type>
+					<coding>
+						<!--组织机构层级种类 CodeSystem地址-->
+						<system value="http://fhir.scwjxx.cn/Sichuan/CodeSystem/hierarchy-kind"/>
+						<!-- 0..1 组织机构层级种类代码-->
+						<code value="A100"/>
+						<!-- 0..1 组织机构层级种类 -->
+						<display value="病区"/>
+					</coding>
+				</type>
+
+
+				<!--  0..1 病区名称 -->
+				<name value="外壳病区"/>
+				<!-- 0..* 病区别名 -->
+				<alias value="第三病区"/>
+				<!--  0..1 联系电话 -->
+				<telecom>
+					<!--  0..1 类型 phone | fax | email | pager | url | sms | other -->
+					<system value="phone"/>
+					<!-- 0..1 电话号码 -->
+					<value value="13309876352"/>
+				</telecom>
+				<!--  0..1 电子邮箱 -->
+				<telecom>
+					<!--  0..1 类型 phone | fax | email | pager | url | sms | other -->
+					<system value="email"/>
+					<!-- 0..1 电子邮箱 -->
+					<value value="cdyyy@qq.com"/>
+				</telecom>
+
+				<!-- 0..1 Reference(Organization)  -->
+				<partOf>
+					<!-- 0..1  Reference(Organization）关联组织机构信息（医院） -->
+					<reference value="Organization/Hospital001-example"/>
+				</partOf>
+
+
+				<!--0..1 图片 -->
+				<extension url="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/organization-picture">
+					<!--0..1 logo图片 -->
+					<extension url="logo">
+						<ValueAttachment>
+							<!-- 0..1 图片url -->
+							<url value="http://upload.cdzxy.com/2020/0703/thumb_309_232_20200703094539230.jpg"/>
+							<!-- 0..1 图片标题 -->
+							<title value="病区logo"/>
+						</ValueAttachment>
+					</extension>
+					<!--0..* 其他图片 -->
+					<extension url="images">
+						<ValueAttachment>
+							<!-- 0..1 图片url -->
+							<url value="http://upload.cdzxy.com/2020/0703/thumb_309_232_20200703094739309.jpg"/>
+							<!-- 0..1 图片标题 -->
+							<title value="病区实景图1"/>
+						</ValueAttachment>
+					</extension>
+					<extension url="images">
+						<ValueAttachment>
+							<!-- 0..1 图片url -->
+							<url value="http://upload.cdzxy.com/2017/0724/20170724063817937.jpg"/>
+							<!-- 0..1 图片标题 -->
+							<title value="病区实景图2"/>
+						</ValueAttachment>
+					</extension>
+				</extension>
+
+				<!--病区简介 -->
+				<extension url="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/BriefIntroduction">
+					<!--病区简介 -->
+					<valueString value="XXXXXXXX病区针对【血小板减少】、【血小板增多】、【过敏性紫癜】、【贫血】等病提供专业治疗方案。"/>
+				</extension>
+			</Organization>
+		</resource>
+	</entry>
+
+	<!--************************医院信息******************************-->
+	<entry>
+		<resource>
+			<Organization xmlns="http://hl7.org/fhir">
+				<id value="Hospital001-example"/>
+				<meta>
+					<profile value="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/Hospital"/>
+				</meta>
+				<!--0..1 医院编号-->
+				<identifier>
+					<!--0..1 医院编号 NamingSystem uri-->
+					<system value="https://www.cods.org.cn"/>
+					<!-- 0..1 医院编号 -->
+					<value value="ABC0000001"/>
+				</identifier>
+				<!-- 0..1 是否可用 -->
+				<active value="true"/>
+
+				<!-- 0..1 组织机构层级种类（固定为医院） -->
+				<type>
+					<coding>
+						<!--组织机构层级种类 CodeSystem地址-->
+						<system value="http://fhir.scwjxx.cn/Sichuan/CodeSystem/hierarchy-kind"/>
+						<!-- 0..1 组织机构层级种类代码-->
+						<code value="A100"/>
+						<!-- 0..1 组织机构层级种类 -->
+						<display value="综合医院"/>
+					</coding>
+				</type>
+				<!-- 0..1 卫生机构(组织)类别 WS 218-2002， -->
+				<type>
+					<coding>
+						<!--卫生机构(组织)类别 CodeSystem地址-->
+						<system value="http://fhir.scwjxx.cn/Sichuan/CodeSystem/health-institution-category"/>
+						<!-- 0..1 卫生机构(组织)类别代码-->
+						<code value="2"/>
+						<!-- 0..1 卫生机构(组织)类别 -->
+						<display value="医院"/>
+					</coding>
+				</type>
+				<!-- 0..1 组织机构类型 GB/T 20091-2006-->
+				<type>
+					<coding>
+						<!--组织机构类型 CodeSystem地址-->
+						<system value="http://fhir.scwjxx.cn/Sichuan/CodeSystem/Classification-for-organizations"/>
+						<!-- 0..1 组织机构类型代码-->
+						<code value="5"/>
+						<!-- 0..1 组织机构类型 -->
+						<display value="事业单位"/>
+					</coding>
+				</type>
+				<!--0..1 地址-->
+				<address>
+					<!-- 0..1 地址的完整描述 -->
+					<text value="四川省成都市高新区XXXXXX路18号"/>
+				</address>
+				<!--  0..1 医院名称 -->
+				<name value="成都市XXXXX人民医院"/>
+				<!-- 0..* 医院别名 -->
+				<alias value="成都XX医院"/>
+				<!--  0..1 联系电话 -->
+				<telecom>
+					<!--  0..1 类型 phone | fax | email | pager | url | sms | other -->
+					<system value="phone"/>
+					<!-- 0..1 电话号码 -->
+					<value value="13309876352"/>
+				</telecom>
+				<!--  0..1 电子邮箱 -->
+				<telecom>
+					<!--  0..1 类型 phone | fax | email | pager | url | sms | other -->
+					<system value="email"/>
+					<!-- 0..1 电子邮箱 -->
+					<value value="cdyyy@qq.com"/>
+				</telecom>
+				<!--  0..1 官方网页 -->
+				<telecom>
+					<!--  0..1 类型 phone | fax | email | pager | url | sms | other -->
+					<system value="url"/>
+					<!-- 0..1 官方网页 -->
+					<value value="http://www.cdzxy.com/"/>
+				</telecom>
+				<!--0..1 图片 -->
+				<extension url="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/organization-picture">
+					<!--0..1 logo图片 -->
+					<extension url="logo">
+						<ValueAttachment>
+							<!-- 0..1 图片url -->
+							<url value="http://upload.cdzxy.com/2020/0703/thumb_309_232_20200703094539230.jpg"/>
+							<!-- 0..1 图片标题 -->
+							<title value="医院logo"/>
+						</ValueAttachment>
+					</extension>
+					<!--0..* 其他图片 -->
+					<extension url="images">
+						<ValueAttachment>
+							<!-- 0..1 图片url -->
+							<url value="http://upload.cdzxy.com/2020/0703/thumb_309_232_20200703094739309.jpg"/>
+							<!-- 0..1 图片标题 -->
+							<title value="医院实景图1"/>
+						</ValueAttachment>
+					</extension>
+					<extension url="images">
+						<ValueAttachment>
+							<!-- 0..1 图片url -->
+							<url value="http://upload.cdzxy.com/2017/0724/20170724063817937.jpg"/>
+							<!-- 0..1 图片标题 -->
+							<title value="医院实景图2"/>
+						</ValueAttachment>
+					</extension>
+				</extension>
+
+				<!--医院简介 -->
+				<extension url="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/BriefIntroduction">
+					<!--医院简介 -->
+					<valueString value="XXXXXXXX医院血液科针对【血小板减少】、【血小板增多】、【过敏性紫癜】、【贫血】等病提供专业治疗方案。"/>
+				</extension>
+			</Organization>
+		</resource>
+	</entry>
+
+	<!--************************医护人员信息******************************-->
+	<entry>
+		<resource>
+			<Practitioner xmlns="http://hl7.org/fhir">
+				<id value="Practitioner001-example"/>
+				<meta>
+					<profile value="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/Practitioner"/>
+				</meta>
+				<!--1..* 身份证件号 -->
+				<identifier>
+					<!--证件类型-->
+					<type>
+						<coding>
+							<!-- 证件类型CodeSystem  地址 -->
+							<system value="http://fhir.scwjxx.cn/Sichuan/CodeSystem/identity-document-type"/>
+							<!-- 0..1 证件类别编码 -->
+							<code value="01"/>
+							<!-- 0..1 证件类别名称 -->
+							<display value="身份证"/>
+						</coding>
+					</type>
+					<!--0..1 身份证件号码NamingSystem uri-->
+					<system value="http://fhir.scwjxx.cn/Sichuan/NamingSystem/identityDocument"/>
+					<!-- 0..1 身份证件号码 -->
+					<value value="511002198609021982"/>
+				</identifier>
+				<active value="true"/>
+				<!-- 0..* 姓名 -->
+				<name>
+					<!-- 0..1 全名 -->
+					<text value="李明明"/>
+				</name>
+				<telecom>
+					<!--  0..1 类型 phone | fax | email | pager | url | sms | other -->
+					<system value="phone"/>
+					<!-- 0..1 电话号码 -->
+					<value value="13309092736"/>
+				</telecom>
+				<!--  0..1 电子邮箱 -->
+				<telecom>
+					<!--  0..1 类型 phone | fax | email | pager | url | sms | other -->
+					<system value="email"/>
+					<!-- 0..1 电子邮箱 -->
+					<value value="263736484@qq.com"/>
+				</telecom>
+				<!-- 0..* 地址-->
+				<address>
+					<!-- 0..1 地址的完整描述 -->
+					<text value="成都市XXX区XXX小区XXXX号"/>
+				</address>
+				<!-- 0..1 生理性别 -->
+				<gender>
+					<extension url="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/sexual-distinction-of-human">
+						<valueCoding>
+							<!-- 0..1 生理性别 CodeSystem url  地址-->
+							<system value="http://fhir.scwjxx.cn/Sichuan/CodeSystem/physiological-gender"/>
+							<!-- 0..1 生理性别代码-->
+							<code value="01"/>
+							<!-- 0..1 生理性别说明 -->
+							<display value="男"/>
+						</valueCoding>
+					</extension>
+				</gender>
+				<!-- 0..1 出生日期 -->
+				<birthDate value="1980-01-01"/>
+				<!-- 0..* 照片 -->
+				<photo>
+					<!-- 0..1 uri地址 -->
+					<url value="http://www.cctrry.com/images/image1.png"/>
+					<!-- 0..1 标题 -->
+					<title value="头像"/>
+				</photo>
+				<photo>
+					<!-- 0..1 uri地址 -->
+					<url value="http://www.cctrry.com/images/image2.png"/>
+					<!-- 0..1 标题 -->
+					<title value="寸照"/>
+				</photo>
+				<extension url="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/BriefIntroduction">
+					<valueString value="擅长运用中医、中西医结合治疗血小板减少、血小板增多等血液疾病独树一帜，她在多年临床发现治疗血液病单纯靠西药激素治疗并不理想，立志另辟蹊径潜心进修中医，对多种疑难病症有着丰富的临床诊疗经验。"/>
+				</extension>
+				<!-- 0..1 国籍   GB/T 2659 世界各国和地区名称代码-->
+				<extension url="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/Nationality">
+					<valueCoding>
+						<!-- 0..1 世界各国和地区名称代码 CodeSystem url  地址  -->
+						<system value="http://fhir.scwjxx.cn/Sichuan/CodeSystem/countries-and-regions"/>
+						<!-- 0..1 世界各国和地区名称代码-->
+						<code value="64"/>
+						<!-- 0..1 世界各国和地区名称代码说明 -->
+						<display value="中华人民共和国"/>
+					</valueCoding>
+				</extension>
+				<!-- 0..1 民族  中华56个民族代码， GB 3304-->
+				<extension url="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/ChineseEthnicity">
+					<valueCoding>
+						<!-- 0..1 民族类别 CodeSystem url  地址-->
+						<system value="http://fhir.scwjxx.cn/Sichuan/CodeSystem/nationalites-of-PRC"/>
+						<!-- 0..1 民族类别代码-->
+						<code value="01"/>
+						<!-- 0..1 民族类别说明 -->
+						<display value="汉族"/>
+					</valueCoding>
+				</extension>
+				<!-- 0..1 政治面貌， GB 4762-1984-->
+				<extension url="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/sexual-distinction-of-human">
+					<extension url="orgnaztion">
+						<valueCoding>
+							<!-- 0..1 政治面貌 CodeSystem url  地址-->
+							<system value="http://fhir.scwjxx.cn/Sichuan/CodeSystem/politic-affiliation"/>
+							<!-- 0..1 政治面貌代码-->
+							<code value="01"/>
+							<!-- 0..1 政治面貌说明 -->
+							<display value="群众"/>
+						</valueCoding>
+					</extension>
+				</extension>
+				<!-- 0..1 参加工作日期-->
+				<extension url="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/date-start-work">
+					<valueDate value="2014-01-01"/>
+				</extension>
+				<!-- 0..1 是否多地点执业医师-->
+				<extension url="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/is-work-for-multi-org">
+					<valueBoolean value="false"/>
+				</extension>
+			</Practitioner>
+		</resource>
+	</entry>
+
+</Bundle>
+
+

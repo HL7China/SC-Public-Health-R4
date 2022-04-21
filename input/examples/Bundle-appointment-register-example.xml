@@ -1,0 +1,482 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Bundle xmlns="http://hl7.org/fhir">
+	<id value="appointment-register-example"/>
+	<type value="message"/>
+	<!--************************消息头****************************-->
+	<entry>
+		<resource>
+			<MessageHeader xmlns="http://hl7.org/fhir">
+				<!--1.1 消息ID（实例ID，重发不变）-->
+				<id value="MessageHeader-0001"/>
+				<!--消息事件 1..1-->
+				<eventCoding>
+					<!-- 0..1 事件类型 CodeSystem url  -->
+					<system value="http://fhir.scwjxx.cn/Sichuan/CodeSystem/bussiness-event-code"/>
+					<!-- 0..1 事件类型代码-->
+					<code value="C03001"/>
+					<!-- 0..1 事件类型名称 -->
+					<display value="患者预约挂号"/>
+				</eventCoding>
+				<!-- 1..1 消息源应用程序 -->
+				<source>
+					<!-- 0..1 系统名称（发送消息的系统） -->
+					<name value="[string]"/>
+					<!-- 0..1 软件名称（子系统名称） -->
+					<software value="[string]"/>
+					<!-- 0..1 运行的软件版本（当前版本） -->
+					<version value="[string]"/>
+					<!-- 1..1 ID地址(当前操作客户端IP地址) -->
+					<endpoint value="[uri]"/>
+				</source>
+				<!--消息实际内容 0..*-->
+				<focus>
+					<!-- 0..1 Reference(Appointment) 关联门诊号源信息 -->
+					<reference value="Appointment/OutpatientRegistrationSource-example"/>
+				</focus>
+				<!-- 0..1 canonical(MessageDefinition) Link to the definition for this message -->
+				<definition value="http://fhir.scwjxx.cn/Sichuan/MessageDefinition/md-appointment-register"/>
+			</MessageHeader>
+		</resource>
+	</entry>
+		
+ <!--************************号源信息******************************-->
+	<entry>
+		<resource>
+				<Appointment xmlns="http://hl7.org/fhir">
+				  <!-- 0..1 号源信息逻辑ID -->
+				  <id value="OutpatientRegistrationSource-example"/>
+				  <meta>
+					<profile value="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/outpatient-registration-source"/>
+				  </meta>
+
+
+				  <!-- 0..* 预约挂号号源编号 -->
+				  <identifier>
+					<!-- 0..1 预约挂号号源编号NamingSystem uri-->
+					<system value="http://fhir.scwjxx.cn/Sichuan/NamingSystem/outpatient-registration-source-identifier"/>
+					<!-- 0..1 预约挂号号源编号 -->
+					<value value="A0000001"/>
+				  </identifier>
+  
+					<!-- 1..1 预约状态 -->
+								<status >
+									<extension url="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/resource-status">
+										<valueCoding>
+											<!-- 0..1 预约状态 CodeSystem url -->
+											<system value=" http://hl7.org/fhir/appointmentstatus"/>
+											<!-- 0..1 预约状态代码-->
+											<code value=" booked"/>
+											<!-- 0..1 预约状态说明 -->
+											<display value="booked"/>
+										</valueCoding>
+									</extension>
+								</status>
+
+				<!-- 0..1 服务类别 -->
+								<serviceCategory>
+									<coding>
+										<!-- 0..1 服务类别 CodeSystem url  -->
+										<system value="http://fhir.scwjxx.cn/Sichuan/CodeSystem/service-category"/>
+										<!-- 0..1 服务类别代码-->
+										<code value="01"/>
+										<!-- 0..1 服务类别名称 -->
+										<display value="医疗服务"/>
+									</coding>
+								</serviceCategory>
+								<!-- 0..1 服务项目分类 -->
+								<serviceType>
+									<coding>
+										<!-- 0..1 服务项目分类 CodeSystem url  -->
+										<system value="http://fhir.scwjxx.cn/Sichuan/CodeSystem/service-type"/>
+										<!-- 0..1 服务项目分类代码-->
+										<code value="03"/>
+										<!-- 0..1 服务项目分类 -->
+										<display value="转诊预约"/>
+									</coding>
+								</serviceType>
+				  <!-- 0..1 患者预约的类型（非服务类型） -->
+				  <appointmentType>
+					<coding>
+					  <!-- 0..1 服务项目分类 CodeSystem url  -->
+					  <system value="http://fhir.scwjxx.cn/Sichuan/CodeSystem/appointment-type"/>
+					  <!-- 0..1 服务项目分类代码-->
+					  <code value="01"/>
+					  <!-- 0..1 服务项目分类 -->
+					  <display value="网上预约"/>
+					</coding>
+				  </appointmentType>
+
+				  <!-- 0..1 开始时间 -->
+				  <start value="2019-11-12T13:00:00Z"/>
+				  <!-- 0..*  预约号源时段 -->
+				  <slot>
+					<!-- 0..1  Reference(Slot）关联号源时段信息 -->
+					<reference value="Slot/SlotID"/>
+				  </slot>
+				  <!-- 0..1 预约挂号时间 -->
+				  <created value="2019-11-12T13:00:00Z"/>
+
+				  <!-- 0..1 注意事项 -->
+				  <patientInstruction value="[string]"/>
+				  <!-- 1..1 医生 -->
+				  <participant>
+					<!-- 0..1 参与者角色 -->
+					<type>
+					  <coding>
+						<!-- 0..1 参与者角色 CodeSystem url  -->
+						<system value="http://fhir.scwjxx.cn/Sichuan/CodeSystem/encounter-participant-type"/>
+						<!-- 0..1 参与者角色代码-->
+						<code value="01"/>
+						<!-- 0..1 参与者角色 -->
+						<display value="门诊医生"/>
+					  </coding>
+					</type>
+					<!-- 0..1  Reference(Practitioner）关联医护人员信息 -->
+					<actor>
+    						<reference value="Practitioner/Practitioner001-example"/>
+					</actor>
+					  <!-- 1..1  状态 固定为 accepted    accepted | declined | tentative | needs-action -->
+					<status value="accepted"/> 
+				  </participant>
+				  <!-- 0..1 诊室 -->
+				  <participant>
+					<!-- 0..1 参与者角色 -->
+					<type>
+					  <coding>
+						<!-- 0..1 参与者角色 CodeSystem url  -->
+						<system value="http://fhir.scwjxx.cn/Sichuan/CodeSystem/encounter-participant-type"/>
+						<!-- 0..1 参与者角色代码-->
+						<code value="02"/>
+						<!-- 0..1 参与者角色 -->
+						<display value="门诊诊室"/>
+					  </coding>
+					</type>
+					<!-- 0..1  Reference(Location）关联门诊诊室信息 -->
+					<actor>
+    					<reference value="Location/OutpatientConsultationRoom001-example"/>
+					</actor>
+					<!-- 1..1  状态 固定为 accepted    accepted | declined | tentative | needs-action -->
+					<status value="accepted"/>
+				  </participant>
+				
+				 <!-- 0..1 患者 -->
+				  <participant>
+					<!-- 0..1 参与者角色 -->
+					<type>
+					  <coding>
+						<!-- 0..1 参与者角色 CodeSystem url  -->
+						<system value="http://fhir.scwjxx.cn/Sichuan/CodeSystem/encounter-participant-type"/>
+						<!-- 0..1 参与者角色代码-->
+						<code value="03"/>
+						<!-- 0..1 参与者角色 -->
+						<display value="患者"/>
+					  </coding>
+					</type>
+					<!-- 0..1  Reference(Patient）关联患者信息 -->
+					<actor>
+    					<reference value="Patient/Patient001-example"/>
+					</actor>
+					<!-- 1..1  状态 固定为 accepted    accepted | declined | tentative | needs-action -->
+					<status value="accepted"/>
+				  </participant>
+				</Appointment>
+		</resource>
+	</entry>
+							
+				<!--************************患者信息******************************-->
+	<entry>
+		<resource>
+			<Patient xmlns="http://hl7.org/fhir">
+				<!--0..1 患者ID-->
+				<id value="Patient001-example"/>
+				<meta>
+					<profile value="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/Patient"/>
+				</meta>
+				<!--1..* 身份证件号 -->
+				<identifier>
+					<!--证件类型-->
+					<type>
+						<coding>
+							<!-- 证件类型CodeSystem  地址 -->
+							<system value="http://fhir.scwjxx.cn/Sichuan/CodeSystem/identity-document-type"/>
+							<!-- 0..1 证件类别编码 -->
+							<code value="[code]"/>
+							<!-- 0..1 证件类别名称 -->
+							<display value="[string]"/>
+						</coding>
+					</type>
+					<!--0..1 身份证件号码NamingSystem uri-->
+					<system value="http://fhir.scwjxx.cn/Sichuan/NamingSystem/identityDocument"/>
+					<!-- 0..1 身份证件号码 -->
+					<value value="511002938706190932"/>
+				</identifier>
+				<!-- 0..* 患者姓名 -->
+				<name>
+					<!-- 0..1 全名 -->
+					<text value="张三"/>
+				</name>
+				<!-- 0..1 生理性别 -->
+				<gender>
+					<extension url="http://fhir.scwjxx.cn/Sichuan//StructureDefinition/sexual-distinction-of-human">
+						<valueCoding>
+							<!-- 0..1 生理性别 CodeSystem url  地址-->
+							<system value="http://fhir.scwjxx.cn/Sichuan/CodeSystem/physiological-gender"/>
+							<!-- 0..1 生理性别代码-->
+							<code value="01"/>
+							<!-- 0..1 生理性别说明 -->
+							<display value="男"/>
+						</valueCoding>
+					</extension>
+				</gender>
+				<!--  0..* 联系电话 -->
+				<telecom>
+					<!--  0..1 类型 phone | fax | email | pager | url | sms | other -->
+					<system value="phone"/>
+					<!-- 0..1 电话号码 -->
+					<value value="13387362763"/>
+				</telecom>
+				<!-- 0..1 出生日期 -->
+				<birthDate value="1980-02-01"/>
+				<!--0..1 地址-->
+				<address>
+					<!-- 0..1 地址的完整描述 -->
+					<text value="[string]"/>
+					<!--行政区划代码(由于行政区划为12位村) -->
+					<extension url="http://fhir.scwjxx.cn/Sichuan//StructureDefinition/AdministrativeDivision">
+						<!--行政区划代码 -->
+						<valueString value="5101002029378110"/>
+					</extension>
+				</address>
+
+				<!--联系人 -->
+				<contact>
+					<relationship>
+						<coding>
+							<system value="http://fhir.scwjxx.cn/Sichuan/CodeSystem/contact-relationship" />
+							<!-- 联系人关系代码 -->
+							<code value="father" />
+							<!-- 联系人关系名称 -->
+							<display value="父亲"/>
+						</coding>
+					</relationship>
+					<!-- 联系人姓名 -->
+					<name>
+						<text value="李四" />
+					</name>
+				</contact>
+				<!-- 0..1 婚姻状况 GB/T 2261.2-->
+				<maritalStatus>
+					<coding>
+						<!-- 婚姻状况CodeSystem  地址 -->
+						<system value="http://fhir.scwjxx.cn/Sichuan/CodeSystem/marital-status"/>
+						<!-- 0..1 婚姻状况编码 -->
+						<code value="01"/>
+						<!-- 0..1 婚姻状况 -->
+						<display value="已婚"/>
+					</coding>
+				</maritalStatus>
+				<!-- 民族 -->
+				<extension url="http://fhir.scwjxx.cn/Sichuan//StructureDefinition/ChineseEthnicity">
+					<valueCoding>
+						<system value="http://fhir.scwjxx.cn/Sichuan/CodeSystem/nationalites-of-PRC"/>
+						<!-- 民族编码 -->
+						<code value="1"/>
+						<!-- 民族名称 -->
+						<display value="汉族"/>
+					</valueCoding>
+				</extension>
+			</Patient>
+		</resource>
+	</entry>		
+
+
+	<!--************************门诊诊室信息******************************-->
+	<entry>
+		<resource>
+			<Location xmlns="http://hl7.org/fhir">
+				<!--0..1 诊室ID-->
+				<id value="OutpatientConsultationRoom001-example"/>
+				<meta>
+					<profile value="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/outpatient-consultation-room"/>
+				</meta>
+
+				<!--0..* 诊室号 -->
+				<identifier>
+					<!-- 0..1 诊室号NamingSystem uri-->
+					<system value="http://fhir.scwjxx.cn/Sichuan/NamingSystem/consulting-room-identifier"/>
+					<!-- 0..1 诊室号 -->
+					<value value="X00001"/>
+				</identifier>
+
+				<!-- 0..1 诊室名称 -->
+				<name value="骨1诊"/>
+				<!-- 0..* 诊室别名 -->
+				<alias value="骨科1诊室"/>
+				<!-- 0..1 关于诊室的其他详细信息，可以作为进一步的信息显示 -->
+				<description value="该诊室为骨科1号诊室"/>
+
+				<!-- 0..1 位置功能类型 -->
+				<type>
+					<!--0..1 位置功能类别  （固定为房间）-->
+					<coding>
+						<!--0..1  位置功能类别 CodeSsystem地址-->
+						<system value="http://fhir.scwjxx.cn/Sichuan/CodeSystem/location-role-type"/>
+						<!--0..1  位置功能类别-->
+						<code value="01"/>
+						<!--0..1 位置功能类别说明-->
+						<display value="门诊诊室"/>
+					</coding>
+				</type>
+
+				<!-- 0..1 诊室物理形式 -->
+				<physicalType>
+					<coding>
+						<!--病床物理形式 CodeSystem地址-->
+						<system value="http://terminology.hl7.org/CodeSystem/location-physical-type"/>
+						<!-- 0..1 病床物理形式代码-->
+						<code value="ro"/>
+						<!-- 0..1 病床物理形式 -->
+						<display value="Room"/>
+					</coding>
+				</physicalType>
+
+				<!-- 0..1 Reference(Organization) 科室信息 -->
+				<managingOrganization>
+					<!-- 0..1  Reference(Organization）关联组织机构信息（科室） -->
+					<reference value="Organization/Department001-example"/>
+				</managingOrganization>
+			</Location>
+		</resource>
+	</entry>
+
+	<!--************************医护人员信息******************************-->
+	<entry>
+		<resource>
+			<Practitioner xmlns="http://hl7.org/fhir">
+				<id value="Practitioner001-example"/>
+				<meta>
+					<profile value="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/Practitioner"/>
+				</meta>
+				<!--1..* 身份证件号 -->
+				<identifier>
+					<!--证件类型-->
+					<type>
+						<coding>
+							<!-- 证件类型CodeSystem  地址 -->
+							<system value="http://fhir.scwjxx.cn/Sichuan/CodeSystem/identity-document-type"/>
+							<!-- 0..1 证件类别编码 -->
+							<code value="01"/>
+							<!-- 0..1 证件类别名称 -->
+							<display value="身份证"/>
+						</coding>
+					</type>
+					<!--0..1 身份证件号码NamingSystem uri-->
+					<system value="http://fhir.scwjxx.cn/Sichuan/NamingSystem/identityDocument"/>
+					<!-- 0..1 身份证件号码 -->
+					<value value="511002198609021982"/>
+				</identifier>
+				<active value="true"/>
+				<!-- 0..* 姓名 -->
+				<name>
+					<!-- 0..1 全名 -->
+					<text value="李明明"/>
+				</name>
+				<telecom>
+					<!--  0..1 类型 phone | fax | email | pager | url | sms | other -->
+					<system value="phone"/>
+					<!-- 0..1 电话号码 -->
+					<value value="13309092736"/>
+				</telecom>
+				<!--  0..1 电子邮箱 -->
+				<telecom>
+					<!--  0..1 类型 phone | fax | email | pager | url | sms | other -->
+					<system value="email"/>
+					<!-- 0..1 电子邮箱 -->
+					<value value="263736484@qq.com"/>
+				</telecom>
+				<!-- 0..* 地址-->
+				<address>
+					<!-- 0..1 地址的完整描述 -->
+					<text value="成都市XXX区XXX小区XXXX号"/>
+				</address>
+				<!-- 0..1 生理性别 -->
+				<gender>
+					<extension url="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/sexual-distinction-of-human">
+						<valueCoding>
+							<!-- 0..1 生理性别 CodeSystem url  地址-->
+							<system value="http://fhir.scwjxx.cn/Sichuan/CodeSystem/physiological-gender"/>
+							<!-- 0..1 生理性别代码-->
+							<code value="01"/>
+							<!-- 0..1 生理性别说明 -->
+							<display value="男"/>
+						</valueCoding>
+					</extension>
+				</gender>
+				<!-- 0..1 出生日期 -->
+				<birthDate value="1980-01-01"/>
+				<!-- 0..* 照片 -->
+				<photo>
+					<!-- 0..1 uri地址 -->
+					<url value="http://www.cctrry.com/images/image1.png"/>
+					<!-- 0..1 标题 -->
+					<title value="头像"/>
+				</photo>
+				<photo>
+					<!-- 0..1 uri地址 -->
+					<url value="http://www.cctrry.com/images/image2.png"/>
+					<!-- 0..1 标题 -->
+					<title value="寸照"/>
+				</photo>
+				<extension url="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/BriefIntroduction">
+					<valueString value="擅长运用中医、中西医结合治疗血小板减少、血小板增多等血液疾病独树一帜，她在多年临床发现治疗血液病单纯靠西药激素治疗并不理想，立志另辟蹊径潜心进修中医，对多种疑难病症有着丰富的临床诊疗经验。"/>
+				</extension>
+				<!-- 0..1 国籍   GB/T 2659 世界各国和地区名称代码-->
+				<extension url="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/Nationality">
+					<valueCoding>
+						<!-- 0..1 世界各国和地区名称代码 CodeSystem url  地址  -->
+						<system value="http://fhir.scwjxx.cn/Sichuan/CodeSystem/countries-and-regions"/>
+						<!-- 0..1 世界各国和地区名称代码-->
+						<code value="64"/>
+						<!-- 0..1 世界各国和地区名称代码说明 -->
+						<display value="中华人民共和国"/>
+					</valueCoding>
+				</extension>
+				<!-- 0..1 民族  中华56个民族代码， GB 3304-->
+				<extension url="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/ChineseEthnicity">
+					<valueCoding>
+						<!-- 0..1 民族类别 CodeSystem url  地址-->
+						<system value="http://fhir.scwjxx.cn/Sichuan/CodeSystem/nationalites-of-PRC"/>
+						<!-- 0..1 民族类别代码-->
+						<code value="01"/>
+						<!-- 0..1 民族类别说明 -->
+						<display value="汉族"/>
+					</valueCoding>
+				</extension>
+				<!-- 0..1 政治面貌， GB 4762-1984-->
+				<extension url="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/sexual-distinction-of-human">
+					<extension url="orgnaztion">
+						<valueCoding>
+							<!-- 0..1 政治面貌 CodeSystem url  地址-->
+							<system value="http://fhir.scwjxx.cn/Sichuan/CodeSystem/politic-affiliation"/>
+							<!-- 0..1 政治面貌代码-->
+							<code value="01"/>
+							<!-- 0..1 政治面貌说明 -->
+							<display value="群众"/>
+						</valueCoding>
+					</extension>
+				</extension>
+				<!-- 0..1 参加工作日期-->
+				<extension url="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/date-start-work">
+					<valueDate value="2014-01-01"/>
+				</extension>
+				<!-- 0..1 是否多地点执业医师-->
+				<extension url="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/is-work-for-multi-org">
+					<valueBoolean value="false"/>
+				</extension>
+			</Practitioner>
+		</resource>
+	</entry>
+
+</Bundle>
+
+

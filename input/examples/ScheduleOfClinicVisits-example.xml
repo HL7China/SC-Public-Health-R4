@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Schedule xmlns="http://hl7.org/fhir">
+	<id value="ScheduleOfClinicVisits-example"/>
+	<meta>
+		<profile value="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/outpatient-schedule"/>
+	</meta>
+
+	<!-- 0..* 排班编号 -->
+	<identifier>
+		<!--0..1 排班编号 NamingSystem uri-->
+		<system value="http://fhir.scwjxx.cn/Sichuan/NamingSystem/outpatient-schedule-identifier"/>
+		<!-- 0..1 排班编号 -->
+		<value value="[string]"/>
+	</identifier>
+
+	<!-- 0..1 是否在用 -->
+	<active value="true"/>
+
+
+	<!-- 0..1 时段 -->
+	<serviceCategory>
+		<!-- 0..* 时段编码 -->
+		<coding>
+			<!-- 0..1 时段代码 CodeSystem url  地址（上午、下午、晚上）-->
+			<system value="http://fhir.scwjxx.cn/Sichuan/CodeSystem/service-category"/>
+			<!-- 0..1 时段代码-->
+			<code value="01"/>
+			<!-- 0..1 时段名称 -->
+			<display value="上午"/>
+		</coding>
+	</serviceCategory>
+
+
+
+
+	<!-- 0..1 班次时段 -->
+	<planningHorizon>
+		<!-- ?? 0..1 开始时间 -->
+		<start value="2019-02-08T13:00:00Z"/>
+		<!-- ?? 0..1 结束时间 -->
+		<end value="2019-02-12T13:00:00Z"/>
+	</planningHorizon>
+
+	<!-- 1..1  医生-->
+	<actor>
+		<!-- 0..1 Reference(Practitioner) 关联医护人员信息 -->
+		<reference value="Practitioner/Practitioner001-example"/>
+	</actor>
+
+	<!-- 1..1  诊室-->
+	<actor>
+		<!-- 0..1 Reference(Location) 关联诊室信息 -->
+		<reference value="Location/OutpatientConsultationRoom001-example"/>
+	</actor>
+
+
+	<!-- 0..1 排班备注-->
+	<comment value="[string]"/>
+</Schedule>

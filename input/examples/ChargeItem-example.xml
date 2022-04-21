@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ChargeItem xmlns="http://hl7.org/fhir">
+	<id value="ChargeItem-example"/>
+	<meta>
+		<profile value="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/ChargeItem"/>
+	</meta>
+
+
+	<!-- 1..1  费用状态  -->
+	<status >
+		<extension url="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/resource-status">
+			<valueCoding>
+				<!-- 0..1 费用状态 CodeSystem url  地址(planned | billable | not-billable | aborted | billed | entered-in-error | unknown --> )-->
+				<system value="http://hl7.org/fhir/request-status"/>
+				<!-- 0..1 费用状态代码-->
+				<code value="planned"/>
+				<!-- 0..1费用状态说明 -->
+				<display value="planned"/>
+			</valueCoding>
+		</extension>
+	</status>
+	<!-- 1..1 收费代码 -->
+	<code>
+		<!-- 0..1 收费代码 CodeSystem url  地址(planned | billable | not-billable | aborted | billed | entered-in-error | unknown --> )-->
+		<system value="http://fhir.scwjxx.cn/Sichuan/CodeSystem/chargeitem-status"/>
+		<!-- 0..1 收费代码-->
+		<code value="0001"/>
+		<!-- 0..1收费代码说明 -->
+		<display value="1级专家门诊挂号费"/>
+	</code>
+	<!-- 0..1 费用金额 -->
+	<priceOverride>
+		<!-- 0..1 金额-->
+		<value value="20"/>
+	</priceOverride>
+</ChargeItem>

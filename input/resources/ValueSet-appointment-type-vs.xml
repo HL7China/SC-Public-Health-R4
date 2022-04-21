@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValueSet xmlns="http://hl7.org/fhir"> 
+	<id value="appointment-type-vs"/>
+ <url value="http://fhir.scwjxx.cn/Sichuan/ValueSet/appointment-type-vs"/>
+ <name value="appointment-type-vs"/><!-- ?? 0..1 Name for this value set (computer friendly) -->
+ <title value="患者预约类型 "/><!-- 0..1 Name for this value set (human friendly) -->
+ <status value="draft"/><!-- 1..1 draft | active | retired | unknown -->
+  <description value="患者预约类型，包括  网上预约、现场预约，自助预约"/>
+ <compose>  <!-- 0..1 Content logical definition of the value set (CLD) --> 
+  <include>  <!-- 1..* Include one or more codes from a code system or other value set(s) -->
+   <system value="http://fhir.scwjxx.cn/Sichuan/CodeSystem/appointment-type"/><!-- ?? 0..1 The system the codes come from --> 
+  </include>
+  <exclude><!-- ?? 0..* Content as for ValueSet.compose.include Explicitly exclude codes from a code system or other value sets --></exclude>
+ </compose>
+</ValueSet>

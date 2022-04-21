@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<AppointmentResponse xmlns="http://hl7.org/fhir">
+	<!-- 0..1 挂号确认应答ID -->
+	<id value="RegistratedResponse-example"/>
+	<meta>
+		<profile value="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/hospital-referral-response"/>
+	</meta>
+
+
+
+
+	<!-- 1..1 Reference(Appointment) 申请编号 -->
+	<appointment>
+		<reference value="Appointment/OutpatientRegistrationSource-example"/>
+	</appointment>
+
+	<!-- 0..1 该号源的开始时间 -->
+	<start value="2019-02-10T13:00:00Z"/>
+
+	<!-- 0..* 参与者角色（该处为固定为医护人员） -->
+	<participantType>
+		<coding>
+			<!-- 0..1 参与者角色 CodeSystem url  -->
+			<system value="http://fhir.scwjxx.cn/Sichuan/CodeSystem/encounter-participant-type"/>
+			<!-- 0..1 参与者角色代码-->
+			<code value="01"/>
+			<!-- 0..1 参与者角色 -->
+			<display value="患者"/>
+		</coding>
+	</participantType>
+	<!-- 0..1 同意转诊医生编码 -->
+	<actor>
+		<reference value="Patient/Patient001-example"/>
+	</actor>
+	<!-- 1..1 转诊确定状态 默认为（同意接收转诊） accepted   accepted | declined | tentative | needs-action -->
+	<participantStatus value="accepted"/>
+	<!-- 0..1 备注 -->
+	<comment value=""/>
+</AppointmentResponse>
