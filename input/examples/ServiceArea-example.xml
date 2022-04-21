@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Group xmlns="http://hl7.org/fhir">
+  <id value="ServiceArea-example"/>
+
+  <meta>
+    <profile value="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/service-area"/>
+  </meta>
+
+  <!-- 1..1 分组类型  person | animal | practitioner | device | medication | substance -->
+  <type value="person"/>
+  <!--  1..1 实际的或者描述性的 -->
+  <actual value="true"/>
+
+  <!-- 0..1 分组名称 -->
+  <name value="服务成都地区"/>
+
+  <!-- 0..* 分组成员所属特性（描述地域范围，用行政区划编码描述） -->
+  <characteristic>
+    <!-- 1..1 描述特性划分名称 -->
+    <code>
+      <coding>
+        <!-- 0..1 描述特性划分名称 -->
+        <display value="行政区划"/>
+      </coding>
+    </code>
+    <!-- 1..1 行政区划编码 -->
+    <valueCodeableConcept>
+      <coding>
+        <!-- 0..1 行政区划代码 CodeSystem url  地址-->
+        <system value="http://fhir.scwjxx.cn/Sichuan/CodeSystem/administrative-divisions"/>
+        <!-- 0..1 行政区划代码-->
+        <code value="510100"/>
+        <!-- 0..1 行政区划名称 -->
+        <display value="成都市"/>
+      </coding>
+    </valueCodeableConcept>
+    <!-- 1..1 包含或者排除 -->
+    <exclude value="true"/>
+
+  </characteristic>
+
+</Group>

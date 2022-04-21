@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValueSet xmlns="http://hl7.org/fhir"> 
+	<id value="Service-package-vs"/>
+ <url value="http://fhir.scwjxx.cn/Sichuan/ValueSet/Service-package-vs"/>
+ <name value="Service-package-vs"/><!-- ?? 0..1 Name for this value set (computer friendly) -->
+ <title value="签约服务包  "/><!-- 0..1 Name for this value set (human friendly) -->
+ <status value="draft"/><!-- 1..1 draft | active | retired | unknown -->
+  <description value="签约服务包   家庭医生签约的服务项目打包"/>
+ <compose>  <!-- 0..1 Content logical definition of the value set (CLD) --> 
+  <include>  <!-- 1..* Include one or more codes from a code system or other value set(s) -->
+   <system value="http://fhir.scwjxx.cn/Sichuan/CodeSystem/Service-package"/><!-- ?? 0..1 The system the codes come from --> 
+  </include>
+  <exclude><!-- ?? 0..* Content as for ValueSet.compose.include Explicitly exclude codes from a code system or other value sets --></exclude>
+ </compose>
+</ValueSet>

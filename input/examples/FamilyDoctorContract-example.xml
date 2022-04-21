@@ -1,0 +1,200 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+   <CarePlan xmlns="http://hl7.org/fhir">
+        <!-- 0..1 id -->
+        <id value="FamilyDoctorContract-example"/>
+
+        <meta>
+          <profile value="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/family-doctor-contract"/>
+        </meta>
+
+        <!-- 0..1 签约流水号 -->
+        <identifier>
+          <!--0..1 签约流水号NamingSystem uri-->
+          <system value="http://fhir.scwjxx.cn/Sichuan/NamingSystem/careplan-serial-identifier"/>
+          <!-- 0..1 签约流水号 -->
+          <value value="2126373839202937"/>
+        </identifier>
+
+
+        <!-- 0..1 医保基金支付 -->
+        <extension url="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/medicare-payment">
+          <valueQuantity>
+            <!-- 0..1 数字 -->
+            <value value="100"/>
+            <!-- 0..1 单位 -->
+            <unit value="元"/>
+          </valueQuantity>
+        </extension>
+        <!-- 0..1 基本公卫经费支付 -->
+        <extension url="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/health-payment">
+          <valueQuantity>
+            <!-- 0..1 数字 -->
+            <value value="100"/>
+            <!-- 0..1 单位 -->
+            <unit value="元"/>
+          </valueQuantity>
+        </extension>
+        <!-- 0..1 居民自费费用 -->
+        <extension url="http://SichuanMedicalCommunity.FHIR.PRESS/StructureDefinition/self-paying">
+          <valueQuantity>
+            <!-- 0..1 数字 -->
+            <value value="100"/>
+            <!-- 0..1 单位 -->
+            <unit value="元"/>
+          </valueQuantity>
+        </extension>
+
+
+
+        <!-- 1..1 签约状态  draft | active | on-hold | revoked | completed | entered-in-error | unknown -->
+        <status value="active">
+          <extension url="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/resource-status">
+            <valueCoding>
+              <!-- 0..1 申请单状态 CodeSystem url  地址(draft | active | on-hold | revoked | completed | entered-in-error | unknown )-->
+              <system value="http://hl7.org/fhir/request-status"/>
+              <!-- 0..1 申请单状态代码-->
+              <code value="active"/>
+              <!-- 0..1申请单状态说明 -->
+              <display value="active"/>
+            </valueCoding>
+          </extension>
+        </status>
+        <!-- 1..1 签约意图 proposal | plan | order | option -->
+        <intent value="plan">
+          <extension url="http://fhir.scwjxx.cn/Sichuan/StructureDefinition/resource-intent">
+            <valueCoding>
+              <!-- 0..1 申请意图 CodeSystem url  地址(proposal | plan | directive | order | original-order | reflex-order | filler-order | instance-order | option )-->
+              <system value="http://hl7.org/fhir/request-intent"/>
+              <!-- 0..1 申请意图代码-->
+              <code value="plan"/>
+              <!-- 0..1 申请意图说明 -->
+              <display value="plan"/>
+            </valueCoding>
+          </extension>
+        </intent>
+
+
+
+
+
+        <!-- 0..1 签约渠道 -->
+        <category>
+          <coding>
+            <!-- 0..1 签约渠道 CodeSystem url  地址-->
+            <system value="http://fhir.scwjxx.cn/Sichuan/CodeSystem/Signed-channel"/>
+            <!-- 0..1 签约渠道-->
+            <code value="01"/>
+            <!-- 0..1 签约渠道名称 -->
+            <display value="家庭医生"/>
+          </coding>
+        </category>
+
+
+        <!-- 0..1 签约单描述 -->
+        <description value="描述该签约单的简要信息"/>
+
+        <!-- 1..1 Reference(Group) 患者 -->
+        <subject>
+          <!-- 0..1 Reference(Group) 关联家庭信息 -->
+          <reference value="Group/Family-example"/>
+        </subject>
+
+        <!-- 0..1 服务周期 -->
+        <period>
+          <!--  0..1 签约生效日期 -->
+          <start value="2019-02-10T13:00:00Z"/>
+          <!--  0..1 签约结束日期 -->
+          <end value="2021-02-10T13:00:00Z"/>
+        </period>
+        <!-- 0..1 签约日期 -->
+        <created value="2019-02-10T13:00:00Z"/>
+
+        <!-- 0..1 签约人 Reference(Patient） -->
+        <author>
+          <!-- 0..1 Reference(Patient) 关联签约患者信息 -->
+          <reference value="Patient/Patient001-example"/>
+        </author>
+
+        <!-- 0..* Reference(|Practitioner)签约医生 -->
+        <contributor>
+          <!-- 0..1 Reference(Practitioner) 关联医护人员信息 -->
+          <reference value="Practitioner/Practitioner001-example"/>
+        </contributor>
+
+        <!-- 0..* Reference(CareTeam) 签约团队 -->
+        <careTeam>
+          <!-- 0..1 Reference(CareTeam) 关联团队信息 -->
+          <reference value="CareTeam/CareTeam-example"/>
+        </careTeam>
+
+
+
+        <!-- 0..* 服务计划 -->
+        <activity>
+
+          <!--0..1 计划流水号-->
+          <id value="01"/>
+          <!--  0..1 计划明细 -->
+          <detail>
+
+            <!-- 1..1 计划状态 not-started | scheduled | in-progress | on-hold | completed | cancelled | stopped | unknown | entered-in-error -->
+            <status value="on-hold"/>
+
+            <!-- 0..1 服务包 -->
+            <code>
+              <!--0..1 服务包  -->
+              <coding>
+                <!--0..1  服务包 CodeSsystem地址-->
+                <system value="http://fhir.scwjxx.cn/Sichuan/CodeSystem/service-package"/>
+                <!--0..1  服务包-->
+                <code value="01"/>
+                <!--0..1 服务包说明-->
+                <display value="服务包1"/>
+              </coding>
+              <!--0..1 服务项目明细编码  -->
+              <coding>
+                <!-- 0..1 服务项目明细编码 CodeSystem url  地址-->
+                <system value="http://fhir.scwjxx.cn/Sichuan/CodeSystem/service-details"/>
+                <!-- 0..1 服务项目明细编码-->
+                <code value="01"/>
+                <!-- 0..1 服务项目明细编码名称 -->
+                <display value="服务明细1"/>
+              </coding>
+
+            </code>
+
+
+            <!-- 0..1 服务时间 -->
+            <scheduledTiming>
+              <!-- 0..* 服务时间 -->
+              <event value="2019-02-10T13:00:00Z"/>
+              <!-- 0..1 服务频次 -->
+              <code>
+                <coding>
+                  <!-- 0..1 服务频次 CodeSystem url  地址-->
+                  <system value="http://fhir.scwjxx.cn/Sichuan/CodeSystem/Service-frequency"/>
+                  <!-- 0..1 服务频次-->
+                  <code value="01"/>
+                  <!-- 0..1 服务频次名称 -->
+                  <display value="一周1次"/>
+                </coding>
+                <!-- 0..1 服务频次描述 -->
+                <text value="[string]"/>
+              </code>
+            </scheduledTiming>
+
+            <!-- 0..* Reference(Practitioner） 计划服务医生 -->
+            <performer>
+              <!-- 0..1 Reference(Practitioner) 关联医护人员信息 -->
+              <reference value="Practitioner/Practitioner001-example"/>
+            </performer>
+            <!-- 0..1 服务内容 -->
+            <description value="服务内容详情"/>
+          </detail>
+        </activity>
+        <!-- 0..* 备注（合同） -->
+        <note>
+          <!-- 1..1 合同 -->
+          <text value="[markdown]"/>
+        </note>
+      </CarePlan>
